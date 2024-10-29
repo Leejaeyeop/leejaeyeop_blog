@@ -86,3 +86,17 @@
     @apply bg-background text-foreground;
   }
 }
+h1 {
+  display: inline-block;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  transform: translate3d(-50%, -50%, 0) rotate3d(1, 0, 0, 55deg)
+    rotate3d(0, 0, 1, 45deg);
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  font-size: 400px;
+  width: 1200px;
+  color: inherit;
+}
