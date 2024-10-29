@@ -56,7 +56,7 @@ const Impossible = () => {
       /> */}
       </motion.mesh>
       <motion.group
-        position={[-6.7, 0.1, 1]}
+        position={[-6.5, -0.5, 2.1]}
         variants={
           {
             // on: { z: -1.2 },
@@ -68,14 +68,16 @@ const Impossible = () => {
           <textGeometry
             args={["Impossible", { font: font, size: 2, height: 1 }]}
           ></textGeometry>
+
           <motion.meshStandardMaterial roughness={0.5} />
           {/* color 설정... */}
           {/* <motion.meshBasicMaterial color="rgb(255, 150, 150)" /> */}
         </motion.mesh>
         <motion.pointLight
           intensity={100}
-          distance={1.4}
+          distance={40}
           variants={lightVariants}
+          color={"#ff2400"}
         />
         {/* i 아래 그림자 */}
         {/* <Shadow
@@ -161,9 +163,9 @@ const Scene = () => {
         {/* 전체 조명 */}
         <ambientLight intensity={0.1} />
         {/*  */}
-        {/* <directionalLight position={[10, 5, 5]} intensity={1} /> */}
+        {/* <directionalLight position={[10, 15, 20]} intensity={0.5} /> */}
         <motion.directionalLight
-          position={[-20, -20, -20]}
+          position={[-10, -15, -16]}
           intensity={0.5}
           variants={colorVariants}
         />
@@ -175,15 +177,16 @@ const Scene = () => {
         /> */}
         <motion.spotLight
           variants={colorVariants}
-          position={[10, 40, 5]}
-          angle={0.2}
-          intensity={3}
+          position={[10, 15, 16]}
+          angle={0.4}
+          intensity={1}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
-          shadow-bias={-0.0001}
+          shadow-bias={-0.00001}
           castShadow
+          color={"#ff2400"}
         />
-        <Physics gravity={[0, -2, 0]} debug>
+        <Physics gravity={[0, -2, 0]}>
           <Suspense fallback={null}>
             <RigidBody ref={rigidImpossible} onCollisionEnter={collisionEnter}>
               <Impossible />
@@ -205,15 +208,14 @@ const Scene = () => {
           rotation={[-Math.PI / 2, 0, 0]}
         >
           <planeGeometry args={[20, 20]} />
-          {/* color 설정... */}
           <motion.shadowMaterial
             transparent
+            opacity={0.1}
             variants={{
               on: { opacity: 0.1 },
               off: { opacity: 0.3 },
             }}
           />
-          {/* <motion.meshBasicMaterial color="rgb(255, 150, 150)" /> */}
         </mesh>
       </motion.group>
       <OrbitControls></OrbitControls>
