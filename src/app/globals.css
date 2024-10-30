@@ -98,5 +98,6 @@ h1 {
   margin-bottom: 0.5rem;
   font-size: 400px;
   width: 1200px;
+  text-align: left;
   color: inherit;
 }
