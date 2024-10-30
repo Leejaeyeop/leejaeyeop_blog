@@ -14,15 +14,19 @@ const Intro = () => {
     transition
   );
   const [sizes, setSizes] = useState<{ width: number; height: number }>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
+    setSizes({
+      width: window?.innerWidth,
+      height: window?.innerHeight,
+    });
     const resizeHandler = () => {
       setSizes({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: window?.innerWidth,
+        height: window?.innerHeight,
       });
     };
     window.addEventListener("resize", resizeHandler);
