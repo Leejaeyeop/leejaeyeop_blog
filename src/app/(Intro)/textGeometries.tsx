@@ -3,6 +3,7 @@ import { extend } from "@react-three/fiber";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import myFont from "../Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import { useThree } from "@react-three/fiber";
 
 extend({ TextGeometry });
 
@@ -59,6 +60,10 @@ const Challenge = () => {
 };
 
 const Growth = () => {
+  const { camera } = useThree();
+  // camera.lookAt(-2.5, 3, 8);
+
+  camera.position.set(-2, 5.8, 8);
   return (
     <group scale={[1.25, 1.25, 1.25]} dispose={null}>
       <motion.group position={[-6.5, 10, 1.5]}>

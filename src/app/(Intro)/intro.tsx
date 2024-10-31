@@ -74,8 +74,9 @@ const Intro = () => {
               initial={{ x: "100%" }} // 오른쪽에서 시작
               animate={{ x: "0%" }} // 원래 자리로 이동
               transition={{ type: "spring", stiffness: 70, damping: 10 }} // 부드러운 스프링 애니메이션
-              children="에 목마른"
-            />
+            >
+              에 목마른
+            </motion.h2>
           )}
           <Scene moveNextSequence={moveNextSequence} />
         </motion.div>

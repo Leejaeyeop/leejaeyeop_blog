@@ -19,7 +19,6 @@ import {
   CuboidCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
-import { useThree } from "@react-three/fiber";
 import { SequenceContext } from "./hooks/use-sequence";
 import { Impossible, Challenge, Growth, Leejaeyeop } from "./textGeometries";
 extend({ OrbitControls });
@@ -34,7 +33,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
   const rigidImpossible = useRef<RapierRigidBody>(null);
   const rigidChallenge = useRef<RapierRigidBody>(null);
   const rigidGrowth = useRef<RapierRigidBody>(null);
-
+  const orbitRef = useRef(null);
   const collisionEnter = ({ manifold, target, other }) => {
     if (
       target.rigidBodyObject.name === "rigidImpossible" &&
@@ -90,7 +89,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       orthographic
       shadows
       dpr={[1, 2]}
-      camera={{ zoom: 65, position: [5, 5, 5], fov: 50 }}
+      camera={{ zoom: 65, position: [5, 5, 5], fov: 80 }}
     >
       {/* <motion.group animate={sequence}> */}
       <motion.group>
@@ -156,7 +155,13 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
           <motion.shadowMaterial transparent opacity={0.15} />
         </mesh>
       </motion.group>
-      <OrbitControls></OrbitControls>
+      <OrbitControls
+        ref={orbitRef}
+        onChange={() => {
+          const cameraPosition = orbitRef.current.object.position;
+          console.log("Camera position:", cameraPosition);
+        }}
+      ></OrbitControls>
     </Canvas>
   );
 };
