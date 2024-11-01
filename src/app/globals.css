@@ -87,28 +87,30 @@
   }
 }
 
-h1 {
+.intro-text-container {
   position: absolute;
   display: inline-block;
   top: 40%;
-  left: 60%;
+  left: 50%;
   transform: translate3d(-50%, -50%, 0) rotate3d(1, 0, 0, 55deg)
     rotate3d(0, 0, 1, 45deg);
+  width: 100vw;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 800;
   font-size: 30vw;
-  width: 100vw;
-  text-align: left;
-  color: inherit;
 }
 
 h2 {
-  position: absolute;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: black;
   font-size: 10vw;
-  left: 55vw;
-  top: 23vw;
+  margin-bottom: 8vw;
 }

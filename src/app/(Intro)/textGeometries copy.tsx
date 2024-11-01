@@ -4,16 +4,18 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import myFont from "../Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { useThree } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { useEffect, useMemo } from "react";
 extend({ TextGeometry });
 
 // @ts-ignore
 const font = new FontLoader().parse(myFont);
 const Impossible = () => {
+  const { viewport } = useThree();
+  // 반응형으로 크기 조절
+  const scale = useMemo(() => viewport.width / 14, [viewport.width]);
   return (
-    <group dispose={null}>
-      <motion.mesh receiveShadow castShadow></motion.mesh>
-      <motion.group position={[-6.5, -0.5, 2.5]}>
+    <group scale={[scale, scale, scale]} dispose={null}>
+      <motion.group position={[-10, -0.5, 1.5]}>
         <motion.mesh receiveShadow castShadow rotation={[0, 0, -0.1]}>
           <textGeometry
             args={["I", { font: font, size: 2.5, height: 1 }]}
@@ -38,9 +40,12 @@ const Impossible = () => {
 };
 
 const Challenge = () => {
+  const { viewport } = useThree();
+  // 반응형으로 크기 조절
+  const scale = useMemo(() => viewport.width / 14, [viewport.width]);
   return (
-    <group dispose={null}>
-      <motion.group position={[-6.5, 10, 2.5]}>
+    <group scale={[scale, scale, scale]} dispose={null}>
+      <motion.group position={[-6.5, 10, 1.5]}>
         <motion.mesh receiveShadow castShadow>
           <textGeometry
             args={["C", { font: font, size: 3, height: 1 }]}
@@ -60,16 +65,12 @@ const Challenge = () => {
 };
 
 const Growth = () => {
-  const { scene } = useThree();
-  const targetBox = scene.getObjectByName("rigidChallenge");
-
-  console.log(targetBox.position.x);
-  console.log(targetBox.position.y);
-  console.log(targetBox.position.z);
-
+  const { viewport } = useThree();
+  // 반응형으로 크기 조절
+  const scale = useMemo(() => viewport.width / 14, [viewport.width]);
   return (
-    <group dispose={null}>
-      <motion.group position={[-5, 10, 2.5]}>
+    <group scale={[scale, scale, scale]} dispose={null}>
+      <motion.group position={[-6.5, 10, 1.5]}>
         <motion.mesh receiveShadow castShadow>
           <textGeometry
             args={["G", { font: font, size: 3, height: 1 }]}
@@ -90,11 +91,11 @@ const Growth = () => {
 
 const Leejaeyeop = () => {
   const { camera } = useThree();
-  camera.position.set(-3, 4, 10);
 
+  camera.position.set(2, 6, 8);
   return (
-    <group scale={[1.3, 1.3, 1.3]} dispose={null}>
-      <motion.group position={[-11, 20, 10]}>
+    <group scale={[1.25, 1.25, 1.25]} dispose={null}>
+      <motion.group position={[-6.5, 10, 1.5]}>
         <motion.mesh receiveShadow castShadow position={[2.7, 0, 0]}>
           <textGeometry
             args={["Jaeyeop", { font: font, size: 2, height: 1 }]}
