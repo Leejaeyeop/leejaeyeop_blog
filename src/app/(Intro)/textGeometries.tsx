@@ -1,10 +1,10 @@
 import { motion } from "framer-motion-3d";
-import { extend } from "@react-three/fiber";
+import { extend, useThree } from "@react-three/fiber";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import myFont from "../Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import { useThree } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { useEffect, useRef, useState } from "react";
+
 extend({ TextGeometry });
 
 // @ts-ignore
@@ -40,7 +40,7 @@ const Impossible = () => {
 const Challenge = () => {
   return (
     <group dispose={null}>
-      <motion.group position={[-6.5, 10, 2.5]}>
+      <motion.group position={[-6.5, 10, 2.5]} name="meshChallenge">
         <motion.mesh receiveShadow castShadow>
           <textGeometry
             args={["C", { font: font, size: 3, height: 1 }]}
@@ -61,15 +61,21 @@ const Challenge = () => {
 
 const Growth = () => {
   const { scene } = useThree();
-  const targetBox = scene.getObjectByName("rigidChallenge");
+  const [position, setPosition] = useState<[x: number, y: number, z: number]>([
+    -6.5, 10, 2.5,
+  ]);
+  const GowthRef = useRef(null);
 
-  console.log(targetBox.position.x);
-  console.log(targetBox.position.y);
-  console.log(targetBox.position.z);
+  useEffect(() => {
+    const meshChallenge = scene.getObjectByName("meshChallenge");
+
+    const { x, z } = GowthRef.current.getWorldPosition(meshChallenge.position);
+    setPosition([x, position[1], z]);
+  }, []);
 
   return (
     <group dispose={null}>
-      <motion.group position={[-5, 10, 2.5]}>
+      <motion.group ref={GowthRef} position={position}>
         <motion.mesh receiveShadow castShadow>
           <textGeometry
             args={["G", { font: font, size: 3, height: 1 }]}
