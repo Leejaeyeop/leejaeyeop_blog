@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { createContext } from "react";
 
-const SequenceContext = createContext(null);
+export type SequenceInfo = typeof sequenceInfo;
 
+const SequenceContext = createContext(null);
 // default
 const sequenceInfo = {
   level: 1,
@@ -27,8 +28,6 @@ const sequenceInfo = {
   showH2Text: false,
   changeLightPos: false,
 };
-
-export type SequenceInfo = typeof sequenceInfo;
 
 function* GenerateSequence() {
   // 일회성 이벤트는 제거

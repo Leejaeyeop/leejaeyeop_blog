@@ -50,10 +50,11 @@ const Intro = () => {
   return (
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
+        <motion.div className="absolute w-full h-full text-violet-50">
+          <h1>이재엽</h1>
+        </motion.div>
         <motion.div
-          style={{ width: "100%", height: "100%" }}
-          // style={{ width: sizes.width, height: sizes.height }}
-          className="absolute"
+          className="absolute w-full h-full opacity-0"
           initial={false}
           animate={{
             backgroundColor,
@@ -82,7 +83,6 @@ const Intro = () => {
               </motion.h2>
             )}
           </motion.div>
-
           <Scene moveNextSequence={moveNextSequence} />
         </motion.div>
       </MotionConfig>
