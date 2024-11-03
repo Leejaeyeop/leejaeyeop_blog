@@ -87,6 +87,7 @@ function* GenerateSequence() {
   // 9
   sequenceInfo.level += 1;
   sequenceInfo.changeLightPos = true;
+  sequenceInfo.showGrowth = false;
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 2000 };
 
   yield { ...sequenceInfo, isDone: true };

@@ -3,6 +3,7 @@
 import { Scene } from "./Canvas";
 import { Suspense, useEffect, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 import { transition } from "./transition";
 import { useAnimatedText } from "./hooks/use-animated-text";
@@ -22,6 +23,7 @@ const Intro = () => {
     isDone,
   } = sequence;
   const headerRef = useAnimatedText(text, transition);
+  const router = useRouter();
   const [_, setSizes] = useState<{ width: number; height: number }>({
     width: 0,
     height: 0,
@@ -61,8 +63,13 @@ const Intro = () => {
             opacity: isDone ? 0 : 1,
           }}
           transition={{
-            duration: isDone ? 3 : 0.5,
+            duration: isDone ? 2.5 : 0.5,
             ease: "easeInOut",
+          }}
+          onUpdate={(latest) => {
+            if (latest.opacity === 0) {
+              router.push("/about");
+            }
           }}
         >
           <motion.div
