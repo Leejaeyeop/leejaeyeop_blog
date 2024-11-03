@@ -19,9 +19,10 @@ const Intro = () => {
     delayTime,
     h1Animation,
     showH2Text,
+    isDone,
   } = sequence;
   const headerRef = useAnimatedText(text, transition);
-  const [sizes, setSizes] = useState<{ width: number; height: number }>({
+  const [_, setSizes] = useState<{ width: number; height: number }>({
     width: 0,
     height: 0,
   });
@@ -44,23 +45,24 @@ const Intro = () => {
     if (delayTime > 0) {
       setTimeout(() => moveNextSequence(), delayTime);
     }
-
     return;
   }, [delayTime]);
   return (
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
-        <motion.div className="absolute w-full h-full text-violet-50">
-          <h1>이재엽</h1>
-        </motion.div>
         <motion.div
-          className="absolute w-full h-full opacity-0"
+          className="absolute w-full h-full"
           initial={false}
           animate={{
             backgroundColor,
             color,
             x: shakeX ? [0, -5, 5, -5, 5, 0, 0, -5, 5, -5, 5, 0] : [], // X축으로 진동
             y: shakeY ? [0, -5, 5, -5, 5, 0] : [], // y축으로 진동
+            opacity: isDone ? 0 : 1,
+          }}
+          transition={{
+            duration: isDone ? 3 : 0.5,
+            ease: "easeInOut",
           }}
         >
           <motion.div

@@ -96,7 +96,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       moveNextSequence();
     }
 
-    if (target.rigidBodyObject.name === "rigidLeejaeyeop") {
+    if (target.rigidBodyObject.name === "rigidLeejaeyeop" && level === 9) {
       moveNextSequence();
     }
   };

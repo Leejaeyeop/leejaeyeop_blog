@@ -27,41 +27,36 @@ const sequenceInfo = {
   h1Animation: null,
   showH2Text: false,
   changeLightPos: false,
+  isDone: false,
 };
 
 function* GenerateSequence() {
   // 일회성 이벤트는 제거
-
   // 첫번째 시퀀스-> impossible geo 생성 delay 1초
   sequenceInfo.level += 1;
   sequenceInfo.showImpossible = true;
   yield { ...sequenceInfo, delayTime: 800 };
-
   // 두번째 시퀀스 -> challenge geo 생성
   sequenceInfo.showChallenge = true;
   sequenceInfo.level += 1;
   yield { ...sequenceInfo };
-
   // 세번째 시퀀스 -> color change , text change , camera shake
   sequenceInfo.level += 1;
   sequenceInfo.backgroundColor = "#caf0f8";
   sequenceInfo.color = "#005AFF";
   sequenceInfo.text = "도전";
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1200 };
-
   // 네번째 시퀸스 -> growth text geo 생성
   sequenceInfo.level += 1;
   sequenceInfo.showImpossible = false;
   sequenceInfo.showGrowth = true;
   yield { ...sequenceInfo };
-
   // 다섯번째 시퀸스 ->  color change , text change , camera shake
   sequenceInfo.level += 1;
   sequenceInfo.backgroundColor = "#c9ffed";
   sequenceInfo.color = "#08bd53";
   sequenceInfo.text = "성장";
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1200 };
-
   // 여섯번째 시퀸스 -> h1 transform , sink growth geo
   sequenceInfo.level += 1;
   sequenceInfo.showCuboidCollider = false;
@@ -76,26 +71,25 @@ function* GenerateSequence() {
       ...sequenceInfo,
       delayTime: 600,
     };
-
-  // 열번쩨 시퀸스 -> show h2
+  // 7번쩨 시퀸스 -> show h2
   sequenceInfo.level += 1;
   sequenceInfo.showH2Text = true;
   yield {
     ...sequenceInfo,
   };
-
-  // 열한번째 시퀸스 -> Leejaeyeop
+  // 8 시퀸스 -> Leejaeyeop
   // light 위치 변경
   sequenceInfo.level += 1;
   sequenceInfo.showCuboidCollider = true;
   sequenceInfo.showChallenge = false;
   sequenceInfo.showLeejaeyeop = true;
   yield { ...sequenceInfo };
-
-  // 열두번째
+  // 9
   sequenceInfo.level += 1;
   sequenceInfo.changeLightPos = true;
-  yield { ...sequenceInfo, shakeX: true, shakeY: true };
+  yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 2000 };
+
+  yield { ...sequenceInfo, isDone: true };
 
   return sequenceInfo;
 }
