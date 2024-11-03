@@ -86,3 +86,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+.intro-text-container {
+  position: absolute;
+  display: inline-block;
+  top: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0) rotate3d(1, 0, 0, 55deg)
+    rotate3d(0, 0, 1, 45deg);
+  width: 100vw;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 25vw;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: black;
+  font-size: 10vw;
+  margin-bottom: 8vw;
+}
