@@ -112,14 +112,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       rigidChallenge.current.setEnabledTranslations(true, true, true, true);
       rigidChallenge.current.applyImpulse({ x: 10, y: 10, z: 0 }, true);
     }
-    if (
-      target.rigidBodyObject.name === "rigidChallenge" &&
-      other.rigidBodyObject.name === "rigidGrowth"
-    ) {
-      // on rotation & on transition
-      // rigidGrowth.current.setEnabledRotations(true, true, true, true);
-      // rigidGrowth.current.setEnabledTranslations(true, true, true, true);
-    }
   };
 
   return (
