@@ -1,12 +1,15 @@
-import { WideFlame } from "./flame";
+"use client";
+import FirstSection from "./FirstSection";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="text-white">
-      <h1 className="font-extrabold text-7xl">성장에 목마른 개발자 이재엽</h1>
-      <div className="mo-fire">
-        <WideFlame />
-      </div>
-    </div>
+    <motion.div
+      initial={{ y: -900, opacity: 0 }} // 위에서 시작
+      animate={{ y: 0, opacity: 1 }} // 아래로 이동하면서 나타남
+      transition={{ duration: 2, ease: "easeOut" }} // 애니메이션 지속 시간과 속도
+    >
+      <FirstSection></FirstSection>
+    </motion.div>
   );
 }
