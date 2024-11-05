@@ -8,7 +8,7 @@ export function useAnimatedText(target, transition) {
   useEffect(() => {
     ref.current.innerText = target;
 
-    return value.onChange((v) => {
+    return value.on("change", (v) => {
       ref.current.innerText = v;
     });
   });

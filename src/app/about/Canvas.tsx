@@ -75,7 +75,7 @@ function Scene() {
   const mouseLerped = useRef({ x: 0, y: 0 });
 
   useFrame((state, delta) => {
-    const mouse = state.mouse;
+    const mouse = state.pointer;
     mouseLerped.current.x = MathUtils.lerp(mouseLerped.current.x, mouse.x, 0.1);
     mouseLerped.current.y = MathUtils.lerp(mouseLerped.current.y, mouse.y, 0.1);
     materialRef.current.uniforms.uMouse.value.x = mouseLerped.current.x;
@@ -91,7 +91,7 @@ function Scene() {
             <br />
             There
             <br />
-            I'm
+            I&apos;m
             <br />
             Jaeyeop
             <br />
