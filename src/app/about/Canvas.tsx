@@ -6,18 +6,12 @@ import debounce from "debounce";
 import Image from "next/image";
 // 3D
 import { useFrame, useThree } from "@react-three/fiber";
-import { useHelper, Html } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import CustomShaderMaterial from "three-custom-shader-material";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 import html2canvas from "html2canvas";
-import {
-  CanvasTexture,
-  PointLightHelper,
-  MathUtils,
-  Vector2,
-  MeshStandardMaterial,
-} from "three";
+import { CanvasTexture, MathUtils, Vector2, MeshStandardMaterial } from "three";
 
 const useDomToCanvas = (domEl) => {
   const [texture, setTexture] = useState<CanvasTexture>();
@@ -46,11 +40,9 @@ const useDomToCanvas = (domEl) => {
 function Lights() {
   const pointLightRef = useRef();
 
-  useHelper(pointLightRef, PointLightHelper, 1, "cyan");
-
   const config = useControls("Lights", {
     color: "#ffffff",
-    intensity: { value: 30, min: 0, max: 5000, step: 0.01 },
+    intensity: { value: 25, min: 0, max: 5000, step: 0.01 },
     distance: { value: 12, min: 0, max: 100, step: 0.1 },
     decay: { value: 1, min: 0, max: 5, step: 0.1 },
     position: { value: [2, 4, 6] },

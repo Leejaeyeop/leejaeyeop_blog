@@ -13,12 +13,31 @@ import {
 } from "@react-three/rapier";
 import { SequenceContext } from "./hooks/use-sequence";
 import { Impossible, Challenge, Growth, Leejaeyeop } from "./textGeometries";
+import { useControls } from "leva";
+
+import { PointLightHelper, Vector2, Vector3 } from "three";
+import { useHelper } from "@react-three/drei";
 import { SequenceInfo } from "./hooks/use-sequence";
 extend({ OrbitControls });
 
 type SceneProps = {
   moveNextSequence: () => void;
 };
+
+function Lights() {
+  const pointLightRef = useRef();
+
+  useHelper(pointLightRef, PointLightHelper, 1, "cyan");
+
+  const config = useControls("Lights", {
+    color: "#ffffff",
+    intensity: { value: 30, min: 0, max: 5000, step: 0.01 },
+    distance: { value: 12, min: 0, max: 100, step: 0.1 },
+    decay: { value: 1, min: 0, max: 5, step: 0.1 },
+    position: { value: [2, 4, 6] },
+  });
+  return <motion.pointLight ref={pointLightRef} {...config} />;
+}
 
 function FixedCamera() {
   const { camera } = useThree();
@@ -73,11 +92,15 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       other.rigidBodyObject.name === "rigidChallenge" &&
       level === 3
     ) {
-      rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
-
       // off rotation & off transition
       rigidChallenge.current.setEnabledRotations(false, false, false, true);
+      rigidChallenge.current.setAngularDamping(-0.1);
+      rigidChallenge.current.setLinearDamping(-1);
+      // rigidChallenge.current.setLinvel(new Vector3(0, 0.01, 0), true);
+      // rigidChallenge.current.setAngvel(new Vector3(0, 0.01, 0), true);
       rigidChallenge.current.setEnabledTranslations(false, true, false, true);
+
+      rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
 
       // 2번째 sequence 으로 이동
       moveNextSequence();
@@ -87,11 +110,11 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       other.rigidBodyObject.name === "rigidGrowth" &&
       level === 5
     ) {
-      rigidChallenge.current.applyImpulse({ x: 0, y: 2500, z: 2500 }, true);
-
       // off rotation & off transition
       rigidGrowth.current.setEnabledRotations(false, false, false, false);
       rigidGrowth.current.setEnabledTranslations(false, true, false, false);
+
+      rigidChallenge.current.applyImpulse({ x: 0, y: 2500, z: 2500 }, true);
 
       moveNextSequence();
     }
@@ -153,6 +176,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
             },
           }}
         />
+        <Lights></Lights>
         <motion.spotLight
           position={[10, 25, 12]}
           variants={{

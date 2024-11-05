@@ -49,6 +49,7 @@ const Intro = () => {
     }
     return;
   }, [delayTime]);
+
   return (
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
@@ -68,7 +69,7 @@ const Intro = () => {
           }}
           onUpdate={(latest) => {
             if (latest.opacity === 0) {
-              router.push("/about");
+              // router.push("/about");
             }
           }}
         >
