@@ -4,6 +4,7 @@ const nextConfig = {
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.glsl/,
+      exclude: /node_modules/,
       type: "asset/source",
     });
     return config;
