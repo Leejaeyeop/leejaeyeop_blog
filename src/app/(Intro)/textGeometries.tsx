@@ -72,20 +72,18 @@ const Growth = () => {
     -6.5, 10, 2.5,
   ]);
   const GowthRef = useRef(null);
-  const GowthRef2 = useRef(null);
 
   useEffect(() => {
     const meshChallenge = scene.getObjectByName("meshChallenge");
 
     const { x, z } = GowthRef.current.getWorldPosition(meshChallenge.position);
-    GowthRef.current.lookAt(meshChallenge.position);
     setPosition([x, position[1], z]);
   }, []);
 
   return (
     <group dispose={null}>
-      <motion.group ref={GowthRef} position={[-6.5, 10, 2.5]}>
-        <motion.mesh ref={GowthRef2} receiveShadow castShadow>
+      <motion.group ref={GowthRef} position={position}>
+        <motion.mesh receiveShadow castShadow>
           <textGeometry
             args={["G", { font: font, size: 3, height: 1 }]}
           ></textGeometry>

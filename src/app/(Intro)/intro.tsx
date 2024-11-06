@@ -1,7 +1,7 @@
 "use client";
 
 import { Scene } from "./Canvas";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { useRouter } from "next/navigation";
 
@@ -69,7 +69,7 @@ const Intro = () => {
           }}
           onUpdate={(latest) => {
             if (latest.opacity === 0) {
-              // router.push("/about");
+              router.push("/about");
             }
           }}
         >

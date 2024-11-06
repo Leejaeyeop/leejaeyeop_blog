@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState } from "react";
-import { useControls } from "leva";
-import debounce from "debounce";
+import { debounce } from "lodash";
 import Image from "next/image";
 // 3D
 import { useFrame, useThree } from "@react-three/fiber";
@@ -36,19 +35,6 @@ const useDomToCanvas = (domEl) => {
 
   return texture;
 };
-
-function Lights() {
-  const pointLightRef = useRef();
-
-  const config = useControls("Lights", {
-    color: "#ffffff",
-    intensity: { value: 25, min: 0, max: 5000, step: 0.01 },
-    distance: { value: 12, min: 0, max: 100, step: 0.1 },
-    decay: { value: 1, min: 0, max: 5, step: 0.1 },
-    position: { value: [2, 4, 6] },
-  });
-  return <pointLight ref={pointLightRef} {...config} />;
-}
 
 function Scene() {
   const state = useThree();
@@ -110,7 +96,13 @@ function Scene() {
           flatShading
           silent
         />
-        <Lights />
+        <pointLight
+          color="#ffffff"
+          intensity={25}
+          distance={12}
+          decay={1}
+          position={[2, 4, 6]}
+        />
       </mesh>
     </>
   );
