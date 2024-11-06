@@ -1,7 +1,7 @@
 "use client";
 
 import { Scene } from "./Canvas";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { useRouter } from "next/navigation";
 
@@ -49,6 +49,7 @@ const Intro = () => {
     }
     return;
   }, [delayTime]);
+
   return (
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
@@ -80,9 +81,10 @@ const Intro = () => {
               ease: "easeInOut", // 부드러운 시작과 끝을 위한 easing 설정
             }}
           >
-            <motion.h1 ref={headerRef} />
+            <motion.h1 className="font-extrabold text-[25vw]" ref={headerRef} />
             {showH2Text && (
               <motion.h2
+                className="font-semibold mb-2 text-black text-[10vw] "
                 initial={{ x: "100%" }} // 오른쪽에서 시작
                 animate={{ x: "0%" }} // 원래 자리로 이동
                 transition={{ type: "spring", stiffness: 70, damping: 10 }} // 부드러운 스프링 애니메이션

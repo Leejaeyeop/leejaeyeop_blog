@@ -1,11 +1,18 @@
 import { motion } from "framer-motion-3d";
-import { extend, useThree } from "@react-three/fiber";
+import { extend, Object3DNode, useThree } from "@react-three/fiber";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import myFont from "../Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { useEffect, useRef, useState } from "react";
 
 extend({ TextGeometry });
+
+// Add types to ThreeElements elements so primitives pick up on it
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    textGeometry: Object3DNode<TextGeometry, typeof TextGeometry>;
+  }
+}
 
 // @ts-ignore
 const font = new FontLoader().parse(myFont);
