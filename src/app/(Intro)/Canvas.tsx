@@ -278,7 +278,12 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
           <motion.shadowMaterial transparent opacity={0.15} />
         </mesh>
       </motion.group>
-      <OrbitControls ref={orbitRef}></OrbitControls>
+      <OrbitControls
+        ref={orbitRef}
+        enableRotate={false}
+        enableZoom={false}
+        enablePan={false}
+      ></OrbitControls>
     </Canvas>
   );
 };
