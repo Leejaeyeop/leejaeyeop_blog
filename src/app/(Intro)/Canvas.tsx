@@ -153,8 +153,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
     throttle(() => {
       // off rotation & off transition
       rigidChallenge.current.setEnabledRotations(false, false, false, true);
-      rigidChallenge.current.setAngularDamping(-0.1);
-      rigidChallenge.current.setLinearDamping(-1);
       rigidChallenge.current.setEnabledTranslations(false, true, false, true);
 
       rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
@@ -191,19 +189,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
 
     if (target.rigidBodyObject.name === "rigidLeejaeyeop") {
       jaeyeopCollision();
-    }
-  };
-
-  //
-  const collisionExit = ({ target, other }) => {
-    if (
-      target.rigidBodyObject.name === "rigidImpossible" &&
-      other.rigidBodyObject.name === "rigidChallenge"
-    ) {
-      // on rotation & on transition
-      rigidChallenge.current.setEnabledRotations(true, true, true, true);
-      rigidChallenge.current.setEnabledTranslations(true, true, true, true);
-      rigidChallenge.current.applyImpulse({ x: 10, y: 10, z: 0 }, true);
     }
   };
 

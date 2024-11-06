@@ -15,7 +15,7 @@ float elevation(float radius, float intensity) {
 
 void main() {
 	vec3 newPosition = position;
-	newPosition.z += elevation(0.15, .7);
+	newPosition.z += elevation(0.15, .4);
 
 	csm_Position = newPosition;
 	vUv = uv;
