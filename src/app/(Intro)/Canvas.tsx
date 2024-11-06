@@ -215,7 +215,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
                 name="rigidImpossible"
                 ref={rigidImpossible}
                 onCollisionEnter={collisionEnter}
-                onCollisionExit={collisionExit}
               >
                 <Impossible />
               </RigidBody>
@@ -228,7 +227,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
                 ref={rigidChallenge}
                 gravityScale={30}
                 onCollisionEnter={collisionEnter}
-                onCollisionExit={collisionExit}
                 mass={1}
               >
                 <Challenge />
