@@ -10,6 +10,8 @@ export default function About() {
       transition={{ duration: 2, ease: "easeOut" }} // 애니메이션 지속 시간과 속도
     >
       <FirstSection></FirstSection>
+      {/* test */}
+      <div className=" text-white">this is second content.</div>
     </motion.div>
   );
 }

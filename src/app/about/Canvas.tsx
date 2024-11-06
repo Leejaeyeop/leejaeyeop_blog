@@ -2,7 +2,6 @@
 
 import { useRef, useMemo, useEffect, useState } from "react";
 import { debounce } from "lodash";
-import Image from "next/image";
 // 3D
 import { useFrame, useThree } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
@@ -17,7 +16,9 @@ const useDomToCanvas = (domEl) => {
   useEffect(() => {
     if (!domEl) return;
     const convertDomToCanvas = async () => {
-      const canvas = await html2canvas(domEl, { backgroundColor: null });
+      const canvas = await html2canvas(domEl, {
+        backgroundColor: null,
+      });
       setTexture(new CanvasTexture(canvas));
     };
 
@@ -34,6 +35,55 @@ const useDomToCanvas = (domEl) => {
   }, [domEl]);
 
   return texture;
+};
+
+const Aside = () => {
+  return (
+    <aside className="text-lg flex flex-col mr-7 gap-10 relative">
+      <article className="flex flex-col gap-8 w-[400px]">
+        <div>
+          <p className="text-4xl mb-1">성장에 목마른 개발자</p>
+          <p className="opacity-50">Impossible is nothing</p>
+        </div>
+        <div>
+          <p className="mb-1 opacity-50">Growth</p>
+          <p>I am the most thirsty for growth than anyone else</p>
+        </div>
+        <div>
+          <p className="mb-1 opacity-50">Challenge</p>
+          <p>
+            They are not afraid of challenges <br />
+            but rather enjoy them.
+          </p>
+        </div>
+        <div>
+          <p className="mb-1 opacity-50">Passion</p>
+          <p>I'm always on fire with hot passion.</p>
+        </div>
+      </article>
+    </aside>
+  );
+};
+
+const HtmlContent = () => {
+  return (
+    <>
+      <section>
+        <article>
+          <p className="flex flex-col">
+            Hi
+            <br />
+            There
+            <br />
+            I&apos;m
+            <br />
+            Jaeyeop
+          </p>
+        </article>
+      </section>
+      <Aside />
+    </>
+  );
 };
 
 function Scene() {
@@ -64,24 +114,7 @@ function Scene() {
     <>
       <Html zIndexRange={[-1, -10]} prepend fullscreen>
         <div ref={(el) => setDomEl(el)} className="title3D">
-          <p className="flex flex-col">
-            Hi
-            <br />
-            There
-            <br />
-            I&apos;m
-            <br />
-            Jaeyeop
-            <br />
-          </p>
-          <Image
-            className="absolute right-10"
-            src="/profile.webp"
-            width={400}
-            height={400}
-            alt="Picture of the author"
-            unoptimized
-          />
+          <HtmlContent />
         </div>
       </Html>
       <mesh>

@@ -1,10 +1,11 @@
 "use client";
 import Scene from "./Canvas";
 import { Canvas } from "@react-three/fiber";
-import { Leva } from "leva";
+import Image from "next/image";
+
 function Title3D() {
   return (
-    <div className="absolute top-0 left-0 h-screen w-screen">
+    <div className=" top-0 left-0 h-screen w-screen">
       <Canvas
         dpr={[1, 2]}
         gl={{
@@ -25,7 +26,7 @@ function Title3D() {
 
 function HeaderComponent() {
   return (
-    <header className="relative z-50 mx-7 flex max-lg:flex-col justify-between py-6 border-b border-white/60 pointer-events-auto">
+    <header className="absolute w-full z-50 mx-7 flex max-lg:flex-col justify-between py-6 border-b border-white/60 pointer-events-auto">
       <div className="whitespace-nowrap">
         <h1 className="font-bold inline align-middle mr-2">Tech Blog</h1>
         <a title="Link toTech Blog" href="https://ljy1011.tistory.com/">
@@ -51,23 +52,7 @@ function HeaderComponent() {
 function Credits() {
   return (
     <div className="flex fixed w-full justify-between bottom-0 p-8">
-      <p>
-        Made by <a href="https://twitter.com/romanjeanelie">@romanjeanelie</a>{" "}
-        for <a href="https://twitter.com/codrops">@codrops</a>
-      </p>
-    </div>
-  );
-}
-
-function Aside() {
-  return (
-    <div className="absolute top-1/2 right-16 text-lg text-white">
-      <p className="mb-4 opacity-50">TENDER</p>
-      <p>
-        App that helps <br />
-        to find your best partner
-      </p>
-      <p className="mt-40 opacity-50">LAUNCH IN 2024</p>
+      <p>Made by Lee Jaeyeop</p>
     </div>
   );
 }
@@ -75,22 +60,8 @@ function Aside() {
 function FirstSection() {
   return (
     <div className="text-white">
-      <Leva
-        collapsed={false}
-        flat={true}
-        hidden
-        theme={{
-          sizes: {
-            titleBarHeight: "28px",
-          },
-          fontSizes: {
-            root: "10px",
-          },
-        }}
-      />
       <HeaderComponent />
       <Title3D />
-      <Aside />
       <Credits />
     </div>
   );
