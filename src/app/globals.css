@@ -37,17 +37,16 @@
     height: 100%;
     font-size: clamp(100px, 17vw, 200px);
     background-color: #ededed;
-
     background-size: 20px 20px;
     display: flex;
     color: #101014;
-    align-items: center;
     padding-left: 3vw;
     line-height: 0.8;
     font-weight: 700;
     display: flex;
     justify-content: center;
     flex-direction: row;
+    padding-top: 10vw;
   }
   .intro-text-container {
     position: absolute;
