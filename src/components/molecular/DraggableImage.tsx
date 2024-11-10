@@ -1,25 +1,89 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useRef } from "react";
-const DraggableImage = (src?: string, alt?: string) => {
+import { AnimatePresence, motion } from "framer-motion";
+import { Dispatch, SetStateAction, useRef } from "react";
+
+const DraggableImage = ({
+  src,
+  idx,
+  isVisible,
+  setCursection,
+}: {
+  src: string;
+  idx: number;
+  isVisible: boolean;
+  setCursection: Dispatch<SetStateAction<number>>;
+}) => {
   const constraintsRef = useRef(null);
+  const rotateDegree = () => {
+    return [24, 12, 3, 6][idx];
+  };
+  const threshold = 100;
+
+  const handleDragEnd = (_, info) => {
+    // 드래그 거리를 계산하여 상태에 업데이트
+    const dragDistance = Math.sqrt(
+      Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2)
+    );
+    if (dragDistance >= threshold) {
+      setCursection(idx + 1);
+    }
+  };
   return (
-    <motion.div ref={constraintsRef} className="rotate-12 w-[300px] h-[300px]">
-      <motion.div
-        className="w-[300px] h-[300px] rounded-lg"
-        drag
-        dragConstraints={constraintsRef} // Constrain drag area
-        dragElastic={0.2} // Add some elasticity for a smoother feel
-        whileTap={{ cursor: "grabbing" }} // Change cursor on drag
-        style={{
-          backgroundImage: `url('/imqa.webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></motion.div>
-    </motion.div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          ref={constraintsRef}
+          className="w-[300px] h-[300px] absolute cursor-grabbing"
+          style={{
+            transform: `rotate(${rotateDegree()}deg)`,
+            zIndex: `${-1 * idx}`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="w-[300px] h-[300px] rounded-lg "
+            drag
+            dragConstraints={constraintsRef} // Constrain drag area
+            dragElastic={0.2} // Add some elasticity for a smoother feel
+            onDragEnd={handleDragEnd}
+            whileTap={{ cursor: "grabbing" }} // Change cursor on drag
+            style={{
+              backgroundImage: `url('/${src}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
-export default DraggableImage;
+const DraggableContainer = ({
+  srcs,
+  setCursection,
+  curSection,
+}: {
+  srcs: string[];
+  curSection: number;
+  setCursection: Dispatch<SetStateAction<number>>;
+}) => {
+  return (
+    <div className="sticky top-0 h-[900px] flex items-center ">
+      {srcs.map((src, idx) => (
+        <DraggableImage
+          key={src}
+          src={src}
+          idx={idx}
+          isVisible={curSection <= idx}
+          setCursection={setCursection}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default DraggableContainer;

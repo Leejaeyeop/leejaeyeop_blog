@@ -46,7 +46,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    padding-top: 10vw;
+    padding-top: 5vh;
   }
   .intro-text-container {
     position: absolute;
