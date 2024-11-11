@@ -39,25 +39,25 @@ const useDomToCanvas = (domEl) => {
 
 const Aside = () => {
   return (
-    <aside className="text-lg flex flex-col mr-7 gap-10 relative">
+    <aside className="text-lg flex flex-col mr-7 gap-10 relative justify-center">
       <article className="flex flex-col gap-8 w-[400px]">
         <div>
           <p className="text-4xl mb-1">성장에 목마른 개발자</p>
-          <p className="opacity-50">Impossible is nothing</p>
+          <p className="opacity-90">Impossible is nothing</p>
         </div>
         <div>
-          <p className="mb-1 opacity-50">Growth</p>
+          <p className="mb-1 opacity-90">Growth</p>
           <p>I am the most thirsty for growth than anyone else</p>
         </div>
         <div>
-          <p className="mb-1 opacity-50">Challenge</p>
+          <p className="mb-1 opacity-90">Challenge</p>
           <p>
             They are not afraid of challenges <br />
             but rather enjoy them.
           </p>
         </div>
         <div>
-          <p className="mb-1 opacity-50">Passion</p>
+          <p className="mb-1 opacity-90">Passion</p>
           <p>I'm always on fire with hot passion.</p>
         </div>
       </article>
@@ -131,7 +131,7 @@ function Scene() {
         />
         <pointLight
           color="#ffffff"
-          intensity={25}
+          intensity={40}
           distance={12}
           decay={1}
           position={[2, 4, 6]}

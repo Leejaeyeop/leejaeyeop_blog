@@ -1,11 +1,10 @@
 "use client";
 import Scene from "./Canvas";
 import { Canvas } from "@react-three/fiber";
-import Image from "next/image";
 
 function Title3D() {
   return (
-    <div className=" top-0 left-0 h-screen w-screen">
+    <div className="h-[150vh] w-screen">
       <Canvas
         dpr={[1, 2]}
         gl={{
@@ -59,7 +58,7 @@ function Credits() {
 
 function FirstSection() {
   return (
-    <div className="text-white">
+    <div>
       <HeaderComponent />
       <Title3D />
       <Credits />

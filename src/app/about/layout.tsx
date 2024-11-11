@@ -1,5 +1,5 @@
 import React from "react";
-import { MainLayout } from "../../components/template/Mainlayout";
+import MainLayout from "@/components/template/MainLayout";
 export default function AboutLayout({
   children,
 }: {

@@ -1,17 +1,20 @@
-"use client";
-import FirstSection from "./FirstSection";
-import { motion } from "framer-motion";
+import FirstSection from "./(firstSection)/section";
+import AboutSection from "./(aboutSection)/section";
+import ExperienceSection from "./(experienceSection)/section";
 
+import Wave from "@/components/atom/Wave";
 export default function About() {
   return (
-    <motion.div
-      initial={{ y: -900, opacity: 0 }} // 위에서 시작
-      animate={{ y: 0, opacity: 1 }} // 아래로 이동하면서 나타남
-      transition={{ duration: 2, ease: "easeOut" }} // 애니메이션 지속 시간과 속도
-    >
+    <>
       <FirstSection></FirstSection>
-      {/* test */}
-      <div className=" text-white">this is second content.</div>
-    </motion.div>
+      {/* Wave */}
+      <Wave />
+      <section className="bg-black rounded-e-full">
+        {/* 나의 이야기 */}
+        <AboutSection></AboutSection>
+        {/* 커리어 이야기 */}
+        <ExperienceSection></ExperienceSection>
+      </section>
+    </>
   );
 }
