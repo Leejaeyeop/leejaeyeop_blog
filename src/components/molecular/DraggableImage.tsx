@@ -7,11 +7,13 @@ const DraggableImage = ({
   src,
   idx,
   isVisible,
+  lastIdx,
   setCursection,
 }: {
   src: string;
   idx: number;
   isVisible: boolean;
+  lastIdx: number;
   setCursection: Dispatch<SetStateAction<number>>;
 }) => {
   const constraintsRef = useRef(null);
@@ -21,6 +23,7 @@ const DraggableImage = ({
   const threshold = 100;
 
   const handleDragEnd = (_, info) => {
+    if (idx === lastIdx) return;
     // 드래그 거리를 계산하여 상태에 업데이트
     const dragDistance = Math.sqrt(
       Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2)
@@ -72,12 +75,13 @@ const DraggableContainer = ({
   setCursection: Dispatch<SetStateAction<number>>;
 }) => {
   return (
-    <div className="sticky top-0 h-[900px] flex items-center ">
+    <div className="sticky top-0 w-[300px] h-[750px] flex items-center ">
       {srcs.map((src, idx) => (
         <DraggableImage
           key={src}
           src={src}
           idx={idx}
+          lastIdx={srcs.length - 1}
           isVisible={curSection <= idx}
           setCursection={setCursection}
         />

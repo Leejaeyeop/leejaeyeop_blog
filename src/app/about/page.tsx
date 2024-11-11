@@ -2,7 +2,7 @@ import FirstSection from "./(firstSection)/section";
 import AboutSection from "./(aboutSection)/section";
 import ExperienceSection from "./(experienceSection)/section";
 
-import Wave from "../../components/atom/wave";
+import Wave from "@/components/atom/Wave";
 export default function About() {
   return (
     <>

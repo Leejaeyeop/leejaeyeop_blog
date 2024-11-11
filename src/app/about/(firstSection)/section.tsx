@@ -58,7 +58,7 @@ function Credits() {
 
 function FirstSection() {
   return (
-    <div className="text-white">
+    <div>
       <HeaderComponent />
       <Title3D />
       <Credits />
