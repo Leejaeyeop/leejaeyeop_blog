@@ -47,7 +47,7 @@ const DraggableImage = ({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="w-[300px] h-[300px] rounded-lg "
+            className="w-[350x] h-[350px] rounded-lg "
             drag
             dragConstraints={constraintsRef} // Constrain drag area
             dragElastic={0.2} // Add some elasticity for a smoother feel

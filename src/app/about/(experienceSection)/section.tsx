@@ -27,7 +27,7 @@ const WorkSection = () => {
       // 해당 인덱스의 섹션으로 부드럽게 스크롤
       sectionRefs[curSection].current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [curSection]);
+  }, [curSection, sectionRefs]);
 
   const setCursection = useCallback(
     throttle(
@@ -119,18 +119,22 @@ const PersonalSection = () => {
 
 const ExperienceSection = () => {
   return (
-    <section className="m-40 text-2xl">
-      <h1 className={courgette.className + " font-extrabold text-9xl mb-16"}>
-        Experience
-      </h1>
-      <h2 className={courgette.className + " font-extrabold text-4xl"}>Work</h2>
-      <Separator className="mb-20"></Separator>
-      <WorkSection></WorkSection>
-      <h2 className={courgette.className + " font-extrabold text-4xl"}>
-        Personal
-      </h2>
-      <Separator className="mb-20"></Separator>
-      <PersonalSection></PersonalSection>
+    <section className="m-40 text-2xl 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center">
+      <div className="2xl:w-[1536px] w-full">
+        <h1 className={courgette.className + " font-extrabold text-9xl mb-16"}>
+          Experience
+        </h1>
+        <h2 className={courgette.className + " font-extrabold text-4xl"}>
+          Work
+        </h2>
+        <Separator className="mb-20"></Separator>
+        <WorkSection></WorkSection>
+        <h2 className={courgette.className + " font-extrabold text-4xl"}>
+          Personal
+        </h2>
+        <Separator className="mb-20"></Separator>
+        <PersonalSection></PersonalSection>
+      </div>
     </section>
   );
 };

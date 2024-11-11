@@ -9,8 +9,8 @@ const courgette = Courgette({
 });
 const AboutSection = () => {
   return (
-    <section className="flex relative">
-      <section className="w-full m-40 text-2xl">
+    <section className="flex relative 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center">
+      <section className="w-full m-40 text-2xl 2xl:w-[1536px]">
         <h1
           className={
             courgette.className + " font-extrabold text-9xl mb-40 w-[60%]"
@@ -22,7 +22,7 @@ const AboutSection = () => {
         <FrontendInfoArticle />
         {/* moving skills */}
         <div className="w-full">
-          <h1 className="text-6xl font-extrabold mb-8">Skills</h1>
+          <h1 className="text-6xl font-extrabold mt-20 mb-8">Skills</h1>
           <div className="flex gap-5 my-10 justify-center">
             <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" />
             <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" />

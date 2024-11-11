@@ -27,7 +27,7 @@ const FrontendInfoSection = ({
   const [isHover, setIsHover] = useState(false);
   return (
     <motion.div
-      className="flex gap-60 h-[250px]"
+      className="flex gap-60 "
       animate={isHover ? "hover" : "rest"}
       variants={{
         hover: { scale: 1.05 },
@@ -40,30 +40,26 @@ const FrontendInfoSection = ({
       }}
     >
       {direction === "left" && (
-        <div>
-          <Image
-            className="border rounded-3xl "
-            src={src + ".webp"}
-            height={400}
-            width={500}
-            alt={src}
-          ></Image>
-        </div>
+        <Image
+          className="border rounded-3xl "
+          src={src + ".webp"}
+          height={200}
+          width={300}
+          alt={src}
+        ></Image>
       )}
       <div>
         <h3 className="text-5xl font-extrabold mb-10">{title}</h3>
         {children}
       </div>
       {direction === "right" && (
-        <div>
-          <Image
-            className="border rounded-3xl "
-            src={src + ".webp"}
-            height={400}
-            width={500}
-            alt={src}
-          ></Image>
-        </div>
+        <Image
+          className="border rounded-3xl "
+          src={src + ".webp"}
+          height={300}
+          width={400}
+          alt={src}
+        ></Image>
       )}
     </motion.div>
   );
@@ -71,9 +67,7 @@ const FrontendInfoSection = ({
 
 const FrontendInfoArticle = () => {
   return (
-    <article
-      className={NotoSansKorean.className + " flex flex-col gap-24 relative"}
-    >
+    <article className={NotoSansKorean.className + " flex flex-col gap-24"}>
       <h1 className={courgette.className + " text-6xl font-extrabold"}>
         Fronted Developer
       </h1>
@@ -163,11 +157,12 @@ const PersonalInfoArticle = () => {
           있는 웹 개발의 매력에 매료되어 결국 웹 개발에 정착하게 되었습니다.
         </p>
       </article>
-      <div className="relative w-1/2 h-1/2 top-[-100px] flex justify-end">
+      <div className="relative w-1/2 h-1/2 top-[-100px] flex justify-end ">
         <Image
+          className="rounded-3xl"
           src="/profile.webp"
-          width={400}
-          height={400}
+          width={350}
+          height={350}
           alt="Picture of the author"
         />
       </div>
