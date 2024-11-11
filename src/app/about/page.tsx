@@ -9,10 +9,12 @@ export default function About() {
       <FirstSection></FirstSection>
       {/* Wave */}
       <Wave />
-      {/* 나의 이야기 */}
-      <AboutSection></AboutSection>
-      {/* 커리어 이야기 */}
-      <ExperienceSection></ExperienceSection>
+      <section className="bg-black rounded-e-full">
+        {/* 나의 이야기 */}
+        <AboutSection></AboutSection>
+        {/* 커리어 이야기 */}
+        <ExperienceSection></ExperienceSection>
+      </section>
     </>
   );
 }
