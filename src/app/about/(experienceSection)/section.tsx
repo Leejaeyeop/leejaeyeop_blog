@@ -31,7 +31,7 @@ const WorkSection = () => {
 
   const setCursection = useCallback(
     throttle(
-      (idx) => {
+      idx => {
         updateCursection(idx);
       },
       300,
@@ -48,7 +48,7 @@ const WorkSection = () => {
         setCursection={setCursection}
         srcs={["imqa.webp", "dalgona.webp", "asian.webp", "bareun.webp"]}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col w-[calc(100%-300px)]">
         <div ref={sectionRefs[0]}>
           <ImqaArticle idx={0} setCursection={setCursection}></ImqaArticle>
         </div>
@@ -82,7 +82,7 @@ const PersonalSection = () => {
 
   const setCursection = useCallback(
     throttle(
-      (idx) => {
+      idx => {
         updateCursection(idx);
       },
       200,
@@ -99,7 +99,7 @@ const PersonalSection = () => {
         setCursection={setCursection}
         srcs={["fairyTale.webp", "reactProgressBar.webp"]}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col  w-[calc(100%-300px)]">
         <div ref={sectionRefs[0]}>
           <FairyTaleArticle
             idx={0}
