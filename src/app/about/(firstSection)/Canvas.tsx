@@ -58,7 +58,7 @@ const Aside = () => {
         </div>
         <div>
           <p className="mb-1 opacity-90">Passion</p>
-          <p>I'm always on fire with hot passion.</p>
+          <p>I&apos;m always on fire with hot passion.</p>
         </div>
       </article>
     </aside>
