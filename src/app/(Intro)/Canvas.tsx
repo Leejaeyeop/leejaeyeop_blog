@@ -156,6 +156,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       rigidChallenge.current.setEnabledTranslations(false, true, false, true);
 
       rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
+
       // 2번째 sequence 으로 이동
       moveNextSequence();
     }, 500),
@@ -228,6 +229,10 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
                 gravityScale={30}
                 onCollisionEnter={collisionEnter}
                 mass={1}
+                restitution={0.8} // 높은 반발 계수
+                friction={0.1} // 낮은 마찰 계수
+                linearDamping={0.0} // 감쇠 최소화
+                angularDamping={0.0} // 감쇠 최소화
               >
                 <Challenge />
               </RigidBody>
