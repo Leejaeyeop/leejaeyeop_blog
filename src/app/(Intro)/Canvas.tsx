@@ -143,7 +143,7 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       rigidGrowth.current.setEnabledTranslations(false, true, false, false);
       rigidGrowth.current.setGravityScale(30, true);
 
-      rigidChallenge.current.applyImpulse({ x: 0, y: 2500, z: 2500 }, true);
+      rigidChallenge.current.applyImpulse({ x: 0, y: 1500, z: 0 }, true);
       moveNextSequence();
     }, 100),
     []
@@ -230,8 +230,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
                 onCollisionEnter={collisionEnter}
                 mass={1}
                 restitution={0.8} // 높은 반발 계수
-                friction={0.1} // 낮은 마찰 계수
-                linearDamping={0.0} // 감쇠 최소화
                 angularDamping={0.0} // 감쇠 최소화
               >
                 <Challenge />

@@ -1,6 +1,6 @@
 "use client";
 
-import DraggableContainer from "@/components/molecular/DraggableImage";
+import DraggableContainer from "@/components/molecules/DraggableImage";
 import { useRef, useEffect, useState, useCallback } from "react";
 import {
   ImqaArticle,
@@ -46,7 +46,7 @@ const WorkSection = () => {
       <DraggableContainer
         curSection={curSection}
         setCursection={setCursection}
-        srcs={["imqa.webp", "dalgona.webp", "bareun.webp", "asian.webp"]}
+        srcs={["imqa.webp", "dalgona.webp", "asian.webp", "bareun.webp"]}
       />
       <div className="flex flex-col">
         <div ref={sectionRefs[0]}>
@@ -85,7 +85,7 @@ const PersonalSection = () => {
       (idx) => {
         updateCursection(idx);
       },
-      500,
+      200,
       { leading: true, trailing: false }
     ),
     []
@@ -124,12 +124,12 @@ const ExperienceSection = () => {
         <h1 className={courgette.className + " font-extrabold text-9xl mb-16"}>
           Experience
         </h1>
-        <h2 className={courgette.className + " font-extrabold text-4xl"}>
+        <h2 className={courgette.className + " font-extrabold text-6xl"}>
           Work
         </h2>
         <Separator className="mb-20"></Separator>
         <WorkSection></WorkSection>
-        <h2 className={courgette.className + " font-extrabold text-4xl"}>
+        <h2 className={courgette.className + " font-extrabold text-6xl"}>
           Personal
         </h2>
         <Separator className="mb-20"></Separator>

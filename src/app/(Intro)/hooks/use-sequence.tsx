@@ -62,7 +62,7 @@ function* GenerateSequence() {
   }),
     yield {
       ...sequenceInfo,
-      delayTime: 600,
+      delayTime: 1000,
     };
   // 7번쩨 시퀸스 -> show h2
   sequenceInfo.showH2Text = true;

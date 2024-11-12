@@ -2,6 +2,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useRef } from "react";
+import { Courgette } from "next/font/google";
+
+const courgette = Courgette({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 
 const DraggableImage = ({
   src,
@@ -47,7 +53,7 @@ const DraggableImage = ({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="w-[350x] h-[350px] rounded-lg "
+            className="w-full h-full rounded-lg "
             drag
             dragConstraints={constraintsRef} // Constrain drag area
             dragElastic={0.2} // Add some elasticity for a smoother feel
@@ -75,7 +81,15 @@ const DraggableContainer = ({
   setCursection: Dispatch<SetStateAction<number>>;
 }) => {
   return (
-    <div className="sticky top-0 w-[300px] h-[750px] flex items-center ">
+    <div className="sticky top-0 w-[300px] h-screen flex items-center">
+      <div
+        className={
+          courgette.className +
+          " text-white absolute top-[150px] no-wrap whitespace-nowrap text-3xl"
+        }
+      >
+        (Drag Image or Scroll!)
+      </div>
       {srcs.map((src, idx) => (
         <DraggableImage
           key={src}
