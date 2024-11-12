@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { transition } from "./transition";
 import { useAnimatedText } from "./hooks/use-animated-text";
 import { SequenceContext, useSequence } from "./hooks/use-sequence";
+import { Leva } from "leva";
 
 const Intro = () => {
   const { sequence, moveNextSequence } = useSequence();
@@ -94,6 +95,19 @@ const Intro = () => {
               </motion.h2>
             )}
           </motion.div>
+          <Leva
+            collapsed={false}
+            flat={true}
+            hidden
+            theme={{
+              sizes: {
+                titleBarHeight: "28px",
+              },
+              fontSizes: {
+                root: "10px",
+              },
+            }}
+          />
           <Scene moveNextSequence={moveNextSequence} />
         </motion.div>
       </MotionConfig>
