@@ -1,6 +1,7 @@
 import FirstSection from "./(firstSection)/section";
 import AboutSection from "./(aboutSection)/section";
 import ExperienceSection from "./(experienceSection)/section";
+import Footer from "@/components/molecules/footer/Footer";
 
 import Wave from "@/components/atom/Wave";
 export default function About() {
@@ -14,6 +15,7 @@ export default function About() {
         <AboutSection></AboutSection>
         {/* 커리어 이야기 */}
         <ExperienceSection></ExperienceSection>
+        <Footer />
       </section>
     </>
   );

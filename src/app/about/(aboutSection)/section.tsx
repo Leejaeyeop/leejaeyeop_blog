@@ -21,14 +21,16 @@ const AboutSection = () => {
         <PersonalInfoArticle />
         <FrontendInfoArticle />
         {/* moving skills */}
-        <div className="w-full">
-          <h1 className="text-6xl font-extrabold mt-20 mb-8">Skills</h1>
-          <div className="flex gap-5 my-10 justify-center">
+        <div className="w-full mt-40">
+          <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
+            Skills
+          </h1>
+          <div className="flex gap-5 my-10 justify-center flex-wrap">
             <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" />
             <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" />
-            <img src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D" />
             <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
             <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+            <img src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D" />
             <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" />
             <img src="https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white" />
             <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" />
