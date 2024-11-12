@@ -35,7 +35,7 @@ type SceneProps = {
 function DirectionalLight() {
   const directionalLightRef = useRef();
 
-  useHelper(directionalLightRef, PointLightHelper, 1, "cyan");
+  // useHelper(directionalLightRef, PointLightHelper, 1, "cyan");
 
   const config = useControls("DirecLights", {
     color: "#ffffff",
@@ -61,7 +61,7 @@ function DirectionalLight() {
 function SpotLight() {
   const spotLightRef = useRef();
 
-  useHelper(spotLightRef, PointLightHelper, 1, "cyan");
+  // useHelper(spotLightRef, PointLightHelper, 1, "cyan");
 
   const config = useControls("SpotLights", {
     color: "#ffffff",
