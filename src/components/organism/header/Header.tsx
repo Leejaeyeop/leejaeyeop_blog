@@ -1,14 +1,20 @@
 export default function HeaderComponent() {
   return (
-    <header className="fixed w-full flex gap-10 z-50 backdrop-blur-md items-center  py-6 border-b border-white/60  text-white pointer-events-auto px-10">
-      <span>
+    <header className="fixed w-full flex z-50 backdrop-blur-md justify-between py-6 border-b border-white/60 text-white pointer-events-auto px-10">
+      <span className="flex items-center gap-10">
         <a title="Link to Tech Blog" href="/">
           <h1 className="font-bold inline align-middle mr-2 text-3xl ">
             Lee Jaeyeop
           </h1>
         </a>
-      </span>
-      <span>
+        <a href="#about">
+          <h1 className="font-bold inline align-middle mr-2 text-xl">About</h1>
+        </a>
+        <a href="#experience">
+          <h1 className="font-bold inline align-middle mr-2 text-xl">
+            Experience
+          </h1>
+        </a>
         <a
           title="Link to Tech Blog"
           href="https://ljy1011.tistory.com/"
@@ -29,8 +35,6 @@ export default function HeaderComponent() {
             />
           </svg>
         </a>
-      </span>
-      <span>
         <a
           title="Link to Github"
           href="https://github.com/Leejaeyeop/"
@@ -52,6 +56,7 @@ export default function HeaderComponent() {
           </svg>
         </a>
       </span>
+      <span className="font-bold flex items-center">dlwoduq1011@gmail.com</span>
     </header>
   );
 }

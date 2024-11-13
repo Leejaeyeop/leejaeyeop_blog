@@ -93,7 +93,10 @@ const PersonalSection = () => {
 
 const ExperienceSection = () => {
   return (
-    <section className="text-2xl 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center">
+    <section
+      id="experience"
+      className="text-2xl 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center"
+    >
       <div className="2xl:w-[1536px] w-full">
         <h1
           className={

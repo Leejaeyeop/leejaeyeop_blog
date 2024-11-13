@@ -40,7 +40,7 @@ const useDomToCanvas = domEl => {
 const Aside = () => {
   return (
     <aside className="text-lg flex flex-col mr-7 gap-10 relative justify-center items-end">
-      <article className="flex flex-col gap-8 justify-end w-80 break-words">
+      <article className="flex flex-col gap-8 justify-end w-90 break-words">
         <div>
           <p className="text-4xl mb-1">성장에 목마른 개발자</p>
           <p className="opacity-90">Impossible is nothing</p>
