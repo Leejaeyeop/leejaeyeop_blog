@@ -39,10 +39,10 @@ const useDomToCanvas = domEl => {
 
 const Aside = () => {
   return (
-    <aside className="text-lg flex flex-col mr-7 gap-10 relative justify-center">
-      <article className="flex flex-col gap-8 w-[400px]">
+    <aside className="text-lg flex flex-col mr-7 gap-10 relative justify-center items-end">
+      <article className="flex flex-col gap-8 justify-end w-80 break-words">
         <div>
-          <p className="sm:text-4xl mb-1">성장에 목마른 개발자</p>
+          <p className="text-4xl mb-1">성장에 목마른 개발자</p>
           <p className="opacity-90">Impossible is nothing</p>
         </div>
         <div>
@@ -70,7 +70,7 @@ const HtmlContent = () => {
     <>
       <section>
         <article>
-          <p className="flex flex-col">
+          <p className="flex flex-col justify-center">
             Hi
             <br />
             There
@@ -113,7 +113,7 @@ function Scene() {
   return (
     <>
       <Html zIndexRange={[-1, -10]} prepend fullscreen>
-        <div ref={el => setDomEl(el)} className="title3D">
+        <div ref={el => setDomEl(el)} className="title3D flex-col lg:flex-row">
           <HtmlContent />
         </div>
       </Html>
