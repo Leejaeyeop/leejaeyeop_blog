@@ -81,7 +81,7 @@ const DraggableContainer = ({
   setCursection: Dispatch<SetStateAction<number>>;
 }) => {
   return (
-    <div className="sticky top-0 w-[300px] h-screen flex items-center">
+    <div className="sticky top-0 hidden sm:w-[300px] h-screen sm:flex items-center">
       <div
         className={
           courgette.className +

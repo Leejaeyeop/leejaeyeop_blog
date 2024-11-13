@@ -11,7 +11,7 @@ import fragmentShader from "./shaders/fragment.glsl";
 import html2canvas from "html2canvas";
 import { CanvasTexture, MathUtils, Vector2, MeshStandardMaterial } from "three";
 
-const useDomToCanvas = (domEl) => {
+const useDomToCanvas = domEl => {
   const [texture, setTexture] = useState<CanvasTexture>();
   useEffect(() => {
     if (!domEl) return;
@@ -42,7 +42,7 @@ const Aside = () => {
     <aside className="text-lg flex flex-col mr-7 gap-10 relative justify-center">
       <article className="flex flex-col gap-8 w-[400px]">
         <div>
-          <p className="text-4xl mb-1">성장에 목마른 개발자</p>
+          <p className="sm:text-4xl mb-1">성장에 목마른 개발자</p>
           <p className="opacity-90">Impossible is nothing</p>
         </div>
         <div>
@@ -113,7 +113,7 @@ function Scene() {
   return (
     <>
       <Html zIndexRange={[-1, -10]} prepend fullscreen>
-        <div ref={(el) => setDomEl(el)} className="title3D">
+        <div ref={el => setDomEl(el)} className="title3D">
           <HtmlContent />
         </div>
       </Html>

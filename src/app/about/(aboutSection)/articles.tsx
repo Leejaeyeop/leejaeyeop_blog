@@ -27,7 +27,7 @@ const FrontendInfoSection = ({
   const [isHover, setIsHover] = useState(false);
   return (
     <motion.div
-      className="flex gap-60 "
+      className="flex sm:flex-row flex-col justify-between gap-5"
       animate={isHover ? "hover" : "rest"}
       variants={{
         hover: { scale: 1.05 },
@@ -40,26 +40,28 @@ const FrontendInfoSection = ({
       }}
     >
       {direction === "left" && (
-        <Image
-          className="border rounded-3xl "
-          src={src + ".webp"}
-          height={200}
-          width={300}
-          alt={src}
-        ></Image>
+        <div className="relative hidden sm:block sm:w-1/4 sm:h-60">
+          <Image
+            className="border rounded-3xl"
+            src={src + ".webp"}
+            alt={src}
+            fill
+          ></Image>
+        </div>
       )}
-      <div>
-        <h3 className="text-5xl font-extrabold mb-10">{title}</h3>
+      <div className="sm:w-1/2">
+        <h3 className="text-5xl font-extrabold mb-10 flex-grow">{title}</h3>
         {children}
       </div>
       {direction === "right" && (
-        <Image
-          className="border rounded-3xl "
-          src={src + ".webp"}
-          height={300}
-          width={400}
-          alt={src}
-        ></Image>
+        <div className="relative hidden sm:block sm:w-1/4 sm:h-60">
+          <Image
+            className="border rounded-3xl"
+            src={src + ".webp"}
+            alt={src}
+            fill
+          ></Image>
+        </div>
       )}
     </motion.div>
   );
@@ -132,12 +134,11 @@ const FrontendInfoArticle = () => {
 
 const PersonalInfoArticle = () => {
   return (
-    <div className="w-full flex">
-      <article className={NotoSansKorean.className + " mb-40 w-1/2 "}>
+    <div className="w-full flex flex-col sm:flex-row">
+      <article className={NotoSansKorean.className + " mb-40 w-full sm:w-1/2 "}>
         <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
           Flight to Developer
         </h1>
-
         <p>
           원래 항공기 조종사를 꿈꿨지만, 적성과 맞지 않아 고민하던 중 개발자이신
           아버지를 통해 개발을 접하게 되었습니다.
@@ -157,7 +158,7 @@ const PersonalInfoArticle = () => {
           있는 웹 개발의 매력에 매료되어 결국 웹 개발에 정착하게 되었습니다.
         </p>
       </article>
-      <div className="relative w-1/2 h-1/2 top-[-100px] flex justify-end ">
+      <div className="relative w-full h-full sm:w-1/2 sm:h-1/2 top-[-100px] flex justify-center sm:justify-end">
         <Image
           className="rounded-3xl"
           src="/profile.webp"

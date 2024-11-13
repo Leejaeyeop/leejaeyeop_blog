@@ -5,7 +5,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <header id="header">
         <HeaderComponent />
       </header>
-      <main className="text-white">{children}</main>
+      <main className="text-white w-screen">{children}</main>
     </>
   );
 };
