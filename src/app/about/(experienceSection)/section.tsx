@@ -1,7 +1,7 @@
 "use client";
 
 import DraggableContainer from "@/components/molecules/DraggableImage";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo, createRef } from "react";
 import {
   ImqaArticle,
   DalgonaArticle,
@@ -27,8 +27,13 @@ const CommonSection = ({
   imageSrcs: string[];
 }) => {
   const [curSection, updateCursection] = useState(-1);
-  const sectionRefs = Array.from({ length: articles.length }, () =>
-    useRef(null)
+  // useMemo를 사용해 articles.length에 따라 참조 배열 생성
+  const sectionRefs = useMemo(
+    () =>
+      Array.from({ length: articles.length }, () =>
+        createRef<HTMLDivElement>()
+      ),
+    [articles.length]
   );
 
   useEffect(() => {
