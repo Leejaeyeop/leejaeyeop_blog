@@ -1,5 +1,5 @@
 import { motion } from "framer-motion-3d";
-import { extend, Object3DNode, useThree } from "@react-three/fiber";
+import { extend, Object3DNode, useFrame, useThree } from "@react-three/fiber";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import myFont from "../Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
@@ -44,7 +44,15 @@ const Impossible = () => {
   );
 };
 
-const Challenge = () => {
+const Challenge = ({ rigidChallenge }) => {
+  useFrame(() => {
+    const position = rigidChallenge?.current?.translation();
+
+    rigidChallenge?.current?.setTranslation(
+      { x: 0, y: position.y, z: 0 },
+      false
+    );
+  });
   return (
     <group dispose={null}>
       <motion.group position={[-6.5, 10, 2.5]} name="meshChallenge">
