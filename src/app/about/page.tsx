@@ -10,7 +10,8 @@ export default function About() {
       <FirstSection></FirstSection>
       {/* Wave */}
       <Wave />
-      <section className="bg-black rounded-e-full">
+      {/*  rounded-e-full */}
+      <section className="bg-black w-full px-4 sm:px-40 pb-40 pt-[10vh] sm:pt-[10vw] rounded-e-full">
         {/* 나의 이야기 */}
         <AboutSection></AboutSection>
         {/* 커리어 이야기 */}
