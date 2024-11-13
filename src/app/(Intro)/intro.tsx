@@ -68,7 +68,7 @@ const Intro = () => {
             duration: isDone ? 2.5 : 0.5,
             ease: "easeInOut",
           }}
-          onUpdate={(latest) => {
+          onUpdate={latest => {
             if (latest.opacity === 0) {
               router.push("/about");
             }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, extend } from "@react-three/fiber";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import {
   Suspense,
@@ -143,23 +143,32 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       rigidGrowth.current.setEnabledTranslations(false, true, false, false);
       rigidGrowth.current.setGravityScale(30, true);
 
-      rigidChallenge.current.applyImpulse({ x: 0, y: 1500, z: 0 }, true);
+      rigidChallenge.current?.applyImpulse({ x: 0, y: 1500, z: 0 }, true);
+      rigidGrowth.current?.applyImpulse({ x: 0, y: 1000, z: 0 }, true);
       moveNextSequence();
     }, 100),
     []
   );
 
   const challengeCollision = useCallback(
-    throttle(() => {
-      // off rotation & off transition
-      rigidChallenge.current.setEnabledRotations(false, false, false, true);
-      rigidChallenge.current.setEnabledTranslations(false, true, false, true);
+    throttle(
+      () => {
+        rigidChallenge.current.setEnabledRotations(false, false, false, false);
+        rigidChallenge.current.setEnabledTranslations(
+          false,
+          true,
+          false,
+          false
+        );
+        // off rotation & off transition
+        rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
 
-      rigidImpossible.current.applyImpulse({ x: 0, y: 2000, z: 2000 }, true);
-
-      // 2번째 sequence 으로 이동
-      moveNextSequence();
-    }, 500),
+        // 2번째 sequence 으로 이동
+        moveNextSequence();
+      },
+      1000,
+      { leading: true, trailing: false }
+    ),
     []
   );
 
@@ -180,15 +189,12 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       other.rigidBodyObject.name === "rigidChallenge"
     ) {
       challengeCollision();
-    }
-    if (
+    } else if (
       target.rigidBodyObject.name === "rigidChallenge" &&
       other.rigidBodyObject.name === "rigidGrowth"
     ) {
       growthCollision();
-    }
-
-    if (target.rigidBodyObject.name === "rigidLeejaeyeop") {
+    } else if (target.rigidBodyObject.name === "rigidLeejaeyeop") {
       jaeyeopCollision();
     }
   };
@@ -231,8 +237,9 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
                 mass={1}
                 restitution={0.8} // 높은 반발 계수
                 angularDamping={0.0} // 감쇠 최소화
+                linearDamping={0.0} // 감쇠 최소화
               >
-                <Challenge />
+                <Challenge rigidChallenge={rigidChallenge} />
               </RigidBody>
             </Suspense>
           )}
@@ -267,7 +274,11 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
           )}
           {/* 땅바닥 */}
           {showCuboidCollider && (
-            <CuboidCollider position={[0, 0, 0]} args={[20, 0.5, 20]} />
+            <CuboidCollider
+              name="rigidCollider"
+              position={[0, 0, 0]}
+              args={[20, 0.5, 20]}
+            />
           )}
         </Physics>
         {/* 그림자 바닥 */}
