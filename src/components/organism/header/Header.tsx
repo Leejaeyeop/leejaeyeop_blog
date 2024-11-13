@@ -9,8 +9,12 @@ export default function HeaderComponent() {
         </a>
       </span>
       <span>
-        <h1 className="font-bold inline align-middle mr-2 ">Tech Blog</h1>
-        <a title="Link to Tech Blog" href="https://ljy1011.tistory.com/">
+        <a
+          title="Link to Tech Blog"
+          href="https://ljy1011.tistory.com/"
+          target="_blank"
+        >
+          <h1 className="font-bold inline align-middle mr-2 ">Tech Blog</h1>
           <svg
             className="h-3 ml-0.5 inline-block align-middle"
             viewBox="0 0 12 12"
@@ -27,8 +31,12 @@ export default function HeaderComponent() {
         </a>
       </span>
       <span>
-        <h1 className="font-bold inline align-middle mr-2">Github</h1>
-        <a title="Link to Github" href="https://github.com/Leejaeyeop/">
+        <a
+          title="Link to Github"
+          href="https://github.com/Leejaeyeop/"
+          target="_blank"
+        >
+          <h1 className="font-bold inline align-middle mr-2">Github</h1>
           <svg
             className="h-3 ml-0.5 inline-block align-middle"
             viewBox="0 0 12 12"
