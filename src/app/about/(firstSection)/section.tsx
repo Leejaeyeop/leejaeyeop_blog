@@ -23,14 +23,6 @@ function Title3D() {
   );
 }
 
-function Credits() {
-  return (
-    <div className="flex fixed w-full justify-between bottom-0 p-8">
-      <p>Made by Lee Jaeyeop</p>
-    </div>
-  );
-}
-
 function FirstSection() {
   return (
     <motion.div
@@ -39,7 +31,6 @@ function FirstSection() {
       transition={{ duration: 2 }}
     >
       <Title3D />
-      <Credits />
     </motion.div>
   );
 }
