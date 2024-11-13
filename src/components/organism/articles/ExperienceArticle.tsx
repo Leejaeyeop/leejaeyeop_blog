@@ -8,10 +8,22 @@ import {
   AccordionTrigger,
 } from "@/components/molecules/accordion";
 import { Noto_Sans_KR } from "next/font/google";
+import { DebouncedFuncLeading } from "lodash";
 const NotoSansKorean = Noto_Sans_KR({
   weight: ["200"],
   subsets: ["latin"],
 });
+
+export type ExperienceArticleProps = {
+  setCursection: DebouncedFuncLeading<(idx: any) => void>;
+  idx: number;
+  title: string;
+  subtitle?: string | JSX.Element;
+  contribution: string;
+  skills: string | JSX.Element;
+  content: string | JSX.Element;
+  accordionContent?: string | JSX.Element;
+};
 
 const ExperienceArticle = ({
   setCursection,
@@ -22,7 +34,7 @@ const ExperienceArticle = ({
   skills,
   content,
   accordionContent,
-}) => {
+}: ExperienceArticleProps) => {
   // 애니메이션 제어와 뷰 감지 훅 초기화
   const controls = useAnimation();
   const [ref, inView] = useInView({

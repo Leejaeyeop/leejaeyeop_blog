@@ -1,6 +1,11 @@
-import { ExperienceArticle as Article } from "@/components/organism/articles/ExperienceArticle";
+import {
+  ExperienceArticle as Article,
+  ExperienceArticleProps,
+} from "@/components/organism/articles/ExperienceArticle";
 
-const ImqaArticle = props => {
+export type Props = Pick<ExperienceArticleProps, "idx" | "setCursection">;
+
+const ImqaArticle = (props: Props) => {
   return (
     <Article
       {...props}
@@ -83,7 +88,7 @@ const ImqaArticle = props => {
   );
 };
 
-const DalgonaArticle = props => {
+const DalgonaArticle = (props: Props) => {
   return (
     <Article
       {...props}
@@ -195,7 +200,7 @@ const DalgonaArticle = props => {
   );
 };
 
-const AsianArticle = props => {
+const AsianArticle = (props: Props) => {
   return (
     <Article
       {...props}
@@ -229,7 +234,7 @@ const AsianArticle = props => {
   );
 };
 
-const BareunArticle = props => {
+const BareunArticle = (props: Props) => {
   return (
     <Article
       {...props}
@@ -258,7 +263,7 @@ const BareunArticle = props => {
   );
 };
 
-const FairyTaleArticle = props => {
+const FairyTaleArticle = (props: Props) => {
   return (
     <Article
       {...props}
@@ -309,7 +314,7 @@ const FairyTaleArticle = props => {
   );
 };
 
-const ReactProgressBarArticle = props => {
+const ReactProgressBarArticle = (props: Props) => {
   return (
     <Article
       {...props}

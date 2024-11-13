@@ -5,9 +5,7 @@ const courgette = Courgette({
 });
 const Footer = () => {
   return (
-    <footer
-      className={courgette.className + " font-extrabold text-9xl h-96 m-40"}
-    >
+    <footer className={courgette.className + " font-extrabold text-9xl h-96"}>
       Thank you!
     </footer>
   );

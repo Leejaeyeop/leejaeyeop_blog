@@ -10,7 +10,7 @@ const courgette = Courgette({
 const AboutSection = () => {
   return (
     <section className="flex relative 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center">
-      <section className="w-full m-40 text-2xl 2xl:w-[1536px]">
+      <section className="w-full text-2xl 2xl:w-[1536px]">
         <h1
           className={
             courgette.className + " font-extrabold text-9xl mb-40 w-[60%]"
