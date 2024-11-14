@@ -215,7 +215,7 @@ const PersonalInfoArticle = () => {
               Q. 자기계발 방법
             </p>
             <p className={courgette.className + " text-2xl mt-3"}>
-              ' 꾸준히 멘 땅에 헤딩 하기! '
+              &apos; 꾸준히 멘 땅에 헤딩 하기! &apos;
             </p>
             <div className="mt-5">
               <p>
