@@ -14,7 +14,7 @@ export default function HeaderComponent() {
         className={
           "sm:m-0 sm:w-auto sm:h-auto sm:flex-row sm:gap-10 sm:items-center sm:bg-inherit sm:static sm:pt-0 sm:flex flex-grow " +
           (isOpenMobileNav
-            ? "absolute right-0 w-[50vw] h-screen bg-black my-[-1.5rem] mx-[-2.5rem] flex flex-col gap-10 pt-40 items-center break-words"
+            ? "absolute right-0 w-screen h-screen bg-black my-[-1.5rem] flex flex-col gap-10 pt-40 items-center break-words"
             : "hidden")
         }
       >
@@ -72,7 +72,7 @@ export default function HeaderComponent() {
             />
           </svg>
         </a>
-        <span className="font-bold items-center flex-grow justify-end flex text-sm">
+        <span className="font-bold items-center flex-grow justify-end flex text-sm break-words">
           dlwoduq1011@gmail.com
         </span>
       </nav>
