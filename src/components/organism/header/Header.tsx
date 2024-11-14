@@ -1,17 +1,30 @@
+"use client";
+import { useState } from "react";
+
 export default function HeaderComponent() {
+  const [isOpenMobileNav, setIsOpenMobileNav] = useState<boolean>(false);
   return (
-    <header className="fixed w-full flex z-50 backdrop-blur-md justify-between py-6 border-b border-white/60 text-white pointer-events-auto px-10">
-      <span className="flex items-center gap-10">
-        <a title="Link to Tech Blog" href="/">
-          <h1 className="font-bold inline align-middle mr-2 text-3xl ">
-            Lee Jaeyeop
+    <div className="fixed w-full flex z-50 backdrop-blur-md gap-6 py-6 px-10 border-b border-white/60 text-white pointer-events-auto">
+      <a className="z-[1]" title="Link to Tech Blog" href="/">
+        <h1 className="font-bold inline align-middle mr-2 text-3xl ">
+          Lee Jaeyeop
+        </h1>
+      </a>
+      <nav
+        className={
+          "sm:m-0 sm:w-auto sm:h-auto sm:flex-row sm:gap-10 sm:items-center sm:bg-inherit sm:static sm:pt-0 sm:flex flex-grow " +
+          (isOpenMobileNav
+            ? "absolute right-0 w-[50vw] h-screen bg-black my-[-1.5rem] mx-[-2.5rem] flex flex-col gap-10 pt-40 items-center break-words"
+            : "hidden")
+        }
+      >
+        <a href="#about">
+          <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
+            About
           </h1>
         </a>
-        <a href="#about">
-          <h1 className="font-bold inline align-middle mr-2 text-xl">About</h1>
-        </a>
         <a href="#experience">
-          <h1 className="font-bold inline align-middle mr-2 text-xl">
+          <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
             Experience
           </h1>
         </a>
@@ -20,7 +33,9 @@ export default function HeaderComponent() {
           href="https://ljy1011.tistory.com/"
           target="_blank"
         >
-          <h1 className="font-bold inline align-middle mr-2 ">Tech Blog</h1>
+          <h1 className="text-xl sm:text-lg font-bold inline align-middle mr-2 ">
+            Tech Blog
+          </h1>
           <svg
             className="h-3 ml-0.5 inline-block align-middle"
             viewBox="0 0 12 12"
@@ -40,7 +55,9 @@ export default function HeaderComponent() {
           href="https://github.com/Leejaeyeop/"
           target="_blank"
         >
-          <h1 className="font-bold inline align-middle mr-2">Github</h1>
+          <h1 className="font-bold text-xl sm:text-lg inline align-middle mr-2">
+            Github
+          </h1>
           <svg
             className="h-3 ml-0.5 inline-block align-middle"
             viewBox="0 0 12 12"
@@ -55,8 +72,30 @@ export default function HeaderComponent() {
             />
           </svg>
         </a>
-      </span>
-      <span className="font-bold flex items-center">dlwoduq1011@gmail.com</span>
-    </header>
+        <span className="font-bold items-center flex-grow justify-end flex text-sm">
+          dlwoduq1011@gmail.com
+        </span>
+      </nav>
+      <div className="flex flex-grow justify-end items-center sm:hidden z-[1]">
+        {isOpenMobileNav ? (
+          <div
+            className="w-8 h-8 flex items-center justify-center cursor-pointer"
+            onClick={() => setIsOpenMobileNav(false)}
+          >
+            <span className="w-8 h-1 bg-white rotate-45 absolute"></span>
+            <span className="w-8 h-1 bg-white -rotate-45 absolute"></span>
+          </div>
+        ) : (
+          <div
+            className="w-8 h-6 flex flex-col justify-between items-center cursor-pointer"
+            onClick={() => setIsOpenMobileNav(true)}
+          >
+            <span className="w-full h-1 bg-white rounded"></span>
+            <span className="w-full h-1 bg-white rounded"></span>
+            <span className="w-full h-1 bg-white rounded"></span>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
