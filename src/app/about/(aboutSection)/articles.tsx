@@ -132,41 +132,159 @@ const FrontendInfoArticle = () => {
   );
 };
 
+const animationAbove = {
+  hover: {
+    scale: 1.1, // 크기를 10% 확대
+    rotate: 25, // 약간 회전
+    zIndex: 2,
+  },
+  rest: {
+    rotate: 0,
+    zIndex: 2,
+  },
+};
+const animationBelow = {
+  hover: {
+    scale: 1.1, // 크기를 10% 확대
+    rotate: -25, // 약간 회전
+    x: -200,
+    zIndex: 1,
+  },
+  rest: {
+    rotate: 12,
+    zIndex: 1,
+  },
+};
+
 const PersonalInfoArticle = () => {
+  const [isHover, setIsHover] = useState(false);
+  const [swap, setSwap] = useState(false);
+
   return (
-    <div className="w-full flex flex-col sm:flex-row">
-      <article className={NotoSansKorean.className + " mb-40 w-full sm:w-1/2 "}>
-        <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
-          Flight to Developer
-        </h1>
-        <p>
-          원래 항공기 조종사를 꿈꿨지만, 적성과 맞지 않아 고민하던 중 개발자이신
-          아버지를 통해 개발을 접하게 되었습니다.
-        </p>
-        <br />
-        <p>
-          어느날 지인과 운동을 하다가 운동 기록을 남길 수 있는 앱이 있으면
-          좋겠다는 이야기를 나눴고, 직접 필요한 앱을 만들어 보기로 결심했습니다.
-          독학으로 Flutter를 배우며 첫 모바일 앱을 개발 하였고,지인이 이를 잘
-          활용하는 모습을 보고 큰 만족감을 느꼈습니다. 이 경험을 계기로 개발의
-          매력에 빠져 개발자의 길을 걷게 되었습니다.
-        </p>
-        <br />
-        <p>
-          Unity로 모바일 게임 앱을 만들어 출시해 보기도 하고, Arduino로 CDS
-          센서를 다뤄 보기도 하다가, 빠른 기술 발전과 더 많은 사용자와 소통할 수
-          있는 웹 개발의 매력에 매료되어 결국 웹 개발에 정착하게 되었습니다.
-        </p>
-      </article>
-      <div className="relative w-full h-full sm:w-1/2 sm:h-1/2 top-[-100px] flex justify-center sm:justify-end">
-        <Image
-          className="rounded-3xl"
-          src="/profile.webp"
-          width={350}
-          height={350}
-          alt="Picture of the author"
-        />
-      </div>
+    <div className="w-full flex flex-col sm:flex-row gap-10">
+      <section className="mb-40 w-full sm:w-1/2 leading-9">
+        <article className={NotoSansKorean.className}>
+          <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
+            Flight to Developer
+          </h1>
+          <p>
+            원래 항공기 조종사를 꿈꿨지만, 적성과 맞지 않아 고민하던 중
+            개발자이신 아버지를 통해 개발을 접하게 되었습니다.
+          </p>
+          <br />
+          <p>
+            어느날 지인과 운동을 하다가 운동 기록을 남길 수 있는 앱이 있으면
+            좋겠다는 이야기를 나눴고, 직접 필요한 앱을 만들어 보기로
+            결심했습니다. 독학으로 Flutter를 배우며 첫 모바일 앱을 개발
+            하였고,지인이 이를 잘 활용하는 모습을 보고 큰 만족감을 느꼈습니다.
+            이 경험을 계기로 개발의 매력에 빠져 개발자의 길을 걷게 되었습니다.
+          </p>
+          <br />
+          <p>
+            Unity로 모바일 게임 앱을 만들어 출시해 보기도 하고, Arduino로 CDS
+            센서를 다뤄 보기도 하다가, 빠른 기술 발전과 더 많은 사용자와 소통할
+            수 있는 웹 개발의 매력에 매료되어 결국 웹 개발에 정착하게
+            되었습니다.
+          </p>
+        </article>
+        <article
+          className={
+            NotoSansKorean.className + " mt-20 flex flex-col gap-20 leading-9"
+          }
+        >
+          <div>
+            <p className={courgette.className + " text-4xl font-extrabold"}>
+              Q. 성장에 목마른 이유
+            </p>
+            <p className="mt-5">
+              개발이 적성에 잘 맞는 분야라고 생각하며, 이를 통해 좋은 제품을
+              만들어 세상에 의미 있는 기여를 하고 싶습니다.
+              <br />
+              매일 배우고 도전하는 과정에서 스스로 성장하는 것을 느낄 때 큰
+              만족감을 얻고, 이를 통해 자신을 증명하고자 합니다.
+              <br />
+              저의 기술과 노력이 세상에 긍정적인 영향을 미칠 수 있다면, 그만큼
+              의미 있는 성취는 없을 것이라 믿습니다.
+              <br />
+              끊임없이 성장에 목마른 이유는 바로 이러한 가치와 목표가 저를
+              움직이기 때문입니다.
+            </p>
+          </div>
+          <div>
+            <p className={courgette.className + " text-4xl font-extrabold"}>
+              Q. 자기계발 방법
+            </p>
+            <p className={courgette.className + " text-2xl mt-3"}>
+              ' 꾸준히 멘 땅에 헤딩 하기! '
+            </p>
+            <div className="mt-5">
+              <p>
+                <strong className=" font-extrabold">
+                  두려움 없이 도전하는 자세
+                </strong>
+                가 개발에 있어 가장 중요한 덕목이라고 생각합니다. 도전적인
+                목표를 설정하고 과감히 부딪히며 학습합니다.
+                <br />
+                사이드 프로젝트를 통해 다양한 시도를 해왔으며, 사내 스터디에서는
+                새로운 영역을 탐구하고 이를 동료들과 공유함으로써 지식을
+                확장하고자 노력합니다.
+              </p>
+              <p className="mt-5">
+                꾸준함 또한 저의 중요한 덕목입니다. 수년간 꾸준히 운동을 통해
+                자기 계발에 힘써왔으며, 이를 통해 인내와 성취감을 길러왔습니다.
+                <br />
+                많은 사람들은 개발과 운동이 어울리지 않다고 생각합니다. 하지만,
+                개발과 운동 모두 자기 내면과의 깊은 소통을 요구 한다는 공통점이
+                있습니다.
+                <br />
+                운동을 통해 자신과의 약속을 지키고 한계를 넘어서며 스스로의
+                가능성을 확인해왔듯, 개발에서도 끊임없이 문제를 해결하고 새로운
+                지식을 쌓으며 저를 성장시켜 왔습니다.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <motion.div
+        className="relative w-full h-full sm:w-1/2 sm:h-1/2 top-[-100px] flex justify-center sm:justify-end cursor-pointer"
+        onMouseEnter={() => setIsHover(true)} // Hover 시작 시 state 업데이트
+        onMouseLeave={() => setIsHover(false)} // Hover 종료 시 state 업데이트
+        onClick={() => setSwap(!swap)}
+        animate={isHover ? "hover" : "rest"}
+      >
+        <motion.div
+          className=" rotate-12"
+          variants={swap === false ? animationBelow : animationAbove}
+          transition={{
+            type: "spring", // spring 애니메이션 타입
+            stiffness: 200, // 스프링 강도 조절
+          }}
+        >
+          <Image
+            className="rounded-3xl"
+            src="/profile2.webp"
+            width={350}
+            height={350}
+            alt="Picture of the author"
+          />
+        </motion.div>
+        <motion.div
+          className="absolute"
+          variants={swap === false ? animationAbove : animationBelow}
+          transition={{
+            type: "spring", // spring 애니메이션 타입
+            stiffness: 200, // 스프링 강도 조절
+          }}
+        >
+          <Image
+            className="rounded-3xl"
+            src="/profile.webp"
+            width={350}
+            height={350}
+            alt="Picture of the author"
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
