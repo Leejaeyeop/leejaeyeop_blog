@@ -9,6 +9,7 @@ import { transition } from "./transition";
 import { useAnimatedText } from "./hooks/use-animated-text";
 import { SequenceContext, useSequence } from "./hooks/use-sequence";
 import { Leva } from "leva";
+import Link from "next/link";
 
 const Intro = () => {
   const { sequence, moveNextSequence } = useSequence();
@@ -110,6 +111,18 @@ const Intro = () => {
           />
           <Scene moveNextSequence={moveNextSequence} />
         </motion.div>
+        <motion.button
+          className="absolute bottom-4 right-4 font-bold text-4xl"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: [1, 0, 1] }} // 1 -> 0 -> 1로 불투명도 변경
+          transition={{
+            duration: 2, // 애니메이션 지속 시간
+            repeat: Infinity, // 무한 반복
+            repeatType: "loop", // 루프 형태 반복
+          }}
+        >
+          <Link href={"/about"}>{"SKIP >>"}</Link>
+        </motion.button>
       </MotionConfig>
     </SequenceContext.Provider>
   );
