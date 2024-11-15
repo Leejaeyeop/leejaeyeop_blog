@@ -19,12 +19,12 @@ export default function HeaderComponent() {
             : "hidden")
         }
       >
-        <a href="#about">
+        <a href="#about" onClick={() => setIsOpenMobileNav(false)}>
           <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
             About
           </h1>
         </a>
-        <a href="#experience">
+        <a href="#experience" onClick={() => setIsOpenMobileNav(false)}>
           <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
             Experience
           </h1>

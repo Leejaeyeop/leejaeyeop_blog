@@ -112,7 +112,7 @@ const Intro = () => {
           <Scene moveNextSequence={moveNextSequence} />
         </motion.div>
         <motion.button
-          className="absolute bottom-4 right-4 font-bold text-4xl"
+          className="absolute bottom-4 right-4 font-bold text-xl sm:text-4xl"
           initial={{ opacity: 1 }}
           animate={{ opacity: [1, 0, 1] }} // 1 -> 0 -> 1로 불투명도 변경
           transition={{
