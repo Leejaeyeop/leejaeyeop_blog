@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function HeaderComponent() {
@@ -72,7 +73,8 @@ export default function HeaderComponent() {
             />
           </svg>
         </a>
-        <span className="font-bold items-center flex-grow justify-end flex text-sm break-words">
+        <span className="font-bold items-center flex-grow justify-end flex text-sm break-words gap-2">
+          <Image src="/mail.svg" alt="email" width={18} height={18}></Image>
           dlwoduq1011@gmail.com
         </span>
       </nav>
