@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export type SequenceInfo = typeof sequenceInfo;
 
-const SequenceContext = createContext(null);
+const SequenceContext = createContext<SequenceInfo | null>(null);
 // default
 const sequenceInfo = {
   // 배경색
@@ -34,23 +34,28 @@ function* GenerateSequence() {
   // 첫번째 시퀀스-> impossible geo 생성 delay 1초
   sequenceInfo.showImpossible = true;
   yield { ...sequenceInfo, delayTime: 800 };
+
   // 두번째 시퀀스 -> challenge geo 생성
   sequenceInfo.showChallenge = true;
   yield { ...sequenceInfo };
   // 세번째 시퀀스 -> color change , text change , camera shake
+
   sequenceInfo.backgroundColor = "#caf0f8";
   sequenceInfo.color = "#005AFF";
   sequenceInfo.text = "도전";
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1200 };
+
   // 네번째 시퀸스 -> growth text geo 생성
   sequenceInfo.showImpossible = false;
   sequenceInfo.showGrowth = true;
   yield { ...sequenceInfo };
+
   // 다섯번째 시퀸스 ->  color change , text change , camera shake
   sequenceInfo.backgroundColor = "#c9ffed";
   sequenceInfo.color = "#08bd53";
   sequenceInfo.text = "성장";
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1000 };
+
   // 여섯번째 시퀸스 -> h1 transform , sink growth geo
   sequenceInfo.showCuboidCollider = false;
   sequenceInfo.showChallenge = false;
@@ -70,18 +75,20 @@ function* GenerateSequence() {
   yield {
     ...sequenceInfo,
   };
+
   // 8 시퀸스 -> Leejaeyeop
   sequenceInfo.showCuboidCollider = true;
   sequenceInfo.showChallenge = false;
   sequenceInfo.showLeejaeyeop = true;
   yield { ...sequenceInfo };
+
   // 9 light 위치 변경
   sequenceInfo.changeLightPos = true;
   sequenceInfo.showGrowth = false;
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 2000 };
+
   // fade out 효과
-  yield { ...sequenceInfo, isDone: true };
-  return sequenceInfo;
+  return { ...sequenceInfo, isDone: true };
 }
 
 function useSequence() {
@@ -90,7 +97,7 @@ function useSequence() {
 
   const moveNextSequence = () => {
     const nextSequence = generateSequence.next();
-    if (!nextSequence.done) {
+    if (nextSequence.value) {
       setSequence(nextSequence.value);
     }
   };
