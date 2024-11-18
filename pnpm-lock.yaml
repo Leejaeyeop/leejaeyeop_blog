@@ -44,9 +44,6 @@ importers:
       framer-motion-3d:
         specifier: 11.11.11
         version: 11.11.11(@react-three/fiber@8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.162.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.162.0)
-      glsl-shader-loader:
-        specifier: ^0.1.6
-        version: 0.1.6
       html2canvas:
         specifier: ^1.4.1
         version: 1.4.1
@@ -2155,9 +2152,6 @@ packages:
     resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
     engines: {node: '>=4'}
 
-  async@1.5.2:
-    resolution: {integrity: sha512-nSVgobk4rv61R9PUSDtYt7mPVB2olxNR5RWJcAsH676/ef11bUZwvu7+RGYrYauVdDPcO519v68wRhXQtxsV9w==}
-
   attr-accept@2.2.4:
     resolution: {integrity: sha512-2pA6xFIbdTUDCAwjN8nQwI+842VwzbDUXO2IYlpPXQIORgKnavorcr4Ce3rwh+zsNg9zK7QPsdvDj3Lum4WX4w==}
     engines: {node: '>=4'}
@@ -2493,9 +2487,6 @@ packages:
 
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
-
-  cssauron@1.4.0:
-    resolution: {integrity: sha512-Ht70DcFBh+/ekjVrYS2PlDMdSQEl3OFNmjK6lcn49HptBgilXf/Zwg4uFh9Xn0pX3Q8YOkSjIFOfK2osvdqpBw==}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -3072,14 +3063,8 @@ packages:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
     engines: {node: '>=10'}
 
-  glsl-man@1.1.14:
-    resolution: {integrity: sha512-yM/+5DCpHGIDO+qtMTDp2PLgl+g+4WbqmJlA4baCRkNwuOZbpNDyBaS1gfGaJIV/BrMKDuFBr6niOeRHV1iAeg==}
-
   glsl-noise@0.0.0:
     resolution: {integrity: sha512-b/ZCF6amfAUb7dJM/MxRs7AetQEahYzJ8PtgfrmEdtw6uyGOr+ZSGtgjFm6mfsBkxJ4d2W7kg+Nlqzqvn3Bc0w==}
-
-  glsl-shader-loader@0.1.6:
-    resolution: {integrity: sha512-RInPlABhbFcVZ7d69Zs9ckJ9TPr7lEgZouuGRqUpRVouOiH2ZyikAIkSKEzkJWOyJa25Lc6VeAVk4F2ef5OXBg==}
 
   glsl-token-functions@1.0.1:
     resolution: {integrity: sha512-EigGhp1g+aUVeUNY7H1o5tL/bnwIB3/FcRREPr2E7Du+/UDXN24hDkaZ3e4aWHDjHr9lJ6YHXMISkwhUYg9UOg==}
@@ -3490,10 +3475,6 @@ packages:
   loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
-
-  loader-utils@1.4.2:
-    resolution: {integrity: sha512-I5d00Pd/jwMD2QCduo657+YM/6L3KZu++pmX9VFncxaxvHcru9jx1lBaFft+r4Mt2jK0Yhp41XlRAihzPxHNCg==}
-    engines: {node: '>=4.0.0'}
 
   loader-utils@2.0.4:
     resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
@@ -4558,9 +4539,6 @@ packages:
   through2@0.6.5:
     resolution: {integrity: sha512-RkK/CCESdTKQZHdmKICijdKKsCRVHs5KsLZ6pACAmF/1GPUQhonHSXWNERctxEp7RmvjdNbZTL5z9V7nSCXKcg==}
 
-  through@2.3.8:
-    resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
-
   timers-browserify@2.0.12:
     resolution: {integrity: sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ==}
     engines: {node: '>=0.6.0'}
@@ -4579,9 +4557,6 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
-
-  tree-traversal@1.1.2:
-    resolution: {integrity: sha512-YRib+FkzjZjdPzUU5rVswQ/XV56lm2hFfZy2kLH1spdrwkfpJfHf/KNUJxH2K1uHUEOo+1Jrjry1NlhypHcIzQ==}
 
   troika-three-text@0.49.1:
     resolution: {integrity: sha512-lXGWxgjJP9kw4i4Wh+0k0Q/7cRfS6iOME4knKht/KozPu9GcFA9NnNpRvehIhrUawq9B0ZRw+0oiFHgRO+4Wig==}
@@ -7202,8 +7177,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  async@1.5.2: {}
-
   attr-accept@2.2.4: {}
 
   available-typed-arrays@1.0.7:
@@ -7577,10 +7550,6 @@ snapshots:
   css-what@6.1.0: {}
 
   css.escape@1.5.1: {}
-
-  cssauron@1.4.0:
-    dependencies:
-      through: 2.3.8
 
   cssesc@3.0.0: {}
 
@@ -8350,17 +8319,7 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
-  glsl-man@1.1.14:
-    dependencies:
-      cssauron: 1.4.0
-      tree-traversal: 1.1.2
-
   glsl-noise@0.0.0: {}
-
-  glsl-shader-loader@0.1.6:
-    dependencies:
-      glsl-man: 1.1.14
-      loader-utils: 1.4.2
 
   glsl-token-functions@1.0.1: {}
 
@@ -8752,12 +8711,6 @@ snapshots:
   lines-and-columns@1.2.4: {}
 
   loader-runner@4.3.0: {}
-
-  loader-utils@1.4.2:
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 1.0.2
 
   loader-utils@2.0.4:
     dependencies:
@@ -9931,8 +9884,6 @@ snapshots:
       readable-stream: 1.0.34
       xtend: 4.0.2
 
-  through@2.3.8: {}
-
   timers-browserify@2.0.12:
     dependencies:
       setimmediate: 1.0.5
@@ -9946,10 +9897,6 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
-
-  tree-traversal@1.1.2:
-    dependencies:
-      async: 1.5.2
 
   troika-three-text@0.49.1(three@0.162.0):
     dependencies:
