@@ -38,7 +38,7 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
   useEffect(() => {
     if (currentSection >= 0) {
       sectionRefs[currentSection]?.current?.scrollIntoView({
-        behavior: "auto",
+        behavior: "smooth",
       });
     }
   }, [currentSection, sectionRefs]);
