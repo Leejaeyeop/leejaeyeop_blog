@@ -9,6 +9,7 @@ import {
   BareunArticle,
   ReactProgressBarArticle,
   FairyTaleArticle,
+  PortfolioArticle,
 } from "./articles";
 import { Courgette } from "next/font/google";
 import { throttle } from "lodash";
@@ -93,8 +94,8 @@ const WorkSection = () => (
 
 const PersonalSection = () => (
   <CommonSection
-    articles={[FairyTaleArticle, ReactProgressBarArticle]}
-    imageSrcs={["fairyTale.webp", "reactProgressBar.webp"]}
+    articles={[FairyTaleArticle, ReactProgressBarArticle, PortfolioArticle]}
+    imageSrcs={["fairyTale.webp", "reactProgressBar.webp", "portfolio.webp"]}
   />
 );
 
