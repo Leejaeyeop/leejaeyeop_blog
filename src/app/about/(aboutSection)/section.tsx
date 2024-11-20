@@ -8,10 +8,6 @@ const courgette = Courgette({
   subsets: ["latin"],
 });
 
-const Badge = () => {
-  return;
-};
-
 const AboutSection = () => {
   return (
     <section
