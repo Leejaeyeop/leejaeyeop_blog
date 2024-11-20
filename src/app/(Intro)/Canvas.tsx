@@ -212,7 +212,6 @@ const Scene = ({ moveNextSequence }: SceneProps) => {
       <motion.group animate={changeLightPos ? "on" : "off"}>
         {/* 전체 조명 */}
         <ambientLight intensity={0.1} />
-        {/*  */}
         <DirectionalLight />
         <SpotLight />
         <Physics gravity={[0, -2, 0]}>

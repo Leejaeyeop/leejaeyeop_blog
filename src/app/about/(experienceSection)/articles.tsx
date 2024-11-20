@@ -269,13 +269,24 @@ const FairyTaleArticle = (props: Props) => {
       {...props}
       title={"ChatGpt 활용 3D 인터렉티브 웹"}
       subtitle={
-        <a
-          className="text-blue-500"
-          href="https://leejaeyeop.github.io/"
-          target="_blank"
-        >
-          https://leejaeyeop.github.io/
-        </a>
+        <>
+          <a
+            className="text-blue-500"
+            href="https://leejaeyeop.github.io/"
+            target="_blank"
+          >
+            https://leejaeyeop.github.io/
+          </a>
+          <br />
+          <br />
+          <a
+            className="text-blue-500"
+            href="https://github.com/Leejaeyeop/ai_fairy_tale_book/"
+            target="_blank"
+          >
+            https://github.com/Leejaeyeop/ai_fairy_tale_book
+          </a>
+        </>
       }
       skills={"Vue.js / Express.js / three.js / jest "}
       contribution={"프로젝트 전체 기여도 - 100% / 프론트엔드 기여도 - 100 %"}
@@ -329,6 +340,15 @@ const ReactProgressBarArticle = (props: Props) => {
           >
             https://www.npmjs.com/package/react-divided-progress-bar
           </a>
+          <br />
+          <br />
+          <a
+            className="text-blue-500"
+            href="https://github.com/Leejaeyeop/react-divided-progress-bar"
+            target="_blank"
+          >
+            https://github.com/Leejaeyeop/react-divided-progress-bar
+          </a>
         </>
       }
       skills={"React.js / Storybook"}
@@ -363,6 +383,44 @@ const ReactProgressBarArticle = (props: Props) => {
   );
 };
 
+const PortfolioArticle = (props: Props) => {
+  return (
+    <Article
+      {...props}
+      title={"Portfolio"}
+      subtitle={
+        <>
+          <a
+            className="text-blue-500"
+            href="https://github.com/Leejaeyeop/leejaeyeop_blog"
+            target="_blank"
+          >
+            https://github.com/Leejaeyeop/leejaeyeop_blog
+          </a>
+        </>
+      }
+      skills={"Next.js / react-three / framer-motion"}
+      contribution={"프로젝트 전체 기여도 - 100% / 프론트엔드 기여도 - 100 %"}
+      content={
+        <>
+          <li>
+            3D 에니메이션과 컴포넌트를 활용해 나 자신을 잘 드러내고자 제작
+          </li>
+          <li>
+            <a
+              className="text-blue-500"
+              href="https://ljy1011.tistory.com/224"
+              target="_blank"
+            >
+              포트폴리오 제작 과정 블로그 포스팅중
+            </a>
+          </li>
+        </>
+      }
+    ></Article>
+  );
+};
+
 export {
   ImqaArticle,
   DalgonaArticle,
@@ -370,4 +428,5 @@ export {
   BareunArticle,
   FairyTaleArticle,
   ReactProgressBarArticle,
+  PortfolioArticle,
 };
