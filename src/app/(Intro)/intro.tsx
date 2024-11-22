@@ -23,6 +23,7 @@ const Intro = () => {
     h1Animation,
     showH2Text,
     isDone,
+    bgGradient,
   } = sequence;
   const headerRef = useAnimatedText(text, transition);
   const router = useRouter();
@@ -57,17 +58,20 @@ const Intro = () => {
       <MotionConfig transition={transition}>
         <motion.div
           className={
-            "absolute w-full h-full bg-gradient-to-br from-white via-transparent" +
+            "absolute w-full h-full from-white via-transparent scrollbar-hide" +
             " to-[" +
             backgroundColor +
-            "]"
+            "] " +
+            bgGradient
           }
           initial={false}
           animate={{
             backgroundColor,
             color,
-            x: shakeX ? [0, -5, 5, -5, 5, 0, 0, -5, 5, -5, 5, 0] : [], // X축으로 진동
-            y: shakeY ? [0, -5, 5, -5, 5, 0] : [], // y축으로 진동
+            x: shakeX
+              ? [0, -10, 10, -5, 5, 0, -5, 10, -5, 5, 0, -10, 5, -5, 5]
+              : [], // X축으로 진동
+            y: shakeY ? [0, -10, 10, -5, 5, 0, -5, 10, -5, 5] : [], // y축으로 진동
             opacity: isDone ? 0 : 1,
           }}
           transition={{
