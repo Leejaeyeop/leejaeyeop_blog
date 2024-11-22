@@ -56,7 +56,12 @@ const Intro = () => {
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
         <motion.div
-          className="absolute w-full h-full"
+          className={
+            "absolute w-full h-full bg-gradient-to-br from-white via-transparent" +
+            " to-[" +
+            backgroundColor +
+            "]"
+          }
           initial={false}
           animate={{
             backgroundColor,
