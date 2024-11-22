@@ -27,6 +27,7 @@ const sequenceInfo = {
   showH2Text: false,
   changeLightPos: false,
   isDone: false,
+  bgGradient: "bg-gradient-to-br",
 };
 
 function* GenerateSequence() {
@@ -85,6 +86,7 @@ function* GenerateSequence() {
   // 9 light 위치 변경
   sequenceInfo.changeLightPos = true;
   sequenceInfo.showGrowth = false;
+  sequenceInfo.bgGradient = "bg-gradient-to-tl";
   yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 2000 };
 
   // fade out 효과
