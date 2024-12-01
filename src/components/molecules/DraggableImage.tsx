@@ -32,7 +32,7 @@ const DraggableImage = ({
     if (idx === lastIdx) return;
     // 드래그 거리를 계산하여 상태에 업데이트
     const dragDistance = Math.sqrt(
-      Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2)
+      Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2),
     );
     if (dragDistance >= threshold) {
       setCursection(idx + 1);
@@ -85,7 +85,7 @@ const DraggableContainer = ({
       <div
         className={
           courgette.className +
-          " text-white absolute top-[150px] no-wrap whitespace-nowrap text-3xl"
+          " text-white absolute top-[15vh] no-wrap whitespace-nowrap text-3xl"
         }
       >
         (Drag Image or Scroll!)
