@@ -32,7 +32,7 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
   // Memoize section references based on the number of articles
   const sectionRefs = useMemo(
     () => articles.map(() => createRef<HTMLDivElement>()),
-    [articles]
+    [articles],
   );
 
   // Smooth scrolling to the current section
@@ -50,7 +50,7 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
       leading: true,
       trailing: false,
     }),
-    []
+    [],
   );
 
   return (
@@ -63,7 +63,7 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
       />
 
       {/* Articles */}
-      <div className="flex flex-col w-full sm:w-[calc(100%-300px)]">
+      <div className="flex flex-col w-full sm:w-[calc(100%-360px)]">
         {articles.map((Article, index) => (
           <div ref={sectionRefs[index]} key={index}>
             <Article idx={index} setCursection={updateCurrentSection} />
