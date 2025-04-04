@@ -1,6 +1,6 @@
 import { extend, Object3DNode, useFrame, useThree } from "@react-three/fiber";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import myFont from "../Roboto_Bold.json";
+import { FontData, FontLoader } from "three/examples/jsm/loaders/FontLoader";
+import myFont from "@/app/Roboto_Bold.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { useEffect, useRef, useState } from "react";
 
@@ -12,9 +12,9 @@ declare module "@react-three/fiber" {
     textGeometry: Object3DNode<TextGeometry, typeof TextGeometry>;
   }
 }
+const font = new FontLoader().parse(myFont as unknown as FontData);
 
-// @ts-ignore
-const font = new FontLoader().parse(myFont);
+// ---------------------- Impossible ----------------------
 const Impossible = () => {
   return (
     <group dispose={null} position={[-6.5, -0.5, 2.5]}>
@@ -40,6 +40,7 @@ const Impossible = () => {
   );
 };
 
+// ---------------------- Challenge ----------------------
 const Challenge = ({ rigidChallenge }) => {
   useFrame(() => {
     const position = rigidChallenge?.current?.translation();
@@ -68,6 +69,7 @@ const Challenge = ({ rigidChallenge }) => {
   );
 };
 
+// ---------------------- Growth ----------------------
 const Growth = () => {
   const { scene } = useThree();
   const [position, setPosition] = useState<[x: number, y: number, z: number]>([
@@ -101,6 +103,7 @@ const Growth = () => {
   );
 };
 
+// ---------------------- Leejaeyeop ----------------------
 const Leejaeyeop = () => {
   const { camera } = useThree();
   camera.position.set(-3, 4, 10);

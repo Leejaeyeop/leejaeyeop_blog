@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { createContext } from "react";
 
 export type SequenceInfo = typeof sequenceInfo;
@@ -97,12 +97,12 @@ function useSequence() {
   const [generateSequence] = useState(() => GenerateSequence());
   const [sequence, setSequence] = useState(() => generateSequence.next().value);
 
-  const moveNextSequence = () => {
+  const moveNextSequence = useCallback(() => {
     const nextSequence = generateSequence.next();
     if (nextSequence.value) {
       setSequence(nextSequence.value);
     }
-  };
+  }, [generateSequence]);
   return { sequence, setSequence, moveNextSequence };
 }
 

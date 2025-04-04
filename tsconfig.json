@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/(Intro)/Canvas.tsx"
+    "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
