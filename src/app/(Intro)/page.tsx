@@ -1,6 +1,6 @@
 "use client";
 
-import Intro from "./(Intro)/intro";
+import Intro from "./intro";
 
 export default function Home() {
   return (
