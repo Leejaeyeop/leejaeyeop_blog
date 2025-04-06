@@ -13,7 +13,7 @@ import {
 } from "../../features/scene/intro/hooks/use-sequence";
 import IntroScene from "../../features/scene/intro/introScene";
 import { useWindowSize } from "../../features/scene/intro/hooks/use-windowsize";
-import Pending from "@/features/scene/intro/components/Pending";
+import Pending from "@/features/scene/intro/components/pending";
 
 const IntroTextFloor = ({
   h1Animation,

@@ -3,7 +3,7 @@
 import Intro from "./intro";
 import { usePendingStore } from "./store/usePendingStore";
 import { useEffect } from "react";
-import Pending from "@/features/scene/intro/components/Pending";
+import Pending from "@/features/scene/intro/components/pending";
 
 export default function Home() {
   const isPending = usePendingStore(state => state.isPending);
