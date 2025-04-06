@@ -13,7 +13,7 @@ const sequenceInfo = {
   // Text
   text: "불가능",
   // TextGeometries
-  showImpossible: false,
+  showImpossible: true,
   showChallenge: false,
   showGrowth: false,
   showLeejaeyeop: false,
@@ -32,9 +32,7 @@ const sequenceInfo = {
 
 function* GenerateSequence() {
   // 일회성 이벤트는 제거
-  // 첫번째 시퀀스-> impossible geo 생성 delay 1초
-  sequenceInfo.showImpossible = true;
-  yield { ...sequenceInfo, delayTime: 800 };
+  yield sequenceInfo;
 
   // 두번째 시퀀스 -> challenge geo 생성
   sequenceInfo.showChallenge = true;
@@ -44,7 +42,7 @@ function* GenerateSequence() {
   sequenceInfo.backgroundColor = "#caf0f8";
   sequenceInfo.color = "#005AFF";
   sequenceInfo.text = "도전";
-  yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1200 };
+  yield { ...sequenceInfo, shakeX: true, shakeY: true, delayTime: 1300 };
 
   // 네번째 시퀸스 -> growth text geo 생성
   sequenceInfo.showImpossible = false;
