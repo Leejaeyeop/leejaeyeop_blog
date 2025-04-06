@@ -35,7 +35,8 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.162.0",
     "three-custom-shader-material": "^5.4.0",
-    "three-stdlib": "^2.6.1"
+    "three-stdlib": "^2.6.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "1.9.0",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Leva } from "leva";
@@ -13,7 +13,7 @@ import {
 } from "../../features/scene/intro/hooks/use-sequence";
 import IntroScene from "../../features/scene/intro/introScene";
 import { useWindowSize } from "../../features/scene/intro/hooks/use-windowsize";
-import SkipButton from "../../features/scene/intro/components/skipButton";
+import Pending from "@/features/scene/intro/components/pending";
 
 const IntroTextFloor = ({
   h1Animation,
@@ -67,7 +67,6 @@ const Intro = () => {
       return () => clearTimeout(timer);
     }
   }, [delayTime, moveNextSequence]);
-
   const shakeKeyframes = {
     x: shakeX ? [0, -10, 10, -5, 5, 0, -5, 10, -5, 5, 0, -10, 5, -5, 5] : [],
     y: shakeY ? [0, -10, 10, -5, 5, 0, -5, 10, -5, 5] : [],
@@ -77,7 +76,7 @@ const Intro = () => {
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
         <motion.div
-          className={`absolute w-full h-full from-white via-transparent scrollbar-hide to-[${backgroundColor}] ${bgGradient}`}
+          className={`absolute z-0 w-full h-full from-white via-transparent scrollbar-hide to-[${backgroundColor}] ${bgGradient}`}
           initial={false}
           animate={{
             backgroundColor,
@@ -107,11 +106,10 @@ const Intro = () => {
               fontSizes: { root: "10px" },
             }}
           />
-          <IntroScene moveNextSequence={moveNextSequence} />
+          <Suspense fallback={<Pending />}>
+            <IntroScene moveNextSequence={moveNextSequence} />
+          </Suspense>
         </motion.div>
-        <div className="absolute bottom-4 right-4 font-bold text-xl sm:text-4xl">
-          <SkipButton />
-        </div>
       </MotionConfig>
     </SequenceContext.Provider>
   );

@@ -2,7 +2,7 @@
 
 import { Canvas, extend } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
-import { Suspense, useRef, useContext, useCallback } from "react";
+import { useRef, useContext, Suspense, useEffect } from "react";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import {
   Physics,
@@ -23,6 +23,7 @@ import DirectionalLight from "./components/lights/directionalLight";
 import SpotLight from "./components/lights/spotLight";
 import FixedCamera from "./components/camera/fixedCamera";
 import { UseCollisionEnter } from "./hooks/use-collision-handler";
+import { IntroButtonGroup } from "./components/geometries/button/IntroButtonGorup";
 
 extend({ OrbitControls });
 
@@ -132,6 +133,8 @@ const IntroScene = ({ moveNextSequence }: SceneProps) => {
             />
           )}
         </Physics>
+        {/* 버튼 그룹 */}
+        <IntroButtonGroup moveNextSequence={moveNextSequence} />
         {/* 그림자 바닥 */}
         <mesh
           receiveShadow
