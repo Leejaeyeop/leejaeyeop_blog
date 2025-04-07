@@ -1,11 +1,12 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { createContext } from "react";
 
-export type SequenceInfo = typeof sequenceInfo;
+export type SequenceInfo = typeof sequenceInfoDefault;
 
 const SequenceContext = createContext<SequenceInfo | null>(null);
+
 // default
-const sequenceInfo = {
+const sequenceInfoDefault = {
   // 배경색
   backgroundColor: "#FFA500",
   // Text color
@@ -31,6 +32,7 @@ const sequenceInfo = {
 };
 
 function* GenerateSequence() {
+  const sequenceInfo = structuredClone(sequenceInfoDefault);
   // 일회성 이벤트는 제거
   yield sequenceInfo;
 
@@ -92,15 +94,17 @@ function* GenerateSequence() {
 }
 
 function useSequence() {
-  const [generateSequence] = useState(() => GenerateSequence());
-  const [sequence, setSequence] = useState(() => generateSequence.next().value);
+  const generateSequenceRef = useRef(GenerateSequence());
+  const [sequence, setSequence] = useState(
+    () => generateSequenceRef.current.next().value
+  );
 
   const moveNextSequence = useCallback(() => {
-    const nextSequence = generateSequence.next();
+    const nextSequence = generateSequenceRef.current.next();
     if (nextSequence.value) {
       setSequence(nextSequence.value);
     }
-  }, [generateSequence]);
+  }, [generateSequenceRef]);
   return { sequence, setSequence, moveNextSequence };
 }
 
