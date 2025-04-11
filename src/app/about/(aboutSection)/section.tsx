@@ -79,11 +79,21 @@ const AboutSection = () => {
             Skills
           </h1>
           <div className="w-full flex justify-center">
-            <div className={`max-w-[${WIDTH_IMAGE_SET}px] overflow-hidden`}>
+            <div
+              className={`overflow-hidden`}
+              style={{
+                maxWidth: `${WIDTH_IMAGE_SET}px`,
+              }}
+            >
               {/* skill images */}
-              <div className={`flex w-[${2 * WIDTH_IMAGE_SET}px]`}>
+              <div
+                className={`flex`}
+                style={{
+                  width: `${2 * WIDTH_IMAGE_SET}px`,
+                }}
+              >
                 <motion.div
-                  className={`flex gap-5 w-[${WIDTH_IMAGE_SET}px] p-5`}
+                  className={`flex gap-5 w-[${WIDTH_IMAGE_SET}px]  p-5`}
                   animate={{
                     x: [0, "-100%", "100%", 0],
                   }}
@@ -94,11 +104,14 @@ const AboutSection = () => {
                     repeatType: "loop",
                     repeat: Infinity,
                   }}
+                  style={{
+                    width: `${WIDTH_IMAGE_SET}px`,
+                  }}
                 >
                   <ImageSet />
                 </motion.div>
                 <motion.div
-                  className={`flex gap-5 w-[${WIDTH_IMAGE_SET}px] p-5`}
+                  className={`flex gap-5 p-5`}
                   animate={{
                     x: [0, "-100%", "-200%"],
                   }}
@@ -108,6 +121,9 @@ const AboutSection = () => {
                     ease: "linear",
                     repeatType: "loop",
                     repeat: Infinity,
+                  }}
+                  style={{
+                    width: `${WIDTH_IMAGE_SET}px`,
                   }}
                 >
                   <ImageSet />
