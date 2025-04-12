@@ -35,6 +35,7 @@ const FrontendInfoSection = ({
             src={src + ".webp"}
             alt={src}
             fill
+            objectFit="cover"
           ></Image>
         </div>
       )}
@@ -49,6 +50,7 @@ const FrontendInfoSection = ({
             src={src + ".webp"}
             alt={src}
             fill
+            objectFit="cover"
           ></Image>
         </div>
       )}

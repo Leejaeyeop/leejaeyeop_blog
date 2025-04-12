@@ -412,7 +412,7 @@ const PortfolioArticle = (props: Props) => {
               href="https://ljy1011.tistory.com/224"
               target="_blank"
             >
-              포트폴리오 제작 과정 블로그 포스팅중
+              포트폴리오 제작 과정 블로그 포스팅
             </a>
           </li>
         </>
