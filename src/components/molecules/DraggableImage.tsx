@@ -32,7 +32,7 @@ const DraggableImage = ({
     if (idx === lastIdx) return;
     // 드래그 거리를 계산하여 상태에 업데이트
     const dragDistance = Math.sqrt(
-      Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2),
+      Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2)
     );
     if (dragDistance >= threshold) {
       setCursection(idx + 1);
@@ -81,7 +81,7 @@ const DraggableContainer = ({
   setCursection: Dispatch<SetStateAction<number>>;
 }) => {
   return (
-    <div className="sticky top-0 hidden sm:w-[300px] h-screen sm:flex items-center">
+    <div className="sticky top-0 hidden sm:w-[300px] h-screen lg:flex items-center">
       <div
         className={
           courgette.className +
