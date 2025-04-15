@@ -29,7 +29,7 @@ const IntroTextFloor = ({
     <motion.h1 className="font-extrabold text-[25vw]" ref={headerRef} />
     {showH2Text && (
       <motion.h2
-        className="font-semibold mb-2 text-black text-[10vw]"
+        className="font-semibold mb-2 text-[#06cc8f] text-[10vw]"
         initial={{ x: "100%" }}
         animate={{ x: "0%" }}
         transition={{ type: "spring", stiffness: 70, damping: 10 }}
