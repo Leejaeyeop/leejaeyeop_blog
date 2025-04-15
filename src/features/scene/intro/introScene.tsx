@@ -18,12 +18,12 @@ import {
   Leejaeyeop,
 } from "./components/geometries/textGeometries";
 
-import { SequenceInfo } from "./hooks/use-sequence";
 import DirectionalLight from "./components/lights/directionalLight";
 import SpotLight from "./components/lights/spotLight";
 import FixedCamera from "./components/camera/fixedCamera";
 import { UseCollisionEnter } from "./hooks/use-collision-handler";
 import { IntroButtonGroup } from "./components/geometries/button/IntroButtonGorup";
+import { SequenceInfo } from "./hooks/sequence/sequenceInitial";
 
 extend({ OrbitControls });
 
