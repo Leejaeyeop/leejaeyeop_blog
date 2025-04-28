@@ -209,7 +209,7 @@ const PersonalInfoArticle = () => {
         >
           <Image
             className="rounded-3xl"
-            src="/profile2.webp"
+            src="/profile.webp"
             width={350}
             height={350}
             alt="Picture of the author"
@@ -225,7 +225,7 @@ const PersonalInfoArticle = () => {
         >
           <Image
             className="rounded-3xl"
-            src="/profile.webp"
+            src="/profile2.webp"
             width={350}
             height={350}
             alt="Picture of the author"
