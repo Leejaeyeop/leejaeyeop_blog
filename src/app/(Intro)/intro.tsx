@@ -24,7 +24,7 @@ const IntroTextFloor = ({
   <motion.div
     className="intro-text-container"
     animate={h1Animation}
-    transition={{ duration: 0.3, ease: "easeInOut" }}
+    transition={{ duration: 0.9, ease: "easeInOut" }}
   >
     <motion.h1 className="font-extrabold text-[25vw]" ref={headerRef} />
     {showH2Text && (
@@ -84,7 +84,7 @@ const Intro = () => {
             ...shakeKeyframes,
             opacity: isDone ? 0 : 1,
           }}
-          transition={{ duration: isDone ? 2.5 : 0.5, ease: "easeInOut" }}
+          transition={{ duration: isDone ? 2.5 : 0.6, ease: "easeInOut" }}
           onUpdate={latest => {
             if (latest.opacity === 0) {
               router.push("/about");
