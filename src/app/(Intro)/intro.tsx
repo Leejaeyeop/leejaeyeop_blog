@@ -24,7 +24,7 @@ const IntroTextFloor = ({
   <motion.div
     className="intro-text-container"
     animate={h1Animation}
-    transition={{ duration: 0.9, ease: "easeInOut" }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
   >
     <motion.h1 className="font-extrabold text-[25vw]" ref={headerRef} />
     {showH2Text && (
@@ -76,7 +76,7 @@ const Intro = () => {
     <SequenceContext.Provider value={sequence}>
       <MotionConfig transition={transition}>
         <motion.div
-          className={`absolute z-0 w-full h-full from-white via-transparent scrollbar-hide to-[${backgroundColor}] ${bgGradient}`}
+          className={`absolute z-0 w-full h-full scrollbar-hide from-white via-white/25 to-[${backgroundColor}] bg-gradient-to-br`}
           initial={false}
           animate={{
             backgroundColor,
