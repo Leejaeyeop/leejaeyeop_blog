@@ -20,6 +20,8 @@ type TheaterState = {
   setCameraTarget: (target: "projector" | "seat" | "screen") => void;
   isCameraTransitioning: boolean;
   setIsCameraTransitioning: (value: boolean) => void;
+  cameraTranstionSpeed: number;
+  setCameraTranstionSpeed: (value: number) => void;
 };
 
 export const useTheaterStore = create<TheaterState>(set => ({
@@ -77,4 +79,8 @@ export const useTheaterStore = create<TheaterState>(set => ({
   },
   isCameraTransitioning: false,
   setIsCameraTransitioning: value => set({ isCameraTransitioning: value }),
+
+  cameraTranstionSpeed: 0.03,
+  setCameraTranstionSpeed: (value: number) =>
+    set({ cameraTranstionSpeed: value }),
 }));

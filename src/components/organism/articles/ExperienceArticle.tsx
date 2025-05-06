@@ -78,7 +78,7 @@ const ExperienceArticle = ({
               Problem & Solving (Click!)
             </AccordionTrigger>
             <AccordionContent>
-              <ul className="text-xl leading-10 flex flex-col gap-5 list-disc ml-5">
+              <ul className="text-3xl leading-10 flex flex-col gap-5 list-disc ml-5">
                 {accordionContent}
               </ul>
             </AccordionContent>
