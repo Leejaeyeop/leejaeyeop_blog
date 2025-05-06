@@ -75,7 +75,7 @@ function FirstSection() {
       ref={ref}
       className={
         playfair.className +
-        " w-full h-full min-h-screen flex flex-col old-film items-end old-movie-shaky relative px-60 justify-center"
+        " w-full h-[1000px] min-h-screen flex flex-col items-end relative px-60 justify-center"
       }
     >
       {/* <RandomDots parentRef={ref} /> */}

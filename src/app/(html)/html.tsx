@@ -11,23 +11,14 @@ import Wave from "@/components/atom/Wave";
 export const HtmlContentPage = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [
-    isCameraTransitioning,
-    setCameraTarget,
-    isScreenZoom,
-    setIsScreenZoom,
-    setIsScreenHovering,
-    showScreen,
-  ] = useTheaterStore(
-    useShallow(state => [
-      state.isCameraTransitioning,
-      state.setCameraTarget,
-      state.isScreenZoom,
-      state.setIsScreenZoom,
-      state.setIsScreenHovering,
-      state.showScreen,
-    ])
-  );
+  const [setCameraTarget, setIsScreenZoom, setIsScreenHovering] =
+    useTheaterStore(
+      useShallow(state => [
+        state.setCameraTarget,
+        state.setIsScreenZoom,
+        state.setIsScreenHovering,
+      ])
+    );
 
   const onMouseEnterHandler = () => {
     setIsScreenHovering(true);
@@ -80,7 +71,7 @@ export const HtmlContentPage = () => {
       <header id="header" className="mb-10">
         <HeaderComponent />
       </header>
-      <main className="px-10">
+      <main className="px-20">
         <FirstSection />
         <AboutSection />
         <ExperienceSection />

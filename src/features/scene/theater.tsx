@@ -6,6 +6,7 @@ import {
   useAnimations,
   useGLTF,
   useHelper,
+  useProgress,
 } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Leva, useControls } from "leva";
@@ -26,7 +27,14 @@ import {
   SpotLightHelper,
   Vector3,
 } from "three";
-import AboutSection from "@/app/(html)/(aboutSection)/section";
+import { Playfair } from "next/font/google";
+
+const playfair = Playfair({
+  weight: ["800"],
+  style: ["italic"],
+  display: "swap",
+  subsets: ["latin"],
+});
 
 import {
   EffectComposer,
@@ -40,6 +48,15 @@ import { useShallow } from "zustand/shallow";
 import { PerspectiveCamera as PerspectiveCameraType } from "three";
 import { motion } from "framer-motion-3d";
 import { HtmlContentPage } from "@/app/(html)/html";
+
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center>
+      <div style={{ color: "white" }}>{progress.toFixed(0)} % loading...</div>
+    </Html>
+  );
+}
 
 function TheaterModel() {
   const { scene } = useGLTF("/models/theater/theater.glb");
@@ -395,7 +412,7 @@ export function CameraTransition() {
   return null;
 }
 
-const DEFAULT_FOV = 45;
+const DEFAULT_FOV = 43;
 export function Resize() {
   const { camera, size } = useThree();
 
@@ -405,30 +422,40 @@ export function Resize() {
 
   useEffect(() => {
     const perspectiveCamera = camera as PerspectiveCameraType;
+    const currentAspectRatio = size.width / size.height;
 
-    // 화면 크기에 따라 fov 조정
-    // screen 화면
-    if (isScreenZoom) {
-      const isMobile = size.width < 1440; // 모바일 화면 감지 (예시로 768px 이하)
-      if (isMobile) {
-        perspectiveCamera.fov = DEFAULT_FOV + (1440 - size.width) * 0.06; // 모바일에서 더 넓은 시야 제공
+    if (currentAspectRatio < 1.5) {
+      const aspectRatioDifference = 1.5 - currentAspectRatio;
+      if (aspectRatioDifference < 0.5) {
+        perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 40;
       } else {
-        perspectiveCamera.fov = DEFAULT_FOV; // 일반 화면에서는 기본 fov
+        perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 50;
       }
     } else {
-      const isMobile = size.width < 968; // 모바일 화면 감지 (예시로 768px 이하)
-      // seat 화면
-      if (isMobile) {
-        perspectiveCamera.fov = DEFAULT_FOV + (968 - size.width) * 0.06; // 모바일에서 더 넓은 시야 제공
-      } else {
-        perspectiveCamera.fov = DEFAULT_FOV; // 일반 화면에서는 기본 fov
-      }
+      perspectiveCamera.fov = DEFAULT_FOV;
     }
 
     perspectiveCamera.updateProjectionMatrix();
   }, [size, camera, isScreenZoom]);
 
   return null;
+}
+
+// 로딩 UI 컴포넌트
+function LoaderOverlay() {
+  const { progress, active } = useProgress();
+  return active ? (
+    <div
+      className={
+        playfair.className +
+        " absolute top-0 left-0 w-screen h-screen bg-black flex items-center justify-center z-50"
+      }
+    >
+      <div className="text-white text-6xl animate-pulse">
+        Loading... {progress.toFixed(0)}%
+      </div>
+    </div>
+  ) : null;
 }
 
 export default function TheaterCanvas() {
@@ -442,6 +469,7 @@ export default function TheaterCanvas() {
     );
   return (
     <div className="w-screen h-screen bg-black">
+      <LoaderOverlay /> {/* 여기! 로딩 상태에 따라 표시됨 */}
       <Canvas className="w-full h-full">
         <PerspectiveCamera
           makeDefault
@@ -455,7 +483,7 @@ export default function TheaterCanvas() {
         <Suspense fallback={null}>
           <TheaterModel />
         </Suspense>
-        <Suspense>
+        <Suspense fallback={null}>
           <Projector />
         </Suspense>
         <Effect />
@@ -464,16 +492,15 @@ export default function TheaterCanvas() {
           <MouseControlledCamera />
         )}
         {isCameraTransitioning && <CameraTransition />}
-
         {/* <OrbitControls /> */}
         {/* <CameraDebugger /> */}
-      </Canvas>
-      {/* <Leva
+        {/* <Leva
         theme={{
           sizes: { titleBarHeight: "28px" },
           fontSizes: { root: "10px" },
         }}
       /> */}
+      </Canvas>
     </div>
   );
 }

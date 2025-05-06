@@ -16,7 +16,11 @@ const courgette = Courgette({
 
 const FrontendInfoArticle = () => {
   return (
-    <article className={NotoSansKorean.className + " flex flex-col gap-24"}>
+    <article
+      className={
+        NotoSansKorean.className + " flex flex-col gap-24 text-3xl leading-10"
+      }
+    >
       <h1 className={courgette.className + " text-6xl font-extrabold"}>
         Fronted Developer
       </h1>
@@ -109,7 +113,7 @@ const PersonalInfoArticle = () => {
 
   return (
     <div className="w-full flex flex-col sm:flex-row gap-10">
-      <section className="mb-40 w-full sm:w-1/2 leading-9">
+      <section className="mb-40 w-full sm:w-1/2 text-3xl leading-10">
         <article className={NotoSansKorean.className}>
           <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
             Flight to Developer
@@ -146,9 +150,10 @@ const PersonalInfoArticle = () => {
             <p className="mt-5">
               개발은 적성에 잘 맞는 분야 입니다. 이를 통해 좋은 제품을 만들어
               세상에 의미 있는 기여를 하고 싶습니다.
-              <br />
+              <br /> <br />
               매일 배우고 도전하는 과정에서 스스로 성장하는 것을 느낄 때 큰
               만족감을 얻고, 이를 통해 제 자신을 증명하고 싶습니다.
+              <br />
               <br />
               기술과 노력이 세상에 긍정적인 영향을 미칠 수 있다면, 그만큼 의미
               있는 성취는 없을 것이라 생각 합니다.
@@ -172,6 +177,7 @@ const PersonalInfoArticle = () => {
                 가 개발에 있어 가장 중요한 덕목이라고 생각합니다. 도전적인
                 목표를 설정하고 과감히 부딪히며 학습합니다.
                 <br />
+                <br />
                 사이드 프로젝트를 통해 다양한 시도를 해왔으며, 사내 스터디에서는
                 새로운 영역을 탐구하고 이를 동료들과 공유함으로써 지식을
                 확장하고자 노력합니다.
@@ -180,9 +186,11 @@ const PersonalInfoArticle = () => {
                 꾸준함 또한 저의 장점 입니다. 수년간 꾸준히 운동을 통해 자기
                 계발에 힘써왔으며, 이를 통해 인내와 성취감을 길러왔습니다.
                 <br />
+                <br />
                 많은 사람들은 개발과 운동이 어울리지 않다고 생각합니다. 하지만,
                 개발과 운동 모두 자기 내면과의 깊은 소통을 요구 한다는 공통점이
                 있습니다.
+                <br />
                 <br />
                 운동을 통해 자신과의 약속을 지키고 한계를 넘어서며 스스로의
                 가능성을 확인해왔듯, 개발에서도 끊임없이 문제를 해결하고 새로운
