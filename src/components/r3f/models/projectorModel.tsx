@@ -1,6 +1,6 @@
 import { useTheaterStore } from "@/store/useTheaterStore";
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useShallow } from "zustand/shallow";
 import * as THREE from "three";
 
@@ -49,11 +49,41 @@ export const ProjectorModel = () => {
 
   const handlePointerOver = () => {
     document.body.style.cursor = "pointer";
+    setHovered(true);
   };
 
   const handlePointerOut = () => {
     document.body.style.cursor = "auto";
+    setHovered(false);
   };
+
+  const [hovered, setHovered] = useState(false);
+  // Hover 효과 적용
+  useEffect(() => {
+    scene.traverse(child => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        const materials = Array.isArray(mesh.material)
+          ? mesh.material
+          : [mesh.material];
+
+        materials.forEach(mat => {
+          const material = mat as THREE.MeshStandardMaterial;
+          if (material.emissive) {
+            material.emissive.set(
+              hovered && !isProjectorOn ? "#ffffff" : "#000000"
+            );
+            material.emissiveIntensity = hovered && !isProjectorOn ? 0.3 : 0;
+
+            // 투명도 및 부드러운 효과
+            material.transparent = true;
+            material.opacity = hovered && !isProjectorOn ? 0.4 : 1.0;
+            material.needsUpdate = true;
+          }
+        });
+      }
+    });
+  }, [hovered, scene, isProjectorOn]);
 
   return (
     <mesh

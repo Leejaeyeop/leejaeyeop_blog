@@ -79,7 +79,7 @@ function FirstSection() {
       }
     >
       {/* <RandomDots parentRef={ref} /> */}
-      <h1 className="text-[12rem]">Lee jaeyeop</h1>
+      <h1 className="text-[11rem]">Lee jaeyeop</h1>
       <h2 className="text-7xl">Frontend developer</h2>
       <Aside />
     </section>

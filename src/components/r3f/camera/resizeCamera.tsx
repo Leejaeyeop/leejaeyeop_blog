@@ -24,9 +24,11 @@ export const ResizeCamera = () => {
       if (aspectRatioDifference < 0.5) {
         // 더 적은 시야각 제공
         perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 40;
-      } else {
+      } else if (aspectRatioDifference < 1) {
         // 더 넓은 시야각 제공
         perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 50;
+      } else {
+        perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 60;
       }
     } else {
       perspectiveCamera.fov = DEFAULT_FOV;
