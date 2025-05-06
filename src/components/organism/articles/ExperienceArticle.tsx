@@ -15,6 +15,7 @@ const NotoSansKorean = Noto_Sans_KR({
 });
 
 export type ExperienceArticleProps = {
+  currentSection: number;
   setCursection: DebouncedFuncLeading<(idx: any) => void>;
   idx: number;
   title: string;
@@ -26,6 +27,7 @@ export type ExperienceArticleProps = {
 };
 
 const ExperienceArticle = ({
+  currentSection,
   setCursection,
   idx,
   title,
@@ -43,6 +45,7 @@ const ExperienceArticle = ({
   });
   // 요소가 화면에 들어왔을 때 애니메이션 시작
   useEffect(() => {
+    if (idx === currentSection) return;
     if (inView) {
       controls.start({ opacity: 1 });
       setCursection(idx);

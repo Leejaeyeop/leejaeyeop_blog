@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function HeaderComponent() {
   const [isOpenMobileNav, setIsOpenMobileNav] = useState<boolean>(false);
   return (
-    <div className="fixed w-full flex z-50 backdrop-blur-md gap-6 py-6 px-10 border-b border-white/60 mix-blend-difference text-white pointer-events-auto">
+    <div className="fixed w-full flex z-50 bg-zinc-800  backdrop-blur-md gap-6 py-6 px-10 border-b border-white/60 mix-blend-difference text-white pointer-events-auto">
       <a className="z-[1]" title="Link to Tech Blog" href="/">
         <h1 className="font-bold inline align-middle mr-2 text-3xl ">
           Lee Jaeyeop
@@ -19,7 +19,7 @@ export default function HeaderComponent() {
             : "hidden")
         }
       >
-        <a href="#about" onClick={() => setIsOpenMobileNav(false)}>
+        {/* <a href="#about" onClick={() => setIsOpenMobileNav(false)}>
           <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
             About
           </h1>
@@ -28,7 +28,7 @@ export default function HeaderComponent() {
           <h1 className="text-2xl font-bold sm:inline sm:align-middle sm:mr-2 sm:text-xl">
             Experience
           </h1>
-        </a>
+        </a> */}
         <a
           title="Link to Tech Blog"
           href="https://ljy1011.tistory.com/"
