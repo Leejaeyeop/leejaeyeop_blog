@@ -1,0 +1,50 @@
+.old-film {
+  filter: grayscale(80%) sepia(20%) contrast(90%) brightness(110%);
+}
+
+@keyframes subtle-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0.5px, 0.5px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(-0.5px, -0.5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.old-movie-shaky {
+  animation: subtle-shake 0.1s infinite;
+  filter: grayscale(60%) sepia(40%) brightness(95%);
+}
+
+.random-dot {
+  position: absolute;
+  background: black;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: dot-fade 1s ease-out forwards;
+  z-index: 9999; /* 필요 시 조절 */
+}
+
+@keyframes dot-fade {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}

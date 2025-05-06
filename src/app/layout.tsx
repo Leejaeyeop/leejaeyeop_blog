@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import MainLayout from "@/components/template/MainLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white">{children}</body>
+      <body className="bg-white">
+        <MainLayout>{children}</MainLayout>
+      </body>
     </html>
   );
 }

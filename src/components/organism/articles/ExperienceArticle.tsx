@@ -15,6 +15,7 @@ const NotoSansKorean = Noto_Sans_KR({
 });
 
 export type ExperienceArticleProps = {
+  currentSection: number;
   setCursection: DebouncedFuncLeading<(idx: any) => void>;
   idx: number;
   title: string;
@@ -26,6 +27,7 @@ export type ExperienceArticleProps = {
 };
 
 const ExperienceArticle = ({
+  currentSection,
   setCursection,
   idx,
   title,
@@ -43,6 +45,7 @@ const ExperienceArticle = ({
   });
   // 요소가 화면에 들어왔을 때 애니메이션 시작
   useEffect(() => {
+    if (idx === currentSection) return;
     if (inView) {
       controls.start({ opacity: 1 });
       setCursection(idx);
@@ -62,10 +65,10 @@ const ExperienceArticle = ({
       transition={{ duration: 0.5 }}
     >
       <h2 className="text-5xl font-extrabold">{title}</h2>
-      <h3>{subtitle}</h3>
-      <h3>{skills}</h3>
-      <h3>{contribution}</h3>
-      <ul className="text-xl leading-8 flex flex-col gap-5 list-disc">
+      <h3 className="text-3xl leading-10">{subtitle}</h3>
+      <h3 className="text-3xl leading-10">{skills}</h3>
+      <h3 className="text-3xl leading-10">{contribution}</h3>
+      <ul className="text-3xl leading-10 flex flex-col gap-5 list-disc">
         {content}
       </ul>
       {accordionContent && (
@@ -75,7 +78,7 @@ const ExperienceArticle = ({
               Problem & Solving (Click!)
             </AccordionTrigger>
             <AccordionContent>
-              <ul className="text-xl leading-8 flex flex-col gap-5 list-disc ml-5">
+              <ul className="text-3xl leading-10 flex flex-col gap-5 list-disc ml-5">
                 {accordionContent}
               </ul>
             </AccordionContent>

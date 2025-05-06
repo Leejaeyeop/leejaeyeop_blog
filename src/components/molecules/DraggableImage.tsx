@@ -35,7 +35,7 @@ const DraggableImage = ({
       Math.pow(info.offset.x, 2) + Math.pow(info.offset.y, 2)
     );
     if (dragDistance >= threshold) {
-      setCursection(idx + 1);
+      // setCursection(idx + 1);
     }
   };
   return (
@@ -82,14 +82,14 @@ const DraggableContainer = ({
 }) => {
   return (
     <div className="sticky top-0 hidden sm:w-[300px] h-screen lg:flex items-center">
-      <div
+      {/* <div
         className={
           courgette.className +
           " text-white absolute top-[15vh] no-wrap whitespace-nowrap text-3xl"
         }
       >
         (Drag Image or Scroll!)
-      </div>
+      </div> */}
       {srcs.map((src, idx) => (
         <DraggableImage
           key={src}
