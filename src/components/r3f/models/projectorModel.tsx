@@ -21,6 +21,7 @@ const POINTLIGHT_POSITION: [number, number, number] = [0, 5, 8];
 const POINTLIGHT_INTENSITY = 5;
 
 const CAMERA_TARGET_DELAY = 2000;
+const SPOT_LIGHT_BLINK_TIME = 125;
 
 export const ProjectorModel = () => {
   const { scene, animations } = useGLTF("/models/theater/projector.glb");
@@ -56,6 +57,31 @@ export const ProjectorModel = () => {
     document.body.style.cursor = "auto";
     setHovered(false);
   };
+
+  const lightRef = useRef<THREE.SpotLight>(null);
+
+  useEffect(() => {
+    if (!isProjectorOn || !lightRef.current) return;
+
+    let flashCount = 0;
+
+    // 200ms 간격으로 on-off 반복
+    const interval = setInterval(() => {
+      if (lightRef.current) {
+        lightRef.current.intensity =
+          lightRef.current.intensity > 10 ? 0 : SPOTLIGHT_SETTINGS.intensity;
+        flashCount++;
+      }
+      if (flashCount >= 4) {
+        clearInterval(interval);
+        if (lightRef.current) {
+          lightRef.current.intensity = SPOTLIGHT_SETTINGS.intensity;
+        }
+      }
+    }, SPOT_LIGHT_BLINK_TIME);
+
+    return () => clearInterval(interval);
+  }, [isProjectorOn]);
 
   const [hovered, setHovered] = useState(false);
   // Hover 효과 적용
@@ -100,6 +126,7 @@ export const ProjectorModel = () => {
       />
       {isProjectorOn && (
         <spotLight
+          ref={lightRef}
           position={SPOTLIGHT_POSITION}
           angle={SPOTLIGHT_SETTINGS.angle}
           penumbra={SPOTLIGHT_SETTINGS.penumbra}
