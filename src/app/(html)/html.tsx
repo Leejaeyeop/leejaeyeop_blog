@@ -1,15 +1,20 @@
 import HeaderComponent from "@/components/organism/header/Header";
 import { useTheaterStore } from "@/store/useTheaterStore";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useShallow } from "zustand/shallow";
 import AboutSection from "./(aboutSection)/section";
 import ExperienceSection from "./(experienceSection)/section";
 import FirstSection from "./(firstSection)/section";
 import Footer from "@/components/molecules/footer/Footer";
 import Wave from "@/components/atom/Wave";
+import useTouchScroll from "@/features/scene/hooks/useTouchScroll";
 
 export const HtmlContentPage = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { onTouchMove, onTouchStart, onTouchEnd } = useTouchScroll({
+    containerRef,
+  });
 
   const [setCameraTarget, setIsScreenZoom, setIsScreenHovering] =
     useTheaterStore(
@@ -44,8 +49,6 @@ export const HtmlContentPage = () => {
     }, 500); // 1초
   };
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
   const handleScroll = (deltaY: number) => {
     if (!containerRef.current) return;
 
@@ -67,10 +70,15 @@ export const HtmlContentPage = () => {
       style={{
         width: "1600px",
         height: "1000px",
+        touchAction: "none",
+        WebkitOverflowScrolling: "touch",
       }}
       onMouseEnter={onMouseEnterHandler}
       onMouseLeave={onMouseLeaveHandler}
       onWheel={handleWheel}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       <header id="header" className="mb-10">
         <HeaderComponent />

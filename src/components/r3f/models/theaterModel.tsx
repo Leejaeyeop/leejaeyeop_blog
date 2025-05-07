@@ -9,6 +9,7 @@ import * as THREE from "three";
 // Constants
 const SCREEN_GROUP_POSITION: [number, number, number] = [-0.01, 3.1, -3.8];
 const HTML_SCALE = 0.11;
+const HTML_POSITION: [number, number, number] = [0, 0, 0];
 const FILTER_PLANE_POSITION: [number, number, number] = [0, 0, 0.01];
 const FILTER_PLANE_SIZE: [number, number] = [4.4, 2.76];
 const FILTER_INITIAL_OPACITY = 0.02;
@@ -34,7 +35,7 @@ export const TheaterModel = () => {
     <primitive object={scene} scale={1} position={[0, 0, 0]} ref={sceneRef}>
       {showScreen && (
         <group position={SCREEN_GROUP_POSITION}>
-          <Html position={[0, 0, 0]} center transform scale={HTML_SCALE}>
+          <Html position={HTML_POSITION} center transform scale={HTML_SCALE}>
             <HtmlContentPage />
           </Html>
           <mesh position={FILTER_PLANE_POSITION} ref={filterRef}>
