@@ -44,15 +44,15 @@ const ExperienceArticle = ({
     triggerOnce: false, // 한번만 애니메이션 실행
   });
   // 요소가 화면에 들어왔을 때 애니메이션 시작
-  useEffect(() => {
-    if (idx === currentSection) return;
-    if (inView) {
-      controls.start({ opacity: 1 });
-      setCursection(idx);
-    } else {
-      controls.start({ opacity: 0.3 });
-    }
-  }, [controls, inView]);
+  // useEffect(() => {
+  //   if (idx === currentSection) return;
+  //   if (inView) {
+  //     controls.start({ opacity: 1 });
+  //     setCursection(idx);
+  //   } else {
+  //     controls.start({ opacity: 0.3 });
+  //   }
+  // }, [controls, inView]);
 
   return (
     <motion.div
@@ -61,7 +61,7 @@ const ExperienceArticle = ({
       }
       ref={ref}
       animate={controls}
-      initial={{ opacity: 0 }}
+      // initial={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <h2 className="text-5xl font-extrabold">{title}</h2>
