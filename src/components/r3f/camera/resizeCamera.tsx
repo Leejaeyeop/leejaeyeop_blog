@@ -16,7 +16,6 @@ export const ResizeCamera = () => {
   useEffect(() => {
     const perspectiveCamera = camera as PerspectiveCameraType;
     const currentAspectRatio = size.width / size.height;
-
     // 비율이 꺠진다 -> 시야각 변경
     if (currentAspectRatio < REFERENCE_ASPECT_RATIO) {
       const aspectRatioDifference = REFERENCE_ASPECT_RATIO - currentAspectRatio;
@@ -26,7 +25,7 @@ export const ResizeCamera = () => {
         perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 40;
       } else if (aspectRatioDifference < 1) {
         // 더 넓은 시야각 제공
-        perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 50;
+        perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 53;
       } else {
         perspectiveCamera.fov = DEFAULT_FOV + aspectRatioDifference * 60;
       }
