@@ -93,6 +93,12 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         fadeIn: "fadeIn 1.5s ease-out",
       },
+      screens: {
+        "h-sm": { raw: "(min-height: 600px)" },
+        "h-md": { raw: "(min-height: 800px)" },
+        "h-lg": { raw: "(min-height: 1000px)" },
+        "h-xl": { raw: "(min-height: 1200px)" },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
