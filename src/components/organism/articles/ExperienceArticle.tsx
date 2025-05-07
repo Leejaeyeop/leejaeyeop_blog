@@ -65,20 +65,20 @@ const ExperienceArticle = ({
       transition={{ duration: 0.5 }}
     >
       <h2 className="text-5xl font-extrabold">{title}</h2>
-      <h3 className="text-3xl leading-10">{subtitle}</h3>
-      <h3 className="text-3xl leading-10">{skills}</h3>
-      <h3 className="text-3xl leading-10">{contribution}</h3>
-      <ul className="text-3xl leading-10 flex flex-col gap-5 list-disc">
+      <h3 className="text-3xl h-lg:text-xl leading-10">{subtitle}</h3>
+      <h3 className="text-3xl h-lg:text-xl leading-10">{skills}</h3>
+      <h3 className="text-3xl h-lg:text-xl leading-10">{contribution}</h3>
+      <ul className="text-3xl h-lg:text-xl leading-10 flex flex-col gap-5 list-disc">
         {content}
       </ul>
       {accordionContent && (
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-3xl">
+            <AccordionTrigger className="text-3xl h-lg:text-xl">
               Problem & Solving (Click!)
             </AccordionTrigger>
             <AccordionContent>
-              <ul className="text-3xl leading-10 flex flex-col gap-5 list-disc ml-5">
+              <ul className="text-3xl h-lg:text-xl leading-10 flex flex-col gap-5 list-disc ml-5">
                 {accordionContent}
               </ul>
             </AccordionContent>

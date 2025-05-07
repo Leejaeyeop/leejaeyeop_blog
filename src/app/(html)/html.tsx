@@ -46,14 +46,18 @@ export const HtmlContentPage = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleWheel = (e: React.WheelEvent) => {
+  const handleScroll = (deltaY: number) => {
     if (!containerRef.current) return;
 
-    containerRef.current.scrollTop += e.deltaY;
+    containerRef.current.scrollTop += deltaY;
 
     // 가짜 onScroll 이벤트 트리거
     const scrollEvent = new Event("scroll", { bubbles: true });
     containerRef.current.dispatchEvent(scrollEvent);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    handleScroll(e.deltaY);
   };
 
   return (

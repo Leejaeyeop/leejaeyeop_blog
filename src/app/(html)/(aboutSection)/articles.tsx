@@ -18,7 +18,8 @@ const FrontendInfoArticle = () => {
   return (
     <article
       className={
-        NotoSansKorean.className + " flex flex-col gap-24 text-3xl leading-10"
+        NotoSansKorean.className +
+        " flex flex-col gap-24 text-3xl h-lg:text-xl leading-10"
       }
     >
       <h1 className={courgette.className + " text-6xl font-extrabold"}>
@@ -113,7 +114,7 @@ const PersonalInfoArticle = () => {
 
   return (
     <div className="w-full flex flex-col sm:flex-row gap-10">
-      <section className="mb-40 w-full sm:w-1/2 text-3xl leading-10">
+      <section className="mb-40 w-full sm:w-1/2 text-3xl h-lg:text-xl leading-10">
         <article className={NotoSansKorean.className}>
           <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
             Flight to Developer
