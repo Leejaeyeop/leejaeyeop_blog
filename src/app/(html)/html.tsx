@@ -8,6 +8,7 @@ import FirstSection from "./(firstSection)/section";
 import Footer from "@/components/molecules/footer/Footer";
 import Wave from "@/components/atom/Wave";
 import useTouchScroll from "@/features/scene/hooks/useTouchScroll";
+import Navbar from "@/components/molecules/navbar/navbar";
 
 export const HtmlContentPage = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -87,8 +88,9 @@ export const HtmlContentPage = () => {
         <FirstSection />
         <AboutSection />
         <ExperienceSection />
+        <Footer />
       </main>
-      <Footer />
+      <Navbar />
     </div>
   );
 };
