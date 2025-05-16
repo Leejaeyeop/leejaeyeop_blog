@@ -23,7 +23,7 @@ const FrontendInfoArticle = () => {
       }
     >
       <h1 className={courgette.className + " text-6xl font-extrabold"}>
-        Fronted Developer
+        Frontend Developer
       </h1>
       {/* 프론트엔드 성능*/}
       <FrontendInfoSection
