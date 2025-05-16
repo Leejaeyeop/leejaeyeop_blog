@@ -74,7 +74,7 @@ const AboutSection = () => {
         <PersonalInfoArticle />
         <FrontendInfoArticle />
         {/* moving skills */}
-        <div className="w-full mt-40">
+        <div className="w-full my-40">
           <h1 className={courgette.className + " text-6xl font-extrabold mb-8"}>
             Skills
           </h1>

@@ -1,14 +1,14 @@
-import HeaderComponent from "@/components/organism/header/Header";
+import HeaderComponent from "@/components/molecules/footer/Footer";
 import { useTheaterStore } from "@/store/useTheaterStore";
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useShallow } from "zustand/shallow";
 import AboutSection from "./(aboutSection)/section";
 import ExperienceSection from "./(experienceSection)/section";
 import FirstSection from "./(firstSection)/section";
-import Footer from "@/components/molecules/footer/Footer";
-import Wave from "@/components/atom/Wave";
 import useTouchScroll from "@/features/scene/hooks/useTouchScroll";
-import Navbar from "@/components/molecules/navbar/navbar";
+import { useTheaterScreenStore } from "@/store/useTheaterScreenStore";
+import ContactArticle from "./(contact)/articles";
+import Footer from "@/components/molecules/footer/Footer";
 
 export const HtmlContentPage = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -16,6 +16,15 @@ export const HtmlContentPage = () => {
   const { onTouchMove, onTouchStart, onTouchEnd } = useTouchScroll({
     containerRef,
   });
+  const [currentScreen, isScreenTransitioning] = useTheaterScreenStore(
+    useShallow(state => [state.currentScreen, state.isScreenTransitioning])
+  );
+
+  useEffect(() => {
+    containerRef.current?.scrollTo({
+      top: 0,
+    });
+  }, [currentScreen]);
 
   const [setCameraTarget, setIsScreenZoom, setIsScreenHovering] =
     useTheaterStore(
@@ -67,7 +76,7 @@ export const HtmlContentPage = () => {
   return (
     <div
       ref={containerRef}
-      className="overflow-y-scroll overflow-x-hidden animate-fadeIn"
+      className="overflow-y-auto overflow-x-hidden animate-fadeIn flex"
       style={{
         width: "1600px",
         height: "1000px",
@@ -81,16 +90,17 @@ export const HtmlContentPage = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <header id="header" className="mb-10">
-        <HeaderComponent />
-      </header>
-      <main className="px-20">
-        <FirstSection />
-        <AboutSection />
-        <ExperienceSection />
-        <Footer />
+      <main
+        className={`px-20 py-36 w-full ${
+          isScreenTransitioning ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {currentScreen === "main" && <FirstSection />}
+        {currentScreen === "about" && <AboutSection />}
+        {currentScreen === "experience" && <ExperienceSection />}
+        {currentScreen === "contact" && <ContactArticle />}
       </main>
-      <Navbar />
+      {currentScreen !== "main" && <Footer />}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { HtmlContentPage } from "@/app/(html)/html";
 import { useTheaterStore } from "@/store/useTheaterStore";
 import { Html, useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useShallow } from "zustand/shallow";
 import * as THREE from "three";
 import vertexShader from "@/shaders/theater.vert.glsl";
@@ -14,7 +14,7 @@ import { useFrame } from "@react-three/fiber";
 const SCREEN_GROUP_POSITION: [number, number, number] = [-0.01, 3.1, -3.8];
 const HTML_SCALE = 0.11;
 const HTML_POSITION: [number, number, number] = [0, 0, 0];
-const FILTER_PLANE_POSITION: [number, number, number] = [0, 0, 0.01];
+const FILTER_PLANE_POSITION: [number, number, number] = [0, 0.01, 0.01];
 const FILTER_PLANE_SIZE: [number, number] = [4.4, 2.76];
 const FILTER_INITIAL_OPACITY = 0.02;
 const FADE_IN_DURATION = 4;
@@ -30,15 +30,9 @@ const meshBasicMaterialVariants = {
 
 export const TheaterModel = () => {
   const { scene } = useGLTF("/models/theater/theater.glb");
-  const { currentScreen } = useTheaterScreenStore();
-  const [isScreenTransitioning, setIsScreenTransitioning] = useState(false);
-  // currentScreen 변경 감지
-  useEffect(() => {
-    setIsScreenTransitioning(true);
-    setTimeout(() => {
-      setIsScreenTransitioning(false);
-    }, SCENE_TRANSITION_DURATION);
-  }, [currentScreen]);
+  const isScreenTransitioning = useTheaterScreenStore(
+    state => state.isScreenTransitioning
+  );
 
   const [showScreen] = useTheaterStore(useShallow(state => [state.showScreen]));
 
@@ -57,7 +51,7 @@ export const TheaterModel = () => {
       {showScreen && (
         <group position={SCREEN_GROUP_POSITION}>
           <Html position={HTML_POSITION} center transform scale={HTML_SCALE}>
-            {!isScreenTransitioning && <HtmlContentPage />}
+            <HtmlContentPage />
           </Html>
           <mesh position={FILTER_PLANE_POSITION} ref={filterRef}>
             <planeGeometry args={FILTER_PLANE_SIZE} />

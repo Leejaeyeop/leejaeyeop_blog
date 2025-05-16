@@ -109,7 +109,8 @@ const ExperienceSection = () => (
     id="experience"
     className="text-2xl 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center"
   >
-    <div className="2xl:w-[1536px] w-full">
+    {/* TODO: px값 별도 조정 해결 하기 */}
+    <div className="2xl:w-[1536px] w-full px-10">
       <h1
         className={`${courgette.className} font-extrabold text-9xl mb-16 break-words`}
       >
