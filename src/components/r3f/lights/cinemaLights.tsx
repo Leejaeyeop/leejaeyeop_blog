@@ -81,7 +81,7 @@ export const CinemaLights = () => {
         height={3}
         position={[0, 3, -4]}
         rotation={[0, -3.1, 0]}
-        color="#ffffff"
+        color="#ffebd6"
         castShadow
       />
     </>
