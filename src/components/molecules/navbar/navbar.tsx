@@ -1,5 +1,11 @@
 import { useTheaterScreenStore } from "@/store/useTheaterScreenStore";
-
+import { Playfair } from "next/font/google";
+const playfair = Playfair({
+  weight: ["800"],
+  style: ["italic"],
+  display: "swap",
+  subsets: ["latin"],
+});
 type NavItem = {
   id: "main" | "about" | "experience" | "contact";
   label: string;
@@ -17,7 +23,7 @@ const Navbar = ({ className }: { className?: string }) => {
 
   return (
     <ul
-      className={`flex w-full justify-center leading-10 gap-40 list-none text-4xl italic hover:cursor-pointer ${className}`}
+      className={`flex w-full justify-center leading-10 gap-40 list-none text-4xl italic hover:cursor-pointer ${className} ${playfair.className}`}
     >
       {navItems.map(item => (
         <li
