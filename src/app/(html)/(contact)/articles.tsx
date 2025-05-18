@@ -10,11 +10,11 @@ const ContactArticle = () => {
   return (
     <article className="h-full">
       <h1
-        className={`${courgette.className} font-extrabold text-9xl mb-16 break-words`}
+        className={`${courgette.className} font-extrabold text-9xl mb-4 break-words`}
       >
         Contact
       </h1>
-      <p className="text-2xl font-bold mb-8 break-words">
+      <p className="text-2xl font-bold mb-16 break-words">
         Please contact me if you have any questions or suggestions.
       </p>
       <div className="flex flex-col  justify-center items-center gap-32">
