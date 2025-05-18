@@ -1,5 +1,10 @@
 varying vec2 vUv;
 uniform float time;
+uniform float scratchSpeed;
+uniform float scratchThickness;
+uniform float spotSize;
+uniform float spotCount;
+uniform float scratchCount;
 
 float random(vec2 st) {
     return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
@@ -13,8 +18,7 @@ float spot(vec2 uv, vec2 center, float radius, float edge) {
 
 // 세로 스크래치 라인 함수
 float scratchLine(vec2 uv, float x, float width) {
-    float line = smoothstep(x - width, x, uv.x) - smoothstep(x, x + width, uv.x);
-    return line;
+    return smoothstep(x - width, x, uv.x) - smoothstep(x, x + width, uv.x);
 }
 
 void main() {
@@ -23,13 +27,15 @@ void main() {
     // spot: 더 작고, 더 많이, 각 spot이 나올 확률도 랜덤하게
     float burn = 0.0;
     for (int i = 0; i < 10; i++) {
+        if (float(i) >= spotCount) break;
+        
         float t = time * (0.15 + float(i) * 0.05);
         vec2 center = vec2(
             random(vec2(i, t)),
             random(vec2(i * 10, t + 10.0))
         );
-        float radius = 0.004 + 0.003 * random(vec2(i * 20, t + 20.0));
-        float edge = 0.002;
+        float radius = spotSize * (0.8 + 0.4 * random(vec2(i * 20, t + 20.0)));
+        float edge = radius * 0.5;
         float appear = step(0.85, random(vec2(i * 40, t + 40.0)));
         burn += spot(vUv, center, radius, edge) * appear * (0.3 + 0.3 * random(vec2(i * 30, t + 30.0)));
     }
@@ -37,9 +43,11 @@ void main() {
     // 랜덤 세로 스크래치 라인: 더 많이, 더 얇게, 산발적으로
     float scratch = 0.0;
     for (int i = 0; i < 12; i++) {
-        float t = time * (0.18 + float(i) * 0.07);
+        if (float(i) >= scratchCount) break;
+        
+        float t = time * scratchSpeed * (0.18 + float(i) * 0.07);
         float x = random(vec2(i * 100, t + 50.0));
-        float width = 0.001 + 0.001 * random(vec2(i * 200, t + 100.0));
+        float width = scratchThickness * (0.8 + 0.4 * random(vec2(i * 200, t + 100.0)));
         float appear = step(0.92, random(vec2(i * 300, t + 150.0)));
         scratch += scratchLine(vUv, x, width) * appear * (0.2 + 0.3 * random(vec2(i * 400, t + 200.0)));
     }

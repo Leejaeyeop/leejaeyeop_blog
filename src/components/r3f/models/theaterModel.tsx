@@ -21,12 +21,11 @@ interface FilmEffectProps {
 }
 
 const FilmEffect = React.memo<FilmEffectProps>(({ currentScreen }) => {
-  const filmEffectMaterialRef = useRef<THREE.ShaderMaterial>(null);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
 
   useFrame(state => {
-    if (filmEffectMaterialRef.current) {
-      filmEffectMaterialRef.current.uniforms.time.value =
-        state.clock.elapsedTime;
+    if (materialRef.current) {
+      materialRef.current.uniforms.time.value = state.clock.elapsedTime;
     }
   });
 
@@ -35,17 +34,16 @@ const FilmEffect = React.memo<FilmEffectProps>(({ currentScreen }) => {
   return (
     <mesh position={THEATER_CONSTANTS.FILTER_PLANE_POSITION}>
       <planeGeometry args={THEATER_CONSTANTS.FILTER_PLANE_SIZE} />
-      <motion.meshBasicMaterial
-        transparent
-        opacity={THEATER_CONSTANTS.FILTER_INITIAL_OPACITY}
-        depthTest={false}
-        initial="hidden"
-        animate="visible"
-        variants={meshBasicMaterialVariants}
-      />
       <shaderMaterial
-        ref={filmEffectMaterialRef}
-        uniforms={{ time: { value: 0 } }}
+        ref={materialRef}
+        uniforms={{
+          time: { value: 0 },
+          scratchSpeed: { value: 0.5 },
+          scratchThickness: { value: 0.002 },
+          spotSize: { value: 0.008 },
+          spotCount: { value: 10 },
+          scratchCount: { value: 12 },
+        }}
         vertexShader={vertexShader}
         fragmentShader={filmEffectFragmentShader}
         transparent
@@ -67,7 +65,7 @@ const NoiseShader = React.memo<NoiseShaderProps>(
   ({ isScreenTransitioning }) => {
     const materialRef = useRef<THREE.ShaderMaterial>(null);
 
-    useFrame((state, delta) => {
+    useFrame(state => {
       if (materialRef.current) {
         materialRef.current.uniforms.time.value = state.clock.elapsedTime;
       }
@@ -99,7 +97,6 @@ export const TheaterModel: React.FC = () => {
   const [showScreen] = useTheaterStore(useShallow(state => [state.showScreen]));
 
   const sceneRef = useRef<THREE.Object3D>(null);
-  const filterRef = useRef<THREE.Mesh>(null);
 
   return (
     <primitive object={scene} scale={1} position={[0, 0, 0]} ref={sceneRef}>
@@ -113,10 +110,7 @@ export const TheaterModel: React.FC = () => {
           >
             <HtmlContentPage />
           </Html>
-          <mesh
-            position={THEATER_CONSTANTS.FILTER_PLANE_POSITION}
-            ref={filterRef}
-          >
+          <mesh position={THEATER_CONSTANTS.FILTER_PLANE_POSITION}>
             <planeGeometry args={THEATER_CONSTANTS.FILTER_PLANE_SIZE} />
             <motion.meshBasicMaterial
               transparent
