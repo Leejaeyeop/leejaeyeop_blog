@@ -19,7 +19,7 @@ function SubmitButton() {
       disabled={pending}
       className="text-2xl w-32 h-12 font-semibold bg-white text-black rounded-md flex items-center justify-center disabled:opacity-50"
     >
-      {pending ? "sending..." : "submit"}
+      {pending ? "Sending..." : "Send"}
     </button>
   );
 }
