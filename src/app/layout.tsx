@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "이재엽 - 성장에 목마른 개발자",
-  description: "이재엽 포트폴리오",
+  description: "이재엽 프론트엔드 개발자 포트폴리오",
   icons: {
     icon: "/favicon.svg",
   },

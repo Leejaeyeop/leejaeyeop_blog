@@ -1,6 +1,5 @@
 "use client";
 import { useRef } from "react";
-import "./style.css";
 import { Playfair } from "next/font/google";
 import Navbar from "@/components/molecules/navbar/navbar";
 
