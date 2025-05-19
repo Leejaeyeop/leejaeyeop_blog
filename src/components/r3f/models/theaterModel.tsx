@@ -17,25 +17,15 @@ import {
 import React from "react";
 
 interface FilmEffectProps {
-  currentScreen: string;
+  FilmEffectMaterialRef: React.RefObject<THREE.ShaderMaterial>;
 }
 
-const FilmEffect = React.memo<FilmEffectProps>(({ currentScreen }) => {
-  const materialRef = useRef<THREE.ShaderMaterial>(null);
-
-  useFrame(state => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.time.value = state.clock.elapsedTime;
-    }
-  });
-
-  if (currentScreen !== "main") return null;
-
+const FilmEffect = React.memo<FilmEffectProps>(({ FilmEffectMaterialRef }) => {
   return (
     <mesh position={THEATER_CONSTANTS.FILTER_PLANE_POSITION}>
       <planeGeometry args={THEATER_CONSTANTS.FILTER_PLANE_SIZE} />
       <shaderMaterial
-        ref={materialRef}
+        ref={FilmEffectMaterialRef}
         uniforms={{
           time: { value: 0 },
           scratchSpeed: { value: 0.5 },
@@ -93,11 +83,27 @@ export const TheaterModel: React.FC = () => {
   const isScreenTransitioning = useTheaterScreenStore(
     state => state.isScreenTransitioning
   );
-  const currentScreen = useTheaterScreenStore(state => state.currentScreen);
   const [showScreen] = useTheaterStore(useShallow(state => [state.showScreen]));
-
+  const currentScreen = useTheaterScreenStore(state => state.currentScreen);
   const sceneRef = useRef<THREE.Object3D>(null);
+  const FilmEffectMaterialRef = useRef<THREE.ShaderMaterial>(null);
 
+  useFrame(state => {
+    if (FilmEffectMaterialRef.current) {
+      FilmEffectMaterialRef.current.uniforms.time.value =
+        state.clock.elapsedTime;
+
+      if (currentScreen === "main") {
+        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.002;
+        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.008;
+        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 12;
+      } else {
+        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.001;
+        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.004;
+        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 10;
+      }
+    }
+  });
   return (
     <primitive object={scene} scale={1} position={[0, 0, 0]} ref={sceneRef}>
       {showScreen && (
@@ -122,7 +128,7 @@ export const TheaterModel: React.FC = () => {
             />
             <NoiseShader isScreenTransitioning={isScreenTransitioning} />
           </mesh>
-          <FilmEffect currentScreen={currentScreen} />
+          <FilmEffect FilmEffectMaterialRef={FilmEffectMaterialRef} />
         </group>
       )}
     </primitive>
