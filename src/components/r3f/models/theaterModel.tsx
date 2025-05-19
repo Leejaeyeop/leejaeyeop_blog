@@ -94,11 +94,13 @@ export const TheaterModel: React.FC = () => {
         state.clock.elapsedTime;
 
       if (currentScreen === "main") {
-        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.002;
-        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.008;
+        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.0015;
+        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.006;
+        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 12;
       } else {
         FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.001;
         FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.004;
+        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 10;
       }
     }
   });
