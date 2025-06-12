@@ -1,20 +1,22 @@
 "use client";
 
 import DraggableContainer from "@/components/molecules/DraggableImage";
-import { useEffect, useState, useCallback, useMemo, createRef } from "react";
+import { useState, useCallback, useMemo, createRef } from "react";
+import { Courgette } from "next/font/google";
+import { throttle } from "lodash";
+import { Separator } from "@/components/atom/separator";
+
 import {
   ImqaArticle,
   DalgonaArticle,
   AsianArticle,
   BareunArticle,
-  ReactProgressBarArticle,
   FairyTaleArticle,
+  ReactProgressBarArticle,
   PortfolioArticle,
+  Props,
+  TsGuardArticle,
 } from "./articles";
-import { Courgette } from "next/font/google";
-import { throttle } from "lodash";
-import { Separator } from "@/components/atom/separator";
-import { Props } from "./articles";
 
 const courgette = Courgette({
   weight: ["400"],
@@ -99,8 +101,18 @@ const WorkSection = () => (
 
 const PersonalSection = () => (
   <CommonSection
-    articles={[FairyTaleArticle, ReactProgressBarArticle, PortfolioArticle]}
-    imageSrcs={["fairyTale.webp", "reactProgressBar.webp", "portfolio.webp"]}
+    articles={[
+      TsGuardArticle,
+      FairyTaleArticle,
+      ReactProgressBarArticle,
+      PortfolioArticle,
+    ]}
+    imageSrcs={[
+      "tsguard.webp",
+      "fairyTale.webp",
+      "reactProgressBar.webp",
+      "portfolio.webp",
+    ]}
   />
 );
 
