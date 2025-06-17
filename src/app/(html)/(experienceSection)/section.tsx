@@ -48,12 +48,19 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
   // }, [currentSection, sectionRefs]);
 
   // Throttled section update
-  const updateCurrentSection = useCallback(
-    throttle((index: number) => setCurrentSection(index), 300, {
-      leading: true,
-      trailing: false,
-    }),
-    []
+  const updateCurrentSection = useMemo(
+    () =>
+      throttle(
+        (index: number) => {
+          setCurrentSection(index);
+        },
+        10,
+        {
+          leading: true,
+          trailing: false,
+        }
+      ),
+    [setCurrentSection]
   );
 
   return (
@@ -66,7 +73,7 @@ const CommonSection = ({ articles, imageSrcs }: CommonSectionProps) => {
       />
 
       {/* Articles */}
-      <div className="flex flex-col w-full lg:w-[calc(100%-360px)]">
+      <div className="flex flex-col gap-[70vh] w-full lg:w-[calc(100%-360px)] mb-[65vh]">
         {articles.map((Article, index) => (
           <div ref={sectionRefs[index]} key={index}>
             <Article

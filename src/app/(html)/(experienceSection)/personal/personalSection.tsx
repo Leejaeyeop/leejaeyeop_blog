@@ -37,7 +37,7 @@ const TsGuardArticle = (props: Props) => {
             형식의 웹 제작
           </li>
           <li>
-            serverless 서비스인 convex 를 사용해 간단한게 백엔드 및 db 기능 구현
+            serverless 서비스인 convex 를 사용해 간단하게 백엔드 및 db 기능 구현
           </li>
           <li>
             퀴즈 문제를 db에 업로드해 퀴즈 데이터만 업로드시 매번 next.js 를
@@ -46,7 +46,7 @@ const TsGuardArticle = (props: Props) => {
           <li>
             페이지 방문 및 새로고침시 정적인 퀴즈 데이터를 매번 GET 호출해야
             하는 비효율성을 개선하기 위해 next.js revalidate(isr)로 페이지 캐싱
-            및 문제 업로드시 강제 page revalidate로 캐싱 초기화 (ci/cd pipeline
+            및 문제 업로드시 on demand revalidate로 캐싱 초기화 (ci/cd pipeline
             적용)
           </li>
         </>

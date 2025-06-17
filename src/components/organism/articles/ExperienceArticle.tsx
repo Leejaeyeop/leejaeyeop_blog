@@ -40,7 +40,7 @@ const ExperienceArticle = ({
   // 애니메이션 제어와 뷰 감지 훅 초기화
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0.15, // 스크롤 영역에 10% 들어왔을 때 감지
+    threshold: 0,
     triggerOnce: false, // 한번만 애니메이션 실행
   });
   // 요소가 화면에 들어왔을 때 애니메이션 시작
@@ -52,13 +52,11 @@ const ExperienceArticle = ({
     } else {
       // controls.start({ opacity: 0.3 });
     }
-  }, [controls, inView]);
+  }, [controls, currentSection, idx, inView, setCursection]);
 
   return (
     <motion.div
-      className={
-        NotoSansKorean.className + " pt-[10vh] pb-[65vh] flex flex-col gap-7"
-      }
+      className={NotoSansKorean.className + " pt-[10vh] flex flex-col gap-7"}
       ref={ref}
       animate={controls}
       initial={{ opacity: 1 }}
