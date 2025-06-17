@@ -4,19 +4,17 @@ import { useEffect, useRef } from "react";
 import { useShallow } from "zustand/shallow";
 import useTouchScroll from "@/features/scene/hooks/useTouchScroll";
 import { useTheaterScreenStore } from "@/store/useTheaterScreenStore";
-import FirstSection from "./(firstSection)/section";
+import FirstSection from "./(main)/section";
 import { withScreenLoaded } from "@/hoc/withScreenLoaded";
 
-const AboutSection = dynamic(() =>
-  import("./(aboutSection)/section").then(mod => withScreenLoaded(mod.default))
+const AboutScreen = dynamic(() =>
+  import("./(about)/section").then(mod => withScreenLoaded(mod.default))
 );
-const ExperienceSection = dynamic(() =>
-  import("./(experienceSection)/section").then(mod =>
-    withScreenLoaded(mod.default)
-  )
+const ExperienceScreen = dynamic(() =>
+  import("./(experience)/section").then(mod => withScreenLoaded(mod.default))
 );
-const ContactArticle = dynamic(() =>
-  import("./(contact)/articles").then(mod => withScreenLoaded(mod.default))
+const ContactScreen = dynamic(() =>
+  import("./(contact)/section").then(mod => withScreenLoaded(mod.default))
 );
 const Footer = dynamic(() =>
   import("@/components/molecules/footer/Footer").then(mod =>
@@ -110,9 +108,9 @@ export const HtmlContentPage = () => {
         }`}
       >
         {currentScreen === "main" && <FirstSection />}
-        {currentScreen === "about" && <AboutSection />}
-        {currentScreen === "experience" && <ExperienceSection />}
-        {currentScreen === "contact" && <ContactArticle />}
+        {currentScreen === "about" && <AboutScreen />}
+        {currentScreen === "experience" && <ExperienceScreen />}
+        {currentScreen === "contact" && <ContactScreen />}
       </main>
       {currentScreen !== "main" && <Footer />}
     </div>

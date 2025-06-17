@@ -45,7 +45,7 @@ const FrontendInfoArticle = () => {
         direction="left"
       >
         <p className="opacity-80">
-          디자인 팀과의 협업을 통해 Atomic 디자인 시스템 도입 제안
+          디자인 팀과의 협업을 통해 Atomic 디자인 시스템 도입을 제안
           했습니다.일관된 UI를 유지하기 위해, 컴포넌트 기반의 디자인 시스템을
           구축했습니다. 색상, 타이포그래피, 버튼, 입력 필드 등 기본 UI 요소들을
           재사용 가능한 컴포넌트로 구성하여, 개발자와 디자이너 간의 협업을
@@ -60,7 +60,7 @@ const FrontendInfoArticle = () => {
         direction="right"
       >
         <p className="opacity-80">
-          Compound Component Pattern을 활용한 Headless UI 컴포넌트 설계를 경험
+          Compound Component Pattern을 활용한 확장성 있는 컴포넌트 설계를 경험
           했습니다. 컴포넌트 재사용성을 고려하여, 공통적으로 사용되는 UI
           요소들은 모두 개별적으로 개발하여 재사용할 수 있도록 했습니다. 각
           컴포넌트는 독립적이고 테스트 가능하도록 설계하여, 코드 품질을
@@ -74,10 +74,10 @@ const FrontendInfoArticle = () => {
         direction="left"
       >
         <p className="opacity-80">
-          대시보드와 같은 데이터 시각화 요소를 효율적으로 구현하기 위해,
-          D3.js등의 라이브러리를 사용해 동적인 차트와 그래프를 제작했습니다.
-          데이터를 시각적으로 효과적으로 표현하기 위해 사용자 인터랙션을 고려한
-          다양한 시각적 요소를 추가했습니다.
+          대시보드와 같은 데이터 시각화 요소를 효율적으로 구현하기 위해, D3.js
+          와 Chart.js 등의 라이브러리를 사용해 동적인 차트와 그래프를
+          제작했습니다. 데이터를 시각적으로 효과적으로 표현하기 위해 사용자
+          인터랙션을 고려한 다양한 시각적 요소를 추가했습니다.
         </p>
       </FrontendInfoSection>
     </article>

@@ -4,13 +4,13 @@ import {
   BareunArticle,
   DalgonaArticle,
   ImqaArticle,
-} from "./work/workSection";
+} from "./work/workArticles";
 import {
   FairyTaleArticle,
   PortfolioArticle,
   ReactProgressBarArticle,
   TsGuardArticle,
-} from "./personal/personalSection";
+} from "./personal/personalArticles";
 
 export type Props = Pick<
   ExperienceArticleProps,

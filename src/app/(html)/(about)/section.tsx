@@ -63,7 +63,7 @@ const AboutSection = () => {
       id="about"
       className="flex relative 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-center"
     >
-      <section className="w-full text-2xl ">
+      <div className="w-full text-2xl ">
         <h1
           className={
             courgette.className + " font-extrabold text-9xl mb-40 w-[60%]"
@@ -132,7 +132,7 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 };

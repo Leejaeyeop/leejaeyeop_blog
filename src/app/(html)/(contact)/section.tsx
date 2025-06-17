@@ -1,34 +1,19 @@
 import { Courgette } from "next/font/google";
 import Image from "next/image";
 import { useFormState } from "react-dom";
-import { useFormStatus } from "react-dom";
 import { submitForm } from "./actions";
-import { useRef } from "react";
+import SubmitButton from "@/components/molecules/button/SubmitButton";
 
 const courgette = Courgette({
   weight: ["400"],
   subsets: ["latin"],
 });
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="text-2xl w-32 h-12 font-semibold bg-white text-black rounded-md flex items-center justify-center disabled:opacity-50"
-    >
-      {pending ? "Sending..." : "Send"}
-    </button>
-  );
-}
-
-const ContactArticle = () => {
+const ContactSection = () => {
   const [state, formAction] = useFormState(submitForm, null);
 
   return (
-    <article className={"h-full"}>
+    <section className={"h-full"}>
       {/* header */}
       <header className="w-full mb-12">
         <div>
@@ -146,8 +131,8 @@ const ContactArticle = () => {
           <SubmitButton />
         </form>
       </section>
-    </article>
+    </section>
   );
 };
 
-export default ContactArticle;
+export default ContactSection;
