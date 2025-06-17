@@ -1,14 +1,28 @@
-import HeaderComponent from "@/components/molecules/footer/Footer";
+import dynamic from "next/dynamic";
 import { useTheaterStore } from "@/store/useTheaterStore";
 import { useEffect, useRef } from "react";
 import { useShallow } from "zustand/shallow";
-import AboutSection from "./(aboutSection)/section";
-import ExperienceSection from "./(experienceSection)/section";
-import FirstSection from "./(firstSection)/section";
 import useTouchScroll from "@/features/scene/hooks/useTouchScroll";
 import { useTheaterScreenStore } from "@/store/useTheaterScreenStore";
-import ContactArticle from "./(contact)/articles";
-import Footer from "@/components/molecules/footer/Footer";
+import FirstSection from "./(firstSection)/section";
+import { withScreenLoaded } from "@/hoc/withScreenLoaded";
+
+const AboutSection = dynamic(() =>
+  import("./(aboutSection)/section").then(mod => withScreenLoaded(mod.default))
+);
+const ExperienceSection = dynamic(() =>
+  import("./(experienceSection)/section").then(mod =>
+    withScreenLoaded(mod.default)
+  )
+);
+const ContactArticle = dynamic(() =>
+  import("./(contact)/articles").then(mod => withScreenLoaded(mod.default))
+);
+const Footer = dynamic(() =>
+  import("@/components/molecules/footer/Footer").then(mod =>
+    withScreenLoaded(mod.default)
+  )
+);
 
 export const HtmlContentPage = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
