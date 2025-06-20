@@ -13,6 +13,8 @@ export const CameraTransition = () => {
     cameraTarget,
     cameraTranstionSpeed,
     setCameraTranstionSpeed,
+    cameraTargetsQueue,
+    advanceToNextTarget,
   ] = useTheaterStore(
     useShallow(state => [
       state.cameraPosition,
@@ -21,6 +23,8 @@ export const CameraTransition = () => {
       state.cameraTarget,
       state.cameraTranstionSpeed,
       state.setCameraTranstionSpeed,
+      state.cameraTargetsQueue,
+      state.advanceToNextTarget,
     ])
   );
 
@@ -41,6 +45,12 @@ export const CameraTransition = () => {
 
     // 종료
     if (distance < 0.01 && angleDiff < 0.01) {
+      // 다음 카메라 큐가 있다.
+      if (cameraTargetsQueue.length > 0) {
+        advanceToNextTarget();
+        return;
+      }
+
       setIsCameraTransitioning(false);
       if (cameraTarget !== "projector") {
         setShowScreen(true);

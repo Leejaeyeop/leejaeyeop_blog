@@ -1,5 +1,5 @@
 import { CAMERA_TARGETS } from "@/constants/cameraPosition";
-import { Euler, Quaternion, Vector3 } from "three";
+import { Quaternion, Vector3 } from "three";
 import { create } from "zustand";
 
 type TheaterState = {
@@ -16,15 +16,22 @@ type TheaterState = {
   setShowScreen: (value: boolean) => void;
 
   cameraPosition: { targetPosition: Vector3; targetQuaternion: Quaternion };
-  cameraTarget: "projector" | "seat" | "screen";
-  setCameraTarget: (target: "projector" | "seat" | "screen") => void;
+  cameraTarget: keyof typeof CAMERA_TARGETS;
+  setCameraTarget: (target: keyof typeof CAMERA_TARGETS) => void;
+  // 복수의 target
+  cameraTargetsQueue: (keyof typeof CAMERA_TARGETS)[];
+  cameraTargetsQueueIdx: number;
+
+  setCameraTargetsQueue: (target: (keyof typeof CAMERA_TARGETS)[]) => void;
+  // 다음 camera target으로 이동
+  advanceToNextTarget: () => void;
   isCameraTransitioning: boolean;
   setIsCameraTransitioning: (value: boolean) => void;
   cameraTranstionSpeed: number;
   setCameraTranstionSpeed: (value: number) => void;
 };
 
-export const useTheaterStore = create<TheaterState>(set => ({
+export const useTheaterStore = create<TheaterState>((set, get) => ({
   isProjectorOn: false,
   setIsProjectorOn: value => set({ isProjectorOn: value }),
 
@@ -55,6 +62,16 @@ export const useTheaterStore = create<TheaterState>(set => ({
           },
         });
         break;
+      case "ceiling":
+        set({
+          cameraPosition: {
+            targetPosition: CAMERA_TARGETS.ceiling.position,
+            targetQuaternion: new Quaternion().setFromEuler(
+              CAMERA_TARGETS.ceiling.rotation
+            ),
+          },
+        });
+        break;
       case "seat":
         set({
           cameraPosition: {
@@ -80,7 +97,33 @@ export const useTheaterStore = create<TheaterState>(set => ({
   isCameraTransitioning: false,
   setIsCameraTransitioning: value => set({ isCameraTransitioning: value }),
 
-  cameraTranstionSpeed: 0.03,
+  cameraTargetsQueue: [],
+  cameraTargetsQueueIdx: 0,
+  setCameraTargetsQueue: target => {
+    set({ cameraTargetsQueue: target });
+
+    if (target.length === 0) return;
+
+    const { advanceToNextTarget } = get();
+    set({ cameraTargetsQueueIdx: 0 });
+    advanceToNextTarget();
+  },
+  advanceToNextTarget: () => {
+    const { cameraTargetsQueue, cameraTargetsQueueIdx, setCameraTarget } =
+      get();
+    const curCameraTarget = cameraTargetsQueue[cameraTargetsQueueIdx];
+    if (!curCameraTarget) {
+      set({ cameraTargetsQueue: [], cameraTargetsQueueIdx: 0 });
+      return;
+    }
+
+    setCameraTarget(curCameraTarget);
+    set({
+      cameraTargetsQueueIdx: cameraTargetsQueueIdx + 1,
+    });
+  },
+
+  cameraTranstionSpeed: 0.04,
   setCameraTranstionSpeed: (value: number) =>
     set({ cameraTranstionSpeed: value }),
 }));

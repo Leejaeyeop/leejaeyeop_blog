@@ -27,13 +27,14 @@ export const ProjectorModel = () => {
   const { scene, animations } = useGLTF("/models/theater/projector.glb");
   const projectRef = useRef<THREE.Object3D>(null);
 
-  const [isProjectorOn, setIsProjectorOn, setCameraTarget] = useTheaterStore(
-    useShallow(state => [
-      state.isProjectorOn,
-      state.setIsProjectorOn,
-      state.setCameraTarget,
-    ])
-  );
+  const [isProjectorOn, setIsProjectorOn, setCameraTargetsQueue] =
+    useTheaterStore(
+      useShallow(state => [
+        state.isProjectorOn,
+        state.setIsProjectorOn,
+        state.setCameraTargetsQueue,
+      ])
+    );
 
   const { actions, names } = useAnimations(animations, projectRef);
 
@@ -45,7 +46,7 @@ export const ProjectorModel = () => {
     if (isProjectorOn) return;
     setIsProjectorOn(true);
     playProjectAnimation();
-    setTimeout(() => setCameraTarget("seat"), CAMERA_TARGET_DELAY);
+    setTimeout(() => setCameraTargetsQueue(["seat"]), CAMERA_TARGET_DELAY);
   };
 
   const handlePointerOver = () => {
