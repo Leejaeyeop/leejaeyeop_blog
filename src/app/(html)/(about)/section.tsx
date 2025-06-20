@@ -93,7 +93,7 @@ const AboutSection = () => {
                 }}
               >
                 <motion.div
-                  className={`flex gap-5 w-[${WIDTH_IMAGE_SET}px]  p-5`}
+                  className={`flex gap-[20px] w-[${WIDTH_IMAGE_SET}px] p-[20px]`}
                   animate={{
                     x: [0, "-100%", "100%", 0],
                   }}
@@ -111,7 +111,7 @@ const AboutSection = () => {
                   <ImageSet />
                 </motion.div>
                 <motion.div
-                  className={`flex gap-5 p-5`}
+                  className={`flex gap-[20px] p-[20px]`}
                   animate={{
                     x: [0, "-100%", "-200%"],
                   }}
