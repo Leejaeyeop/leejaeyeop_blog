@@ -123,7 +123,7 @@ export const useTheaterStore = create<TheaterState>((set, get) => ({
     });
   },
 
-  cameraTranstionSpeed: 0.04,
+  cameraTranstionSpeed: 0.03,
   setCameraTranstionSpeed: (value: number) =>
     set({ cameraTranstionSpeed: value }),
 }));
