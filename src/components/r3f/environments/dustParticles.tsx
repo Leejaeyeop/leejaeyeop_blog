@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { Group, Vector3 } from "three";
 
-const PARTICLE_COUNT = 30;
+const PARTICLE_COUNT = 25;
 const POSITION_RANGE_X = 4;
 const POSITION_RANGE_Y = 4;
 const POSITION_RANGE_Z = 2;
