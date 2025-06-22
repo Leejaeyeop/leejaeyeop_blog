@@ -15,16 +15,24 @@ import { TheaterModel } from "@/components/r3f/models/theaterModel";
 import { ProjectorModel } from "@/components/r3f/models/projectorModel";
 import { DustParticles } from "@/components/r3f/environments/dustParticles";
 import { Effect } from "@/components/r3f/environments/effect";
+import { PopcornBoxModel } from "@/components/r3f/models/popcornBoxModel";
 
 export default function TheaterCanvas() {
-  const [isProjectorOn, isCameraTransitioning, isScreenHovering] =
-    useTheaterStore(
-      useShallow(state => [
-        state.isProjectorOn,
-        state.isCameraTransitioning,
-        state.isScreenHovering,
-      ])
-    );
+  const [
+    isProjectorOn,
+    isCameraTransitioning,
+    isScreenHovering,
+    cameraTarget,
+    showScreen,
+  ] = useTheaterStore(
+    useShallow(state => [
+      state.isProjectorOn,
+      state.isCameraTransitioning,
+      state.isScreenHovering,
+      state.cameraTarget,
+      state.showScreen,
+    ])
+  );
   return (
     <div className="w-screen h-screen bg-black">
       <LoaderOverlay /> {/* 여기! 로딩 상태에 따라 표시됨 */}
@@ -43,6 +51,9 @@ export default function TheaterCanvas() {
         </Suspense>
         <Suspense fallback={null}>
           <ProjectorModel />
+        </Suspense>
+        <Suspense fallback={null}>
+          <PopcornBoxModel visible={cameraTarget === "seat" && showScreen} />
         </Suspense>
         <Effect />
         {/* TODO screen hover시 disabled */}
