@@ -32,10 +32,10 @@ const FrontendInfoArticle = () => {
         direction="right"
       >
         <p className="opacity-80">
-          프론트엔드 성능 모니터링 솔루션 IMQA 개발에 참여 했습니다. Web Vital을
-          포함한 프론트엔드 성능과 최적화에 대한 이해도를 보유 하고 있습니다. 이
-          경험을 기반으로 페이지 로딩 시간 단축 및 렌더링 최적화를 위해 lazy
-          loading, 코드 스플리팅, 이미지 최적화 등을 활용했습니다.
+          프론트엔드 Observability 서비스인 IMQA 개발에 참여 했습니다. Web
+          Vital을 포함한 프론트엔드 성능과 최적화에 대한 이해도를 보유 하고
+          있습니다. 이 경험을 기반으로 페이지 로딩 시간 단축 및 렌더링 최적화를
+          위해 lazy loading, 코드 스플리팅, 이미지 최적화 등을 활용했습니다.
         </p>
       </FrontendInfoSection>
       {/* 디자인 시스템 */}
@@ -127,7 +127,7 @@ const PersonalInfoArticle = () => {
           <p>
             어느날 지인과 운동을 하다가 운동 기록을 남길 수 있는 앱이 있으면
             좋겠다는 이야기를 나눴고, 직접 필요한 앱을 만들어 보기로
-            결심했습니다. 독학으로 Flutter를 배우며 첫 모바일 앱을 개발
+            결심했습니다. 그 후 밤낮을 공부하며 스스로의 힘으로 앱을 개발
             하였고,지인이 이를 잘 활용하는 모습을 보고 큰 만족감을 느꼈습니다.
             이 경험을 계기로 개발의 매력에 빠져 개발자의 길을 걷게 되었습니다.
           </p>
@@ -144,6 +144,25 @@ const PersonalInfoArticle = () => {
             NotoSansKorean.className + " mt-20 flex flex-col gap-20 leading-9"
           }
         >
+          <div>
+            <p className={courgette.className + " text-4xl font-extrabold"}>
+              Q. 프론트엔드 개발자의 길을 걷게 된 이유
+            </p>
+            <p className="mt-5">
+              저는 사용자 중심의 시각을 가진 개발자가 되고 싶습니다. 무언가를 더
+              쉽고 편리하게 만들고, 사용자가 그 경험을 통해 만족하는 모습을
+              상상하면 가장 큰 보람을 느낍니다.
+              <br /> <br />
+              프론트엔드 개발은 사용자와 가장 가까운 곳에서 소통하는 일이라고
+              생각합니다. 때로는 복잡한 시스템의 구조나 흐름을 사용자가
+              자연스럽게 이해할 수 있도록 돕는 통역사 같은 역할도 한다고
+              느낍니다.
+              <br /> <br />
+              이처럼 사용자와 직접 맞닿아 있고, 서비스를 ‘보이게’ 만들고,
+              ‘이해하게’ 만드는 과정 자체가 즐거워서, 프론트엔드 개발자의 길을
+              선택하게 되었습니다.
+            </p>
+          </div>
           <div>
             <p className={courgette.className + " text-4xl font-extrabold"}>
               Q. 성장에 목마른 이유
