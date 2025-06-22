@@ -15,6 +15,7 @@ import { TheaterModel } from "@/components/r3f/models/theaterModel";
 import { ProjectorModel } from "@/components/r3f/models/projectorModel";
 import { DustParticles } from "@/components/r3f/environments/dustParticles";
 import { Effect } from "@/components/r3f/environments/effect";
+import { PopcornBoxModel } from "@/components/r3f/models/popcornBoxModel";
 
 export default function TheaterCanvas() {
   const [isProjectorOn, isCameraTransitioning, isScreenHovering] =
@@ -43,6 +44,9 @@ export default function TheaterCanvas() {
         </Suspense>
         <Suspense fallback={null}>
           <ProjectorModel />
+        </Suspense>
+        <Suspense fallback={null}>
+          <PopcornBoxModel />
         </Suspense>
         <Effect />
         {/* TODO screen hover시 disabled */}
