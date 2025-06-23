@@ -10,6 +10,7 @@ const POPCORNBOX_SCALE = 0.5;
 interface PopcornInstance {
   ref: React.RefObject<THREE.Object3D>;
   initialPosition: THREE.Vector3;
+  initialRotation: THREE.Euler;
 }
 
 interface PopcornBoxModelProps {
@@ -28,11 +29,11 @@ export const PopcornBoxModel = ({ visible }: PopcornBoxModelProps) => {
   const popcorns = useMemo(() => {
     const arr: PopcornInstance[] = [];
     const ROW = 4;
-    const COL = 4;
+    const COL = 5;
     const HEIGHT = 2;
 
-    const SPACING = 0.045;
-    const RANDOMNESS = 0.015;
+    const SPACING = 0.04;
+    const RANDOMNESS = 0.01;
     const BASE_Y = 0.17;
 
     for (let y = 0; y < HEIGHT; y++) {
@@ -48,9 +49,16 @@ export const PopcornBoxModel = ({ visible }: PopcornBoxModelProps) => {
             (z - (COL - 1) / 2) * SPACING + offsetZ
           );
 
+          const initialRotation = new THREE.Euler(
+            Math.random() * Math.PI * 2,
+            Math.random() * Math.PI * 2,
+            Math.random() * Math.PI * 2
+          );
+
           arr.push({
             ref: React.createRef<THREE.Object3D>(),
             initialPosition,
+            initialRotation,
           });
         }
       }
@@ -64,9 +72,11 @@ export const PopcornBoxModel = ({ visible }: PopcornBoxModelProps) => {
 
   // 초기 위치 설정 및 박스에 종속
   useEffect(() => {
-    popcorns.forEach(({ ref, initialPosition }) => {
+    popcorns.forEach(({ ref, initialPosition, initialRotation }) => {
       if (ref.current) {
         ref.current.position.copy(initialPosition);
+        ref.current.rotation.copy(initialRotation);
+
         popcornBoxRef.current?.add(ref.current);
       }
     });
