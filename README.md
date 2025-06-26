@@ -21,23 +21,11 @@ React Three Fiber와 Three.js를 기반으로 제작된 3D 인터랙티브 포�
 1. install Dependencies:
 
 ```bash
-npm install
-# or
-yarn install
-# or
 pnpm install
-# or
-bun install
 ```
 
 2. Run the Next.js Development Server
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
