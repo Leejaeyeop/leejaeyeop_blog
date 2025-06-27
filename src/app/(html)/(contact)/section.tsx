@@ -65,7 +65,7 @@ const ContactSection = () => {
             href="https://ljy1011.tistory.com/"
             target="_blank"
           >
-            <h1 className="text-4xl font-bold inline align-middle">
+            <h1 className="text-4xl font-bold inline align-middle mr-2">
               Tech Blog
             </h1>
             <svg
