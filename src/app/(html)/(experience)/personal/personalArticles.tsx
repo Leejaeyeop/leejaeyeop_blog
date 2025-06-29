@@ -218,15 +218,8 @@ const PortfolioArticle = (props: Props) => {
           <li>
             3D 에니메이션과 컴포넌트를 활용해 나 자신을 잘 드러내고자 제작
           </li>
-          <li>
-            <a
-              className="text-blue-500"
-              href="https://ljy1011.tistory.com/224"
-              target="_blank"
-            >
-              포트폴리오 제작 과정 블로그 포스팅
-            </a>
-          </li>
+          <li>직접 Blender 를 활용해 3D 모델 커스터마이징</li>
+          <li>webGL의 glsl 쉐이더를 통해 각종 effect 구현</li>
         </>
       }
     ></Article>
