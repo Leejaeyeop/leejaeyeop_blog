@@ -75,6 +75,46 @@ const TsGuardArticle = (props: Props) => {
   );
 };
 
+const AutoCompleteNewTabSearchArticle = (props: Props) => {
+  return (
+    <Article
+      {...props}
+      title={"Chrome 확장 프로그램 Google/Youtube 자동완성 새 탭 검색"}
+      subtitle={
+        <a
+          className="text-blue-500"
+          href="https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab"
+          target="_blank"
+        >
+          https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab
+        </a>
+      }
+      skills={"Typescript / Vite / Chrome Extensions API"}
+      contribution={"프로젝트 전체 기여도 - 100%"}
+      content={
+        <>
+          <li>
+            Google과 Youtube 검색 중 복수의 자동검색어 결과를 새 탭으로 띄워주는
+            기능의 필요성을 직접 느껴 구현 후 배포
+          </li>
+          <li>
+            a tag가 아니여서, 우클릭을 통한 새 탭 이동이 불가능한 자동검색어
+            element에 새탭 이동 기능을 추가
+          </li>
+          <li>
+            Chrome Extensions API를 사용해 Google 검색 페이지와 Youtube
+            페이지에서 동작하는 DOM 조작 컨텐츠 스크립트 삽입
+          </li>
+          <li>
+            Vite 빌드 툴로 개발 서버 구성(HMR 기능 탑재) 및 코드 번들링 작업으로
+            프로덕션을 위해 최적화된 정적 에셋을 출력
+          </li>
+        </>
+      }
+    ></Article>
+  );
+};
+
 const FairyTaleArticle = (props: Props) => {
   return (
     <Article
@@ -163,13 +203,18 @@ const ReactProgressBarArticle = (props: Props) => {
           </a>
         </>
       }
-      skills={"React.js / Storybook"}
+      skills={"React.js / Rollup / Storybook"}
       contribution={"프로젝트 전체 기여도 - 100% / 프론트엔드 기여도 - 100 %"}
       content={
         <>
           <li>
-            React.js로 컴포넌트 라이브러리를 만들어 npm 을 통해 배포 하기 위해
-            제작
+            업무 중, 타 라이브러리에서 제공하지 않는 퍼센트 구분 UI가 필요한
+            Progress Bar 컴포넌트가 필요했던 경험이 있습니다. 이에 직접
+            컴포넌트를 개발하였고, 재사용성과 공유를 위해 npm 패키지로 배포.
+          </li>
+          <li>
+            React로 컴포넌트 구현 / Storybook을 통한 테스트 / Rollup를 통해
+            번들링 후 npm 배포
           </li>
           <li>
             <a
@@ -228,6 +273,7 @@ const PortfolioArticle = (props: Props) => {
 
 export {
   TsGuardArticle,
+  AutoCompleteNewTabSearchArticle,
   FairyTaleArticle,
   ReactProgressBarArticle,
   PortfolioArticle,

@@ -10,6 +10,7 @@ import {
   PortfolioArticle,
   ReactProgressBarArticle,
   TsGuardArticle,
+  AutoCompleteNewTabSearchArticle,
 } from "./personal/personalArticles";
 
 export type Props = Pick<
@@ -26,4 +27,5 @@ export {
   FairyTaleArticle,
   ReactProgressBarArticle,
   PortfolioArticle,
+  AutoCompleteNewTabSearchArticle,
 };

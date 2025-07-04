@@ -16,6 +16,7 @@ import {
   PortfolioArticle,
   Props,
   TsGuardArticle,
+  AutoCompleteNewTabSearchArticle,
 } from "./articles";
 
 const courgette = Courgette({
@@ -110,12 +111,14 @@ const PersonalSection = () => (
   <CommonSection
     articles={[
       TsGuardArticle,
+      AutoCompleteNewTabSearchArticle,
       FairyTaleArticle,
       ReactProgressBarArticle,
       PortfolioArticle,
     ]}
     imageSrcs={[
       "tsguard.webp",
+      "AutocompleteNewTabSearch.webp",
       "fairyTale.webp",
       "reactProgressBar.webp",
       "portfolio.webp",
