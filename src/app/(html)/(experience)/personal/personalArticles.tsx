@@ -81,13 +81,24 @@ const AutoCompleteNewTabSearchArticle = (props: Props) => {
       {...props}
       title={"Chrome 확장 프로그램 Google/Youtube 자동완성 새 탭 검색"}
       subtitle={
-        <a
-          className="text-blue-500"
-          href="https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab"
-          target="_blank"
-        >
-          https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab
-        </a>
+        <>
+          <a
+            className="text-blue-500"
+            href="https://chromewebstore.google.com/detail/pmabbdlbkndeemogalkifoehafgckaag?utm_source=item-share-cb"
+            target="_blank"
+          >
+            확장 프로그램 링크
+          </a>
+          <br />
+          <br />
+          <a
+            className="text-blue-500"
+            href="https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab"
+            target="_blank"
+          >
+            https://github.com/Leejaeyeop/chrome-extension-autocomplete-new-tab
+          </a>
+        </>
       }
       skills={"Typescript / Vite / Chrome Extensions API"}
       contribution={"프로젝트 전체 기여도 - 100%"}
