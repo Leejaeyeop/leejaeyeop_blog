@@ -27,10 +27,6 @@ const ImqaArticle = (props: Props) => {
             개발 안정성 및 생산성 증가
           </li>
           <li>
-            여러 모듈에서 공통적으로 사용하는 컴포넌트 들을 monorepo의 package
-            화를 통해 한 곳에서 관리할 수 있도록 작업
-          </li>
-          <li>
             Next.js 마이그레이션과 함께, 디자인팀과의 협업을 통해 Atomic Design
             System 도입
           </li>
