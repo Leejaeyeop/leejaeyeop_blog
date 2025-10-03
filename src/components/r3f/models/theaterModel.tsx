@@ -79,7 +79,7 @@ const NoiseShader = React.memo<NoiseShaderProps>(
 NoiseShader.displayName = "NoiseShader";
 
 export const TheaterModel: React.FC = () => {
-  const { scene } = useGLTF("/models/theater/theater.glb");
+  const { scene } = useGLTF("/models/theater/theater.compressed.glb");
   const isScreenTransitioning = useTheaterScreenStore(
     state => state.isScreenTransitioning
   );
@@ -90,17 +90,34 @@ export const TheaterModel: React.FC = () => {
 
   useFrame(state => {
     if (FilmEffectMaterialRef.current) {
+      // 시간 업데이트는 매 프레임마다 필요
       FilmEffectMaterialRef.current.uniforms.time.value =
         state.clock.elapsedTime;
 
-      if (currentScreen === "main") {
-        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.0015;
-        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.006;
-        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 12;
+      // 화면별 설정은 변경될 때만 업데이트하도록 최적화
+      const isMainScreen = currentScreen === "main";
+      const material = FilmEffectMaterialRef.current;
+
+      if (isMainScreen) {
+        if (material.uniforms.scratchThickness.value !== 0.0015) {
+          material.uniforms.scratchThickness.value = 0.0015;
+        }
+        if (material.uniforms.spotSize.value !== 0.006) {
+          material.uniforms.spotSize.value = 0.006;
+        }
+        if (material.uniforms.scratchCount.value !== 12) {
+          material.uniforms.scratchCount.value = 12;
+        }
       } else {
-        FilmEffectMaterialRef.current.uniforms.scratchThickness.value = 0.001;
-        FilmEffectMaterialRef.current.uniforms.spotSize.value = 0.004;
-        FilmEffectMaterialRef.current.uniforms.scratchCount.value = 10;
+        if (material.uniforms.scratchThickness.value !== 0.001) {
+          material.uniforms.scratchThickness.value = 0.001;
+        }
+        if (material.uniforms.spotSize.value !== 0.004) {
+          material.uniforms.spotSize.value = 0.004;
+        }
+        if (material.uniforms.scratchCount.value !== 10) {
+          material.uniforms.scratchCount.value = 10;
+        }
       }
     }
   });

@@ -18,7 +18,7 @@ interface PopcornBoxModelProps {
 }
 
 export const PopcornBoxModel = ({ visible }: PopcornBoxModelProps) => {
-  const { scene } = useGLTF("/models/theater/popcorn_box.glb");
+  const { scene } = useGLTF("/models/theater/popcorn_box.compressed.glb");
   const popcornBoxRef = useRef<THREE.Object3D>(null);
   const { camera } = useThree();
 
