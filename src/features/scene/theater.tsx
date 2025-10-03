@@ -36,7 +36,7 @@ export default function TheaterCanvas() {
   return (
     <div className="w-screen h-screen bg-black">
       <LoaderOverlay /> {/* 여기! 로딩 상태에 따라 표시됨 */}
-      <Canvas className="w-full h-full">
+      <Canvas className="w-full h-full" gl={{ antialias: false }}>
         <PerspectiveCamera
           makeDefault
           position={[0.68, 5.43, 8.85]}
