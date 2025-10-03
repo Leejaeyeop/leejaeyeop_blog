@@ -24,9 +24,7 @@ const CAMERA_TARGET_DELAY = 2000;
 const SPOT_LIGHT_BLINK_TIME = 125;
 
 export const ProjectorModel = () => {
-  const { scene, animations } = useGLTF(
-    "/models/theater/projector.compressed.glb"
-  );
+  const { scene, animations } = useGLTF("/models/theater/projector.glb");
   const projectRef = useRef<THREE.Object3D>(null);
 
   const [isProjectorOn, setIsProjectorOn, setCameraTargetsQueue] =

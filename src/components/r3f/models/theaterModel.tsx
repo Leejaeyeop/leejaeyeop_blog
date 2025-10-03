@@ -79,7 +79,7 @@ const NoiseShader = React.memo<NoiseShaderProps>(
 NoiseShader.displayName = "NoiseShader";
 
 export const TheaterModel: React.FC = () => {
-  const { scene } = useGLTF("/models/theater/theater.compressed.glb");
+  const { scene } = useGLTF("/models/theater/theater.glb");
   const isScreenTransitioning = useTheaterScreenStore(
     state => state.isScreenTransitioning
   );
