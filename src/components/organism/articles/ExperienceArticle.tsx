@@ -40,18 +40,13 @@ const ExperienceArticle = ({
   // 애니메이션 제어와 뷰 감지 훅 초기화
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0,
+    threshold: 0.5,
     triggerOnce: false, // 한번만 애니메이션 실행
   });
   // 요소가 화면에 들어왔을 때 애니메이션 시작
   useEffect(() => {
     if (idx === currentSection) return;
-    if (inView) {
-      // controls.start({ opacity: 1 });
-      setCursection(idx);
-    } else {
-      // controls.start({ opacity: 0.3 });
-    }
+    if (inView) setCursection(idx);
   }, [controls, currentSection, idx, inView, setCursection]);
 
   return (
