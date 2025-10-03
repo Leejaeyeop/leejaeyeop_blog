@@ -1,8 +1,8 @@
 import { useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, memo } from "react";
 import { Group, Vector3 } from "three";
 
-const PARTICLE_COUNT = 25;
+const PARTICLE_COUNT = 15; // 파티클 수 감소로 성능 향상
 const POSITION_RANGE_X = 4;
 const POSITION_RANGE_Y = 4;
 const POSITION_RANGE_Z = 2;
@@ -14,12 +14,14 @@ const Y_AMPLITUDE = 0.05;
 const Z_AMPLITUDE = 0.02;
 const Z_OSCILLATION_SPEED = 0.3;
 const PARTICLE_RADIUS = 0.003;
-const PARTICLE_SEGMENTS = 8;
+const PARTICLE_SEGMENTS = 6; // 세그먼트 수 감소로 성능 향상
 const PARTICLE_OPACITY = 0.4;
 const PARTICLE_COLOR = "white";
 
-export const DustParticles = () => {
+export const DustParticles = memo(() => {
   const groupRef = useRef<Group>(null!);
+  const lastUpdateTime = useRef(0);
+  const UPDATE_INTERVAL = 1 / 30; // 30fps로 제한
 
   const particles = useMemo(() => {
     const data = [];
@@ -38,7 +40,13 @@ export const DustParticles = () => {
   }, []);
 
   useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
+    const currentTime = clock.getElapsedTime();
+
+    // 프레임 레이트 제한으로 성능 최적화
+    if (currentTime - lastUpdateTime.current < UPDATE_INTERVAL) return;
+    lastUpdateTime.current = currentTime;
+
+    const t = currentTime;
     groupRef.current.children.forEach((child, i) => {
       const data = particles[i];
       const x =
@@ -69,4 +77,6 @@ export const DustParticles = () => {
       ))}
     </group>
   );
-};
+});
+
+DustParticles.displayName = "DustParticles";
