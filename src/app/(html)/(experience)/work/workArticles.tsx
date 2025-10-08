@@ -85,7 +85,7 @@ const DalgonaArticle = (props: Props) => {
     <Article
       {...props}
       title={"AI 달고나"}
-      subtitle={"음성/텍스트 데이터 라벨링 웹"}
+      subtitle={"AI 학습용 음성/텍스트 데이터 라벨링 웹"}
       skills={"Vue.js (2,3) / Vuex / Vuetify"}
       contribution={"프로젝트 전체 기여도 - 50% / 프론트엔드 기여도 - 70 %"}
       content={
@@ -231,21 +231,17 @@ const BareunArticle = (props: Props) => {
     <Article
       {...props}
       title={"Bareun.ai"}
-      subtitle={"고대 아시아 문헌 정보 조회 웹"}
+      subtitle={"형태소 분석 NLP 모델 백엔드 & 소개 페이지"}
       skills={"Vue.js / Express.js / Firestore"}
       contribution={"프로젝트 전체 기여도 - 70% / 프론트엔드 기여도 - 50 %"}
       content={
         <>
           <li>
-            제품 소개 페이지 프론트엔드 기획/설계/구현 참여 (회원가입, 소셜
+            자사 NLP 제품 소개 페이지 프론트엔드 기능 구현 (회원가입, 소셜
             로그인)
           </li>
           <li>
-            제품 소개 페이지 백엔드 REST api 서버 구현 (회원가입, 로그인,
-            소셜로그인 등)
-          </li>
-          <li>
-            형태소 분석기(bareun) 백엔드 api key 발급 및 인증/로그/에러 처리
+            NLP 형태소 분석기(bareun) 백엔드 api key 발급 및 인증/로그/에러 처리
             서버 구축 (node.js)
           </li>
           <li>node.js 서버 와 firebase(firestore) 연동</li>
@@ -255,4 +251,37 @@ const BareunArticle = (props: Props) => {
   );
 };
 
-export { ImqaArticle, DalgonaArticle, AsianArticle, BareunArticle };
+const PipelinesArticle = (props: Props) => {
+  return (
+    <Article
+      {...props}
+      title={"AI 모델(NLP/STT) 학습 파이프라인 웹"}
+      skills={"Vue.js / Vuetify / TypeScript / Docker"}
+      contribution={"프로젝트 전체 기여도 - 50% / 프론트엔드 기여도 - 100 %"}
+      content={
+        <>
+          <li>
+            개발자가 직접 터미널로 접근해 학습을 하는 불편함 해소, NLP 연구
+            생산성 증가
+          </li>
+          <li>
+            전처리 설정 / 학습 모델 / 배치 사이즈, 에폭,학습 데이터 비율 / 학습
+            파라미터 ( 훈련 데이터, 검증데이터) 설정 및 학습 진행 상황 모니터링
+            구현
+          </li>
+          <li>Long polling 방식을 활용한 실시간 학습 로그 확인 기능 구현</li>
+          <li>Vuetify를 활용해 직접 UI/UX 디자인</li>
+          <li>직접 Dockerize 및 실행 shell script 구성</li>
+        </>
+      }
+    ></Article>
+  );
+};
+
+export {
+  ImqaArticle,
+  DalgonaArticle,
+  AsianArticle,
+  BareunArticle,
+  PipelinesArticle,
+};

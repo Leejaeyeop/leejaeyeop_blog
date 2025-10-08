@@ -18,6 +18,7 @@ import {
   TsGuardArticle,
   AutoCompleteNewTabSearchArticle,
 } from "./articles";
+import { PipelinesArticle } from "./work/workArticles";
 
 const courgette = Courgette({
   weight: ["400"],
@@ -102,8 +103,20 @@ const SectionHeader = ({ title }: { title: string }) => (
 
 const WorkSection = () => (
   <CommonSection
-    articles={[ImqaArticle, DalgonaArticle, AsianArticle, BareunArticle]}
-    imageSrcs={["imqa.webp", "dalgona.webp", "asian.webp", "bareun.webp"]}
+    articles={[
+      ImqaArticle,
+      DalgonaArticle,
+      PipelinesArticle,
+      BareunArticle,
+      AsianArticle,
+    ]}
+    imageSrcs={[
+      "imqa.webp",
+      "dalgona.webp",
+      "pipelines.webp",
+      "bareun.webp",
+      "asian.webp",
+    ]}
   />
 );
 
