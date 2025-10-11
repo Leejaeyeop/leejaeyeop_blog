@@ -231,7 +231,18 @@ const BareunArticle = (props: Props) => {
     <Article
       {...props}
       title={"Bareun.ai"}
-      subtitle={"형태소 분석 NLP 모델 백엔드 & 소개 페이지"}
+      subtitle={
+        <>
+          <p>NLP 형태소 분석 서비스 백엔드 & 소개 페이지</p>
+          <a
+            className="text-blue-500"
+            href="https://bareun.ai/home"
+            target="_blank"
+          >
+            https://bareun.ai/home
+          </a>
+        </>
+      }
       skills={"Vue.js / Express.js / Firestore"}
       contribution={"프로젝트 전체 기여도 - 70% / 프론트엔드 기여도 - 50 %"}
       content={
