@@ -39,8 +39,16 @@ const ImqaArticle = (props: Props) => {
             개발을 함에 있어서도 컴포넌트를 독립적으로 개발할 수 있도록 함
           </li>
           <li>
-            오픈 소스 라이브러리 d3.js 를 직접 커스터마이징해 새로운 기능 (auto
-            zoom) 구현
+            Vue 3 + 차트 (ApexCharts / d3.js) 기반의 고성능 데이터 시각화
+            컴포넌트 구축 경험 - ApexCharts 커스터마이징: Custom Tooltip,
+            gradientToColors, Annotation 등 세부 커스터마이징 및 사용자
+            인터랙션(Zoom, Select, Drilldown) 구현 - Treemap, Flamechart,
+            Heatmap, Donut, Line Chart 등을 적재적소에 사용하여 지표를
+            시각적으로 직관적으로 표현
+          </li>
+          <li>
+            오픈 소스 라이브러리 (flame chart js) 를 직접 커스터마이징해 새로운
+            기능 (auto zoom) 구현
           </li>
           <li>
             프론트엔드 성능 개선: - FCP / LCP 성능 각각 8.1s - 0.9s / 9.2s -
@@ -51,11 +59,6 @@ const ImqaArticle = (props: Props) => {
             사용자 불편 Voc에 적극 대응해 통합 대시보드 화면 구현: 각 버전별
             데이터를 일일이 확인해야 하는 사용자 불편에 한 눈에 확인할 수 있는
             통합 대시보드 페이지 구현을 통해 사용자 만족도 향상
-          </li>
-          <li>
-            반응형 컴포넌트 구현 (table , dashboard 등) - 데스크탑 환경만 고려한
-            기존 고정형 Ui 개선. 지나치게 배제된 모바일 사용자를 최소한으로
-            지원해 Ui 만족도 개선
           </li>
         </>
       }
@@ -96,9 +99,21 @@ const DalgonaArticle = (props: Props) => {
             적극 참여
           </li>
           <li>
+            확장성 있는 컴포넌트 체계 정립 - 각 컴포넌트의 Composables을 활용한
+            ui/비즈니스 로직 분리 및, Slot을 활용한 확장성 있는 컴포넌트 구현. -
+            모듈화 덕분에 신규 기능 추가 시 개발 속도 20% 향상, 코드 중복률 30%
+            감소
+          </li>
+          <li>
+            vue3 심화 활용: 커스텀 디렉티브, 컴포저블, LazyLoading을 위한 Async
+            Component, Suspense 등을 적재적소에 활용
+          </li>
+          <li>
             공통 전역 컴포넌트 구현: - 개발자의 사용 편의성 증대를 위해 일부
             컴포넌트를 globalProperties로 전역 설정 후 외부 에서 `proxy` 변수로
             접근가능하게 함.
+            <br />
+            또한 built-in component인 teleport 사용으로 modeal 구현
           </li>
           <li>
             상태 관리 규칙 정의: - 컴포넌트 계층이 깊지 않을 경우 props / 계층이
